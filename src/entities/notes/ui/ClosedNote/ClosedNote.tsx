@@ -1,11 +1,11 @@
 import { TiPin } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { NoteViewType } from "@/shared/types";
 import { useRef } from "react";
 import { useHover } from "@/shared/lib/hooks/useHover";
+import { NotesView } from "@/shared/const";
 
 interface NoteProps {
-    view: NoteViewType
+    view: NotesView
 }
 
 const ClosedNote = ({ view }: NoteProps) => {
@@ -14,7 +14,7 @@ const ClosedNote = ({ view }: NoteProps) => {
     
     return (
         <div 
-            className={`flex flex-col custom-border cursor-pointer p-2 sm:p-4 relative bg-light transition-all lg:hover:shadow-custom ${view == "grid" ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"}`} 
+            className={`flex flex-col custom-border cursor-pointer p-2 sm:p-4 relative bg-light transition-all lg:hover:shadow-custom ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"}`} 
             ref={noteRef}
         >
             <div className="flex-center justify-between">
@@ -43,7 +43,7 @@ const ClosedNote = ({ view }: NoteProps) => {
                     </li>
                 </ul>
             </div>
-            <div className={`my-2 leading-5 ${view == "grid" ? "line-clamp-6 sm:line-clamp-5 lg:line-clamp-4" : "line-clamp-4"}`}>
+            <div className={`my-2 leading-5 ${view == NotesView.GRID ? "line-clamp-6 sm:line-clamp-5 lg:line-clamp-4" : "line-clamp-4"}`}>
                 sit consectetur, Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit consectetur                 sit consectetur, Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit consectetur           
                 4545777      sit consectetur, Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit consectetur
             </div>
