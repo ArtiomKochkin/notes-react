@@ -6,4 +6,21 @@
 
 body {
     font-family: "Nunito Sans", sans-serif;
+    min-height: 100vh;
+}
+
+svg {
+    @apply text-xl 2xl:text-3xl;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+.custom-border {
+    @apply border-dark border rounded-md  outline-none;
+}
+
+.flex-center {
+    @apply flex items-center;
 }
