@@ -1,5 +1,5 @@
-import { useWindowSize } from "@/shared/lib/hooks/useWindowSize";
-import Button from "@/shared/ui/button/Button";
+import { useWindowSize } from "@/shared/lib/hooks";
+import { Button } from "@/shared/ui";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const AuthButton = () => {

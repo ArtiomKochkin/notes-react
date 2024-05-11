@@ -1,5 +1,5 @@
 import { NotesView } from "@/shared/const";
-import { NotesViewContext } from "@/shared/lib/context/NotesViewContext";
+import { NotesViewContext } from "@/shared/lib/context";
 import { useContext } from "react";
 import {  MdGridView, MdOutlineViewAgenda } from "react-icons/md";
 

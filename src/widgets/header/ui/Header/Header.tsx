@@ -2,7 +2,7 @@ import { AuthButton } from "@/features/authButton";
 import { Search } from "@/features/search";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { ViewSwitcher } from "@/features/viewSwitcher";
-import Logo from "@/shared/ui/logo/Logo";
+import { Logo } from "@/shared/ui";
 import HeaderMenuButton from "../HeaderMenuButton/HeaderMenuButton";
 
 const Header = () => {

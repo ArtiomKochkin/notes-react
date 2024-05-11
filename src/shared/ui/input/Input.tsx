@@ -1,4 +1,4 @@
-import { InputType } from "@/shared/types";
+import { InputType } from "@/shared/const";
 import { InputHTMLAttributes } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -13,7 +13,7 @@ const Input = ({ inputType, isShow, ...props}: InputProps) => {
     
     return (
         <input
-            className={`custom-border px-5 py-2 text-sm bg-light ${inputType == "search" && searchStyles} ${isShow && extendedStyles}`}
+            className={`custom-border px-5 py-2 text-sm bg-light ${inputType == InputType.SEARCH && searchStyles} ${isShow && extendedStyles}`}
             {...props}
         />
     )

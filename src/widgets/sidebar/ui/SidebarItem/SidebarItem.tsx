@@ -1,4 +1,4 @@
-import { SidebarContext } from "@/shared/lib/context/SidebarContext";
+import { SidebarContext } from "@/shared/lib/context";
 import { ReactNode, useContext } from "react";
 
 interface SidebarItemProps {

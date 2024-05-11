@@ -1,8 +1,8 @@
 import { TiPin } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useRef } from "react";
-import { useHover } from "@/shared/lib/hooks/useHover";
 import { NotesView } from "@/shared/const";
+import { useHover } from "@/shared/lib/hooks";
 
 interface NoteProps {
     view: NotesView

@@ -1,7 +1,7 @@
 import { TiPin } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
-import { useOutside } from "@/shared/lib/hooks/useOutside";
+import { useOutside } from "@/shared/lib/hooks";
 
 const OpenedNote = () => {
     const { ref, isShow, setIsShow } = useOutside(false);

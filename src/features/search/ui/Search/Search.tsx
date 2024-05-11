@@ -1,6 +1,6 @@
-import { useOutside } from "@/shared/lib/hooks/useOutside";
-import { useWindowSize } from "@/shared/lib/hooks/useWindowSize";
-import Input from "@/shared/ui/input/Input";
+import { InputType } from "@/shared/const";
+import { useWindowSize, useOutside } from "@/shared/lib/hooks";
+import { Input } from "@/shared/ui";
 import { MdSearch } from "react-icons/md";
 
 
@@ -24,7 +24,7 @@ const Search = () => {
             <MdSearch className="absolute left-2"/>
             <Input 
                 placeholder="Поиск..." 
-                inputType="search"
+                inputType={InputType.SEARCH}
                 isShow={isShow}
             />
         </div>

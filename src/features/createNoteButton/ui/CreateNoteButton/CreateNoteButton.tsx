@@ -1,4 +1,4 @@
-import Button from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui";
 import { FaRegPlusSquare } from "react-icons/fa";
 
 const CreateNoteButton = () => {

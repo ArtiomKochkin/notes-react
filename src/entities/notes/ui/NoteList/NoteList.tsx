@@ -1,7 +1,7 @@
 import { NotesView } from "@/shared/const";
 import ClosedNote from "../ClosedNote/ClosedNote";
-import { SidebarContext } from "@/shared/lib/context/SidebarContext";
 import { useContext } from "react";
+import { SidebarContext } from "@/shared/lib/context";
 
 interface NoteListProps {
     view: NotesView,

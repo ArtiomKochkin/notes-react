@@ -3,25 +3,18 @@ import { MdOutlineLabel, MdOutlineArchive, MdOutlineEdit } from "react-icons/md"
 import { BsTrash } from "react-icons/bs";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { useContext, useEffect } from "react";
-import { SidebarContext } from "@/shared/lib/context/SidebarContext";
+import { useWindowSize } from "@/shared/lib/hooks";
+import { SidebarContext } from "@/shared/lib/context";
 import SidebarItem from "../SidebarItem/SidebarItem";
-import { useWindowSize } from "@/shared/lib/hooks/useWindowSize";
+import { changeStateSidebar } from "../../lib/utils/changeStateSidebar";
 
 const Sidebar = () => {
     const { showSidebar, setShowSidebar } = useContext(SidebarContext);
     const { width } = useWindowSize();
 
     useEffect(() => {
-        const changeStateSidebar = () => {
-            if (width < 640) {
-                setShowSidebar(false);
-            } else {
-                setShowSidebar(true);
-            }
-        };
-        changeStateSidebar();
-        
-        return () => changeStateSidebar();
+        changeStateSidebar(width, setShowSidebar);
+        return () => changeStateSidebar(width, setShowSidebar);
     }, [width, setShowSidebar]);
  
     return (
