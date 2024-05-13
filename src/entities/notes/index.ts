@@ -1,4 +1,4 @@
-import NoteList from "./ui/NoteList/NoteList";
+import ClosedNote from "./ui/ClosedNote/ClosedNote";
 import OpenedNote from "./ui/OpenedNote/OpenedNote";
 
-export { NoteList, OpenedNote };
+export { OpenedNote, ClosedNote };

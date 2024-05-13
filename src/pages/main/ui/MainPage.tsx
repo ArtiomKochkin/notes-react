@@ -1,6 +1,7 @@
-import { NoteList, OpenedNote } from "@/entities/notes";
+import { OpenedNote } from "@/entities/notes";
 import { CreateNoteButton } from "@/features/createNoteButton";
 import { SidebarContext, NotesViewContext } from "@/shared/lib/context";
+import { NoteList } from "@/widgets/noteList";
 import { useContext } from "react";
 
 const MainPage = () => {
