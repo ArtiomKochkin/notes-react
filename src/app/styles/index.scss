@@ -7,6 +7,7 @@
 body {
     font-family: "Nunito Sans", sans-serif;
     min-height: 100vh;
+    background-color: #F8F4FF;
 }
 
 svg {
@@ -18,7 +19,7 @@ svg {
 }
 
 .custom-border {
-    @apply border-dark border rounded-md  outline-none;
+    @apply border-blue border rounded-md  outline-none;
 }
 
 .flex-center {

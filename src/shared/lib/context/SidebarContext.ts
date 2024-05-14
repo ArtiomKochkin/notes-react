@@ -1,11 +1,8 @@
 import { createContext } from "react";
 
-export interface SidebarContextProps {
-    showSidebar: boolean,
-    setShowSidebar: (showSidebar: boolean) => void,
+export interface ISidebarContext {
+    showSidebar?: boolean,
+    setShowSidebar?: (showSidebar: boolean) => void,
 }
 
-export const SidebarContext = createContext<SidebarContextProps>({
-    showSidebar: true,
-    setShowSidebar: () => {}
-});
+export const SidebarContext = createContext<ISidebarContext>({});

@@ -1,8 +1,8 @@
 import { TiPin } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useRef } from "react";
-import { NotesView } from "@/shared/const";
-import { useHover } from "@/shared/lib/hooks";
+import { NotesView, Theme } from "@/shared/const";
+import { useHover, useTheme } from "@/shared/lib/hooks";
 
 interface NoteProps {
     view: NotesView
@@ -11,10 +11,11 @@ interface NoteProps {
 const ClosedNote = ({ view }: NoteProps) => {
     const noteRef = useRef<HTMLDivElement>(null);
     const isHoveredNote = useHover({element: noteRef});
+    const { theme } = useTheme();
     
     return (
         <div 
-            className={`flex flex-col custom-border cursor-pointer p-2 sm:p-4 relative bg-light transition-all lg:hover:shadow-custom ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"}`} 
+            className={`flex flex-col custom-border cursor-pointer p-2 sm:p-4 relative transition-all lg:hover:shadow-custom ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"} ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`} 
             ref={noteRef}
         >
             <div className="flex-center justify-between">
@@ -24,21 +25,21 @@ const ClosedNote = ({ view }: NoteProps) => {
                     <BsThreeDotsVertical />
                 </div>}
             </div>
-            <div className="hidden absolute z-20 right-1 top-1 bg-light custom-border p-2">
+            <div className={`hidden absolute z-20 right-1 top-1 custom-border p-2 ${theme == Theme.LIGHT ? "bg-light " : "bg-dark"}`}>
                 <ul className="flex flex-col gap-1">
-                    <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md">
+                    <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                         Удалить заметку
                     </li>
-                    <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md">
+                    <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                         Архивировать
                     </li>
-                    <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md">
+                    <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                         Создать копию
                     </li>
-                    <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md">
+                    <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                         Редактировать ярлыки
                     </li>
-                    <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md">
+                    <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                         Изменить фон
                     </li>
                 </ul>
@@ -48,16 +49,16 @@ const ClosedNote = ({ view }: NoteProps) => {
                 4545777      sit consectetur, Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit consectetur
             </div>
             <ul className="mx-0 mb-0 mt-auto flex-center gap-1 overflow-hidden">
-                <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                <li className="custom-border inline py-1 px-2 text-sm ">
                     Ярлык
                 </li>
-                <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                <li className="custom-border inline py-1 px-2 text-sm ">
                     Собеседования
                 </li>
-                <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                <li className="custom-border inline py-1 px-2 text-sm ">
                     Ярлык
                 </li>
-                <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                <li className="custom-border inline py-1 px-2 text-sm ">
                     Ярлык
                 </li>
             </ul>

@@ -17,7 +17,7 @@ const Search = () => {
  
     return (
         <div 
-            className={`flex-center grow  transition-all ${isShow ? extendedStyles : "relative ml-2 sm:ml-7"}`}
+            className={`flex-center grow  transition-all ${isShow ? extendedStyles : "relative ml-2 sm:ml-7"} `}
             onClick={handleClick}
             ref={ref}
         >

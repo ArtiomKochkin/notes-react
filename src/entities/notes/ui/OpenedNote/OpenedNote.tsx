@@ -1,14 +1,16 @@
 import { TiPin } from "react-icons/ti";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdOutlineClose } from "react-icons/md";
-import { useOutside } from "@/shared/lib/hooks";
+import { useOutside, useTheme } from "@/shared/lib/hooks";
+import { Theme } from "@/shared/const";
 
 const OpenedNote = () => {
     const { ref, isShow, setIsShow } = useOutside(false);
+    const { theme } = useTheme();
  
     return (
         <div className="hidden fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70 overflow-auto">
-            <div className="relative flex flex-col bg-light custom-border w-[94vw] sm:w-4/5 lg:w-3/5 min-h-[80vh] mx-auto my-[1vh] p-4">
+            <div className={`relative flex flex-col custom-border w-[94vw] sm:w-4/5 lg:w-3/5 min-h-[80vh] mx-auto my-[1vh] p-4 ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`}>
                 <div className="flex-center justify-between">
                     <h2 className="font-semibold text-2xl">TitleTitleTitle Title Title Title</h2>
                     <div className="flex-center gap-1 cursor-pointer">
@@ -19,21 +21,21 @@ const OpenedNote = () => {
                         <MdOutlineClose/>
                     </div>
                 </div>
-                {isShow && <div className="absolute z-20 right-1 top-1 bg-light custom-border p-2 shadow-custom">
+                {isShow && <div className={`absolute z-20 right-1 top-1 custom-border p-2 shadow-custom ${theme == Theme.LIGHT ? "bg-light " : "bg-dark"}`}>
                     <ul className="flex flex-col gap-1">
-                        <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md cursor-pointer">
+                        <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                             Удалить заметку
                         </li>
-                        <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md cursor-pointer">
+                        <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                             Архивировать
                         </li>
-                        <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md cursor-pointer">
+                        <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                             Создать копию
                         </li>
-                        <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md cursor-pointer">
+                        <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                             Редактировать ярлыки
                         </li>
-                        <li className="py-1 px-2 text-sm hover:bg-dark hover:text-light rounded-md cursor-pointer">
+                        <li className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
                             Изменить фон
                         </li>
                     </ul>
@@ -46,22 +48,22 @@ const OpenedNote = () => {
                 </div>
                 <div className="mx-0 mb-0 mt-auto">
                     <ul className="flex-center gap-1 flex-wrap">
-                        <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                        <li className="custom-border inline py-1 px-2 text-sm">
                             Ярлык
                         </li>
-                        <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                        <li className="custom-border inline py-1 px-2 text-sm">
                             Собеседования
                         </li>
-                        <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                        <li className="custom-border inline py-1 px-2 text-sm">
                             Ярлык
                         </li>
-                        <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                        <li className="custom-border inline py-1 px-2 text-sm">
                             Собеседования
                         </li>                         
-                        <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                        <li className="custom-border inline py-1 px-2 text-sm">
                             Ярлык
                         </li>
-                        <li className="custom-border inline py-1 px-2 text-sm  bg-gray">
+                        <li className="custom-border inline py-1 px-2 text-sm">
                             Собеседования
                         </li> 
                     </ul>

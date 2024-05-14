@@ -16,7 +16,6 @@ const NoteList = ({ view }: NoteListProps ) => {
             <ClosedNote view={view}/>
             <ClosedNote view={view}/>
             <ClosedNote view={view}/>
-            { view }
         </div>
     )
 }

@@ -11,9 +11,9 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				light: "#fff",
-				dark: "#212121",
-				gray: "rgba(245, 245, 244, 0.6)"
+				light: "#F8F4FF",
+				dark: "#2d283e",
+				blue: "#802bb1"
 			},
 			fontFamily: {
 				nunito: ["Nunito Sans", "sans-serif"],
@@ -22,7 +22,7 @@ export default {
 				DEFAULT: "ease-in-out"
 			},
 			boxShadow: {
-				custom: "3px 3px 15px 0px #212121"
+				custom: "3px 3px 15px 0px #802bb1"
 			},
 			keyframes: {
 				slide: {
@@ -43,34 +43,32 @@ export default {
 		plugin(function({ addUtilities }) {
 			addUtilities({
 				".text-shadow": {
-					textShadow: "1.5px 1.5px rgba(0, 0, 0, 0.4)",
+					textShadow: "1.5px 1.5px rgba(128, 43, 177, 0.4)",
 				},
 				".sm-text-shadow": {
-					textShadow: "0.8px 0.8px rgba(0, 0, 0, 0.4)",
+					textShadow: "0.8px 0.8px rgba(128, 43, 177, 0.4)",
 				}
 			})
 		}),
 		plugin(function({ addComponents, theme }) {
 			addComponents({
 				".button": {
-					backgroundColor: theme("colors.light"),
-					color: theme("colors.dark"),
+					backgroundColor: "inherit",
 					padding: "0.5rem 0.5rem",
 					display: "block",
 					fontWeight: "600",
 					transition: "0.3s ease-in-out all",
-					border: `1px solid ${theme("colors.dark")}`,
+					border: `1px solid ${theme("colors.blue")}`,
 					borderRadius: "0.375rem",
 					outline: "none",
 		
 					"&:hover": {
-						backgroundColor: theme("colors.dark"),
-						color: theme("colors.light"),
-						boxShadow: "2px 2px 10px 0px #212121"
+						backgroundColor: `${theme("colors.blue")}`,
+						boxShadow: "2px 2px 10px 0px #802bb1"
 					},
 
 					"&:focus": {
-						backgroundColor: theme("colors.gray")
+						outline: `1px solid ${theme("colors.blue")}`
 					}
 				},
 			})
