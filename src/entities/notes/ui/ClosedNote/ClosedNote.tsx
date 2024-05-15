@@ -12,7 +12,7 @@ const ClosedNote = ({ view }: NoteProps) => {
     const noteRef = useRef<HTMLDivElement>(null);
     const isHoveredNote = useHover({element: noteRef});
     const { theme } = useTheme();
-    
+
     return (
         <div 
             className={`flex flex-col custom-border cursor-pointer p-2 sm:p-4 relative transition-all lg:hover:shadow-custom ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"} ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`} 

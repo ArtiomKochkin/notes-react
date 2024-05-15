@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import SidebarProvider from "./SidebarProvider/SidebarProvider";
-import NotesViewProvider from "./NotesViewProvider/NotesViewProvider";
-import ThemeProvider from "./ThemeProvider/ThemeProvider";
+import { StoreProvider } from "./StoreProvider";
+import { NotesViewProvider } from "./NotesViewProvider";
+import { SidebarProvider } from "./SidebarProvider";
+import { ThemeProvider } from "./ThemeProvider";
 
 interface ProvidersProps {
     children: ReactNode
@@ -10,13 +11,15 @@ interface ProvidersProps {
 const Providers = ({ children }: ProvidersProps) => {
  
     return (
-        <ThemeProvider>
-            <SidebarProvider>
-                <NotesViewProvider>
-                    {children}
-                </NotesViewProvider>
-            </SidebarProvider>
-        </ThemeProvider>
+        <StoreProvider>
+            <ThemeProvider>
+                <SidebarProvider>
+                    <NotesViewProvider>
+                        {children}
+                    </NotesViewProvider>
+                </SidebarProvider>
+            </ThemeProvider>
+        </StoreProvider>
     )
 }
 

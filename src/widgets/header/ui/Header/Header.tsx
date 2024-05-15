@@ -1,4 +1,3 @@
-import { AuthButton } from "@/features/authButton";
 import { Search } from "@/features/search";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { ViewSwitcher } from "@/features/viewSwitcher";
@@ -20,7 +19,6 @@ const Header = () => {
             <div className="flex-center">
                 <ViewSwitcher/>
                 <ThemeSwitcher/>
-                <AuthButton />
             </div>
         </div>
     )
