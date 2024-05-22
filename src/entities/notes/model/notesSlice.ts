@@ -1,5 +1,5 @@
+import { INote } from "@/shared/types";
 import { createSlice } from "@reduxjs/toolkit";
-import { INote } from "./types";
 
 const initialState: INote[] = [];
 

@@ -1,5 +1,5 @@
+import { INote } from "@/shared/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { INote } from "../model/types";
 
 const API_URL = "http://localhost:3000/notes";
 

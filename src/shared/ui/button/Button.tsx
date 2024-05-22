@@ -1,10 +1,10 @@
 import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
-    createNote?: boolean
+    createNote?: boolean,
 }
 
 const Button = ({ children, createNote, ...props }: ButtonProps) => {
