@@ -9,6 +9,7 @@ import NoteSettings from "../NoteSettings/NoteSettings";
 import NoteContent from "../NoteContent/NoteContent";
 import NoteName from "../NoteName/NoteName";
 import NoteLabelList from "../NoteLabelList/NoteLabelList";
+import { closeNote } from "../../lib";
 
 interface NoteProps {
     view: NotesView,
@@ -23,11 +24,6 @@ const ClosedNote = ({ view, note }: NoteProps) => {
     const toggleNote = () => {
         setIsOpenNote(() => !isOpenNote);
     };
-
-    const closeNote = () => {
-        setIsOpenNote(() => !isOpenNote);
-        window.location.reload();
-    }
 
     return (
         <>
@@ -49,7 +45,7 @@ const ClosedNote = ({ view, note }: NoteProps) => {
                     <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
                 </div>
             </div>
-            {isOpenNote && <OpenedNote note={note} closeNote={closeNote}/>}
+            {isOpenNote && <OpenedNote note={note} closeNote={() => closeNote(isOpenNote, setIsOpenNote)}/>}
         </>
     )
 }

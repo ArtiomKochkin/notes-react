@@ -7,7 +7,7 @@ interface NotesViewProviderProps {
 }
 
 const NotesViewProvider = ({ children }: NotesViewProviderProps) => {
-    const [notesView, setNotesView] = useState<NotesView>(NotesView.LIST);
+    const [notesView, setNotesView] = useState<NotesView>(NotesView.GRID);
 
     return (
         <NotesViewContext.Provider value={{ notesView, setNotesView }}>

@@ -4,15 +4,15 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
-    createNote?: boolean,
+    createButton?: boolean,
 }
 
-const Button = ({ children, createNote, ...props }: ButtonProps) => {
+const Button = ({ children, createButton, ...props }: ButtonProps) => {
     const { theme } = useTheme();
  
     return (
         <button 
-            className={`button sm:px-8 ${createNote && "sm:w-2/3 flex-center justify-center mx-auto my-4"} ${theme == Theme.LIGHT ? "text-dark hover:text-white" : "text-light hover:text-dark"}`}
+            className={`button sm:px-8 ${createButton && "sm:w-2/3 flex-center justify-center mx-auto my-4"} ${theme == Theme.LIGHT ? "text-dark hover:text-white" : "text-light hover:text-dark"}`}
             {...props}
         >
             {children}

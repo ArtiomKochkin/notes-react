@@ -1,7 +1,6 @@
 import { SlNote } from "react-icons/sl";
 import { MdOutlineLabel, MdOutlineArchive, MdOutlineEdit } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
-import { FaRegPlusSquare } from "react-icons/fa";
 import { useContext, useEffect } from "react";
 import { useTheme, useWindowSize } from "@/shared/lib/hooks";
 import { SidebarContext } from "@/shared/lib/context";
@@ -22,9 +21,8 @@ const Sidebar = () => {
     return (
         <aside className={`fixed left-0 top-14 z-10 text-lg pt-0 sm:pt-5 pr-2 lg:w-1/5 ${theme == Theme.LIGHT ? "bg-light" : "bg-dark"} border-r border-blue min-h-[92vh] ${showSidebar ? "w-4/5 sm:w-1/3" : "w-12 sm:w-14 lg:w-20 pr-0"}`}>
             <SidebarItem name="Заметки" icon={<SlNote />} />
-            <SidebarItem name="Ярлыки" icon={<MdOutlineLabel />} />
-            <SidebarItem name="Создать ярлык" icon={<FaRegPlusSquare />} />
-            <SidebarItem name="Изменение ярлыков" icon={<MdOutlineEdit />} />
+            <SidebarItem name="Ярлык" icon={<MdOutlineLabel />} />
+            <SidebarItem name="Ярлыки" icon={<MdOutlineEdit />} />
             <SidebarItem name="Архив" icon={<MdOutlineArchive />} />
             <SidebarItem name="Корзина" icon={<BsTrash />} />
         </aside>

@@ -1,3 +1,5 @@
+import { INoteData } from "../types";
+
 export enum NotesView {
     GRID = "grid",
     LIST = "list"
@@ -9,3 +11,14 @@ export enum NoteView {
 }
 
 export const NOTES_SETTINGS = ["Удалить заметку", "Архивировать", "Создать копию", "Редактировать ярлыки", "Изменить фон"];
+
+export const defaultValueNote: INoteData = {
+    name: "Заголовок...",
+    content: "Текст...",
+    isArchive: false,
+    isPinned: false,
+    isTrash: false,
+    lastModifiedDate: "",
+    background: "",
+    labels: []
+};
