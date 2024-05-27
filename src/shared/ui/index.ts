@@ -6,5 +6,10 @@ import Error from "./error/Error";
 import Label from "./label/Label";
 import Dots from "./dots/Dots";
 import Close from "./close/Close";
+import Title from "./title/Title";
+import NoteSettingsItem from "./noteSettingsItem/NoteSettingsItem";
 
-export { Button, Input, Logo, Loading, Error, Label, Dots, Close };
+export { 
+    Button, Input, Logo, Loading, Error, Label, Dots, Close, Title, 
+    NoteSettingsItem 
+};

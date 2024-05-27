@@ -29,7 +29,7 @@ const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
                         <Close closeElement={closeNote}/>
                     </div>
                 </div>
-                <NoteSettings isShow={isShow}/>
+                <NoteSettings isShow={isShow} note={note}/>
                 <NoteContent type={NoteView.OPENED} note={note}/>
                 <div className="mx-0 mb-0 mt-auto">
                     <NoteLabelList labels={note.labels} type={NoteView.OPENED}/>

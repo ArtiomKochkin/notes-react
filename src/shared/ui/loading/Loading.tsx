@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface LoadingProps {
     children: ReactNode,
-    isLoading: boolean
+    isLoading?: boolean
 }
 
 const Loading = ({ children, isLoading }: LoadingProps) => {

@@ -39,10 +39,12 @@ const ClosedNote = ({ view, note }: NoteProps) => {
                         <Dots refElement={settingsRef} show={isShowSettings} setShow={setIsShowSettings}/>
                     </div>
                 </div>
-                <div onClick={toggleNote}>
-                    <NoteSettings isShow={isShowSettings}/>
-                    <NoteContent note={note} type={NoteView.CLOSED} />
-                    <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
+                <div>
+                    <NoteSettings isShow={isShowSettings} note={note}/>
+                    <div onClick={toggleNote}>
+                        <NoteContent note={note} type={NoteView.CLOSED} />
+                        <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
+                    </div>
                 </div>
             </div>
             {isOpenNote && <OpenedNote note={note} closeNote={() => closeNote(isOpenNote, setIsOpenNote)}/>}

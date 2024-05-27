@@ -1,5 +1,5 @@
 interface ErrorProps {
-    isError: boolean
+    isError?: boolean
 }
 
 const Error = ({ isError}: ErrorProps) => {

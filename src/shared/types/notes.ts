@@ -8,7 +8,7 @@ export interface INote {
     labels: ILabel[],
     isPinned: boolean,
     isArchive: boolean,
-    isTrash: boolean,
+    isDeleted: boolean,
     background?: string
 }
 

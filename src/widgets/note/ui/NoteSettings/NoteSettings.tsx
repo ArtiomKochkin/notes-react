@@ -1,20 +1,23 @@
-import { NOTES_SETTINGS, Theme } from "@/shared/const";
+import { ArchiveNote, DeleteNote, RestoreNote } from "@/features/noteSettings";
+import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
+import { INote } from "@/shared/types";
 
 interface NoteSettingsProps {
-    isShow: boolean
+    isShow: boolean,
+    note: INote
 }
 
-const NoteSettings = ({ isShow }: NoteSettingsProps) => {
+const NoteSettings = ({ isShow, note }: NoteSettingsProps) => {
     const { theme } = useTheme();
- 
+
     return (
         <>
             {isShow && <div className={`absolute z-20 right-1 top-1 custom-border shadow-custom p-2 ${theme == Theme.LIGHT ? "bg-light " : "bg-dark"}`}>
                 <ul className="flex flex-col gap-1">
-                    {NOTES_SETTINGS.map(item => <li key={item} className={`py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT ? "text-dark hover:text-light hover:bg-blue" : "text-light hover:text-blue hover:bg-inherit"}`}>
-                        {item}
-                    </li>)}
+                    <DeleteNote note={note}/>
+                    {note.isDeleted && <RestoreNote note={note}/>}
+                    {!note.isDeleted && <ArchiveNote note={note}/>}
                 </ul>
             </div>}
         </>

@@ -1,17 +1,19 @@
-import { useGetNotesQuery } from "@/entities/notes";
 import { NotesView } from "@/shared/const";
 import { SidebarContext } from "@/shared/lib/context";
+import { INote } from "@/shared/types";
 import { Error, Loading } from "@/shared/ui";
 import { ClosedNote } from "@/widgets/note";
 import { useContext } from "react";
 
 interface NoteListProps {
     view: NotesView,
+    data: INote[],
+    isLoading?: boolean,
+    isError?: boolean
 }
 
-const NoteList = ({ view }: NoteListProps ) => {
+const NoteList = ({ view, data, isLoading, isError }: NoteListProps ) => {
     const { showSidebar } = useContext(SidebarContext);
-    const { isLoading, isError, data } = useGetNotesQuery(null);
  
     return (
         <div>

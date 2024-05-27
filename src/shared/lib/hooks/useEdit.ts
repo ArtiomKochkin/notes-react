@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { INote } from "@/shared/types";
 import { useUpdateNoteMutation } from "@/entities/notes";
+import { useActions } from "./useActions";
 
 type FieldT =  HTMLInputElement | HTMLTextAreaElement;
 
@@ -12,16 +13,18 @@ export const useEdit = (
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState(initialText);
     const inputRef = useRef<FieldT>(null);
+    const { updateNote: updNote } = useActions();
     const [updateNote] = useUpdateNoteMutation();
 
     useEffect(() => {
-        if (!isEditing) {
+        if (!isEditing && text !== initialText) {
             const updateField = async (): Promise<void> => {
                 try {
-                    await updateNote({
-                        ...note,
+                    const newNote = await updateNote({
+                        id: note.id,
                         [nameField]: text,
                     }).unwrap();
+                    updNote(newNote);
                 } catch (err) {
                     console.log(`Failed to update the note with value ${text}: `, err);
                 }

@@ -6,16 +6,19 @@ import { INoteData } from "@/shared/types";
 import { useCreateNoteMutation } from "@/entities/notes";
 import { closeNote } from "../../lib";
 import { defaultValueNote } from "@/shared/const";
+import { useActions } from "@/shared/lib/hooks";
 
 const NewNote = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [note] = useState<INoteData>(defaultValueNote);
+    const { addNote } = useActions();
     const [createNote, { data: newNote, isLoading}] = useCreateNoteMutation();
 
     const handleCreateNote = async () => {
         try {
-            await createNote(note).unwrap();
+            const updNote = await createNote(note).unwrap();
             setIsOpen(true);
+            addNote(updNote);
         } catch (err) {
             console.error('Failed to create note:', err);
         }

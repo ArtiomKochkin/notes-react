@@ -17,7 +17,7 @@ export const defaultValueNote: INoteData = {
     content: "Текст...",
     isArchive: false,
     isPinned: false,
-    isTrash: false,
+    isDeleted: false,
     lastModifiedDate: "",
     background: "",
     labels: []
