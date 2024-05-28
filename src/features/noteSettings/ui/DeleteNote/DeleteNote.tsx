@@ -8,15 +8,18 @@ interface DeleteNoteProps {
 }
 
 const DeleteNote = ({ note }: DeleteNoteProps) => {
-    const { moveToDeleted, deleteNote } = useActions();
+    const { updateNote: updNote, deleteNote } = useActions();
     const [updateNote] = useUpdateNoteMutation();
     const [deleteNoteFinally] = useDeleteNoteMutation();
  
     const handleDeleteNote = async () => {
         try {
-            moveToDeleted(note.id);
-            const updatedNote = {...note, isDeleted: true, isArchive: false};
-            await updateNote(updatedNote).unwrap();
+            const updatedNote = await updateNote({
+                id: note.id,
+                isDeleted: true,
+                isArchive: false
+            }).unwrap();
+            updNote(updatedNote);
         } catch (err) {
             console.error('Failed to delete note:', err);
         }
@@ -24,8 +27,8 @@ const DeleteNote = ({ note }: DeleteNoteProps) => {
 
     const handleDeleteNoteFinally = async () => {
         try {
-            deleteNote(note.id);
             await deleteNoteFinally(note.id).unwrap();
+            deleteNote(note.id);
         } catch (err) {
             console.error('Failed to delete note:', err);
         }

@@ -1,33 +1,37 @@
 import { useUpdateNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
-import { NoteSettingsItem } from "@/shared/ui";
+import { TiPin } from "react-icons/ti";
 
-interface RestoreNoteProps {
+interface PinNoteProps {
     note: INote
 }
 
-const RestoreNote = ({ note }: RestoreNoteProps) => {
+const PinNote = ({ note }: PinNoteProps) => {
     const { updateNote: updNote } = useActions();
     const [updateNote] = useUpdateNoteMutation();
- 
-    const restoreNote = async () => {
+
+    const handlePinNote = async () => {
         try {
             const updatedNote = await updateNote({
                 id: note.id,
-                isDeleted: false
+                isPinned: !note.isPinned
             }).unwrap();
             updNote(updatedNote);
         } catch (err) {
-            console.error('Failed to restore note:', err);
+            console.error('Failed to pin/unpin note:', err);
         }
     };
 
     return (
-        <NoteSettingsItem onClick={restoreNote}>
-            Восстановить заметку
-        </NoteSettingsItem>
+        <>
+            {!(note.isArchive || note.isDeleted) && (
+                <div onClick={handlePinNote}>
+                    <TiPin />
+                </div>
+            )}
+        </>
     )
 }
 
-export default RestoreNote;
+export default PinNote;

@@ -18,29 +18,7 @@ export const notesSlice = createSlice({
         },
         deleteNote: (state, action: PayloadAction<number>) => {
             return state.filter(n => n.id !== action.payload);
-        },
-        moveToArchive: (state, action: PayloadAction<number>) => {
-            const note = state.find(n => n.id === action.payload);
-            if (note) {
-                note.isArchive = !note.isArchive;
-                if (note.isArchive) {
-                    note.isDeleted = false;
-                }
-            }
-        },
-        moveToDeleted: (state, action: PayloadAction<number>) => {
-            const note = state.find(n => n.id === action.payload);
-            if (note) {
-                note.isArchive = false;
-                note.isDeleted = true;
-            } 
-        },
-        restoreFromDeleted: (state, action: PayloadAction<number>) => {
-            const note = state.find(n => n.id === action.payload);
-            if (note) {
-                note.isDeleted = false;
-            } 
-        },
+        }
     }
 });
 

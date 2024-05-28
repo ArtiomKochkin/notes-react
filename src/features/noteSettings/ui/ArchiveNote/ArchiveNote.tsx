@@ -8,14 +8,17 @@ interface ArchiveNoteProps {
 }
 
 const ArchiveNote = ({ note }: ArchiveNoteProps) => {
-    const { moveToArchive } = useActions();
+    const { updateNote: updNote } = useActions();
     const [updateNote] = useUpdateNoteMutation();
- 
+
     const archiveNote = async () => {
         try {
-            moveToArchive(note.id);
-            const updatedNote = { ...note, isArchive: !note.isArchive, isDeleted: note.isArchive ? note.isDeleted : false };
-            await updateNote(updatedNote).unwrap();
+            const updatedNote = await updateNote({
+                id: note.id,
+                isArchive: !note.isArchive, 
+                isDeleted: note.isArchive ? note.isDeleted : false 
+            }).unwrap();
+            updNote(updatedNote);
         } catch (err) {
             console.error('Failed to archive note:', err);
         }

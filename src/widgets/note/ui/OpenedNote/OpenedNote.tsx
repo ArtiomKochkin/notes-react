@@ -3,11 +3,11 @@ import { NoteView, Theme } from "@/shared/const";
 import { useOutside, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Close, Dots } from "@/shared/ui";
-import { TiPin } from "react-icons/ti";
 import NoteSettings from "../NoteSettings/NoteSettings";
 import NoteContent from "../NoteContent/NoteContent";
 import NoteName from "../NoteName/NoteName";
 import NoteLabelList from "../NoteLabelList/NoteLabelList";
+import { PinNote } from "@/features/noteSettings";
 
 interface OpenedNoteProps {
     note: INote,
@@ -24,7 +24,7 @@ const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
                 <div className="flex-center justify-between">
                     <NoteName note={note} type={NoteView.OPENED}/>
                     <div className="flex-center gap-1 cursor-pointer">
-                        <TiPin/>
+                        <PinNote note={note}/>
                         <Dots refElement={ref} show={isShow} setShow={setIsShow}/>
                         <Close closeElement={closeNote}/>
                     </div>

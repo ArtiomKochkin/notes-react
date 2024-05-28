@@ -8,16 +8,15 @@ import { useContext } from "react";
 const ArchivePage = () => {
     const { isLoading, isError, data } = useGetNotesQuery(null);
     const { notesView } = useContext(NotesViewContext);
-    const filteredNotes = data?.filter(item => item.isArchive);
+    const filteredNotes = data?.filter(item => item.isArchive) || [];
 
-    console.log(data);
     return (
         <MainLayout>
             {filteredNotes!.length > 0
                 ? <Title>Архив</Title>
                 : <Title>В архивe нет заметок</Title>
             }
-           <NoteList view={notesView!} isLoading={isLoading} isError={isError} data={filteredNotes!}/>
+           <NoteList isSpecialList view={notesView!} isLoading={isLoading} isError={isError} data={filteredNotes!}/>
         </MainLayout>
     )
 }

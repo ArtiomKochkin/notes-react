@@ -1,33 +1,11 @@
 {
   "notes": [
     {
-      "id": "386e",
-      "name": "Заголовок...123",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "lastModifiedDate": "",
-      "background": "",
-      "labels": []
-    },
-    {
-      "id": "3066",
-      "name": "Заголовок...",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "lastModifiedDate": "",
-      "background": "",
-      "labels": []
-    },
-    {
       "id": "494a",
       "name": "Заголовок...",
       "content": "Текст...",
       "isArchive": false,
-      "isPinned": false,
+      "isPinned": true,
       "isDeleted": false,
       "lastModifiedDate": "",
       "background": "",
@@ -45,8 +23,8 @@
       "labels": []
     },
     {
-      "id": "33d5",
-      "name": "fffffffffffff",
+      "id": "27e7",
+      "name": "Заголовок...123",
       "content": "Текст...",
       "isArchive": false,
       "isPinned": false,

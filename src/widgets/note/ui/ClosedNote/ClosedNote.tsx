@@ -3,13 +3,13 @@ import { useOutside, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Dots } from "@/shared/ui";
 import { useState } from "react";
-import { TiPin } from "react-icons/ti";
 import OpenedNote from "../OpenedNote/OpenedNote";
 import NoteSettings from "../NoteSettings/NoteSettings";
 import NoteContent from "../NoteContent/NoteContent";
 import NoteName from "../NoteName/NoteName";
 import NoteLabelList from "../NoteLabelList/NoteLabelList";
 import { closeNote } from "../../lib";
+import { PinNote } from "@/features/noteSettings";
 
 interface NoteProps {
     view: NotesView,
@@ -35,7 +35,7 @@ const ClosedNote = ({ view, note }: NoteProps) => {
                         <NoteName note={note} type={NoteView.CLOSED} />
                     </div>
                     <div className="hidden sm:flex sm:flex-center gap-1">
-                        <TiPin />
+                        <PinNote note={note}/>
                         <Dots refElement={settingsRef} show={isShowSettings} setShow={setIsShowSettings}/>
                     </div>
                 </div>
