@@ -24,9 +24,13 @@ const RestoreNote = ({ note }: RestoreNoteProps) => {
     };
 
     return (
-        <NoteSettingsItem onClick={restoreNote}>
-            Восстановить заметку
-        </NoteSettingsItem>
+        <>
+            {note.isDeleted && (
+                <NoteSettingsItem onClick={restoreNote}>
+                    Восстановить заметку
+                </NoteSettingsItem>
+            )}
+        </>
     )
 }
 

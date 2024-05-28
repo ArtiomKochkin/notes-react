@@ -25,9 +25,13 @@ const ArchiveNote = ({ note }: ArchiveNoteProps) => {
     };
 
     return (
-        <NoteSettingsItem onClick={archiveNote}>
-            {note.isArchive ? "Убрать из Архива" : "Архивировать"}
-        </NoteSettingsItem>
+        <>
+            {!note.isDeleted && (
+                <NoteSettingsItem onClick={archiveNote}>
+                    {note.isArchive ? "Убрать из Архива" : "Архивировать"}
+                </NoteSettingsItem>
+            )}
+        </>
     )
 }
 
