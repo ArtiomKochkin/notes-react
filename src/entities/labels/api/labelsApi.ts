@@ -10,11 +10,7 @@ export const labelsApi = createApi({
     endpoints: builder => ({
         getLabels: builder.query<ILabel[], null>({
             query: () => "/",
-            providesTags: () => [
-                {
-                    type: "Labels",
-                },
-            ]
+            providesTags: ["Labels"]
         }),
     }),
 });

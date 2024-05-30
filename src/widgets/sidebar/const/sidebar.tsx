@@ -15,7 +15,7 @@ export const SIDEBAR_ITEMS = [
     },
     {
         name: "Ярлыки",
-        link: "/",
+        link: "/labels",
         icon: <MdOutlineEdit />
     },
     {

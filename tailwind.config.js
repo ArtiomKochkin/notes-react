@@ -69,6 +69,17 @@ export default {
 
 					"&:focus": {
 						outline: `1px solid ${theme("colors.blue")}`
+					},
+
+					"&:disabled": {
+						cursor: "not-allowed",
+						opacity: "0.7",
+
+						"&:hover": {
+							backgroundColor: "inherit",
+							color: "inherit",
+							boxShadow: "none"
+						},
 					}
 				},
 			})

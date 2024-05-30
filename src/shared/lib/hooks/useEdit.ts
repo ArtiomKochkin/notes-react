@@ -1,30 +1,30 @@
 import { useState, useRef, useEffect } from "react";
-import { INote } from "@/shared/types";
-import { useUpdateNoteMutation } from "@/entities/notes";
-import { useActions } from "./useActions";
 
 type FieldT =  HTMLInputElement | HTMLTextAreaElement;
 
-export const useEdit = (
-    note: INote, 
+export const useEdit = <
+    T extends { id: string | number },
+    U extends Partial<T>
+> (
+    entity: T, 
     initialText: string, 
-    nameField: string,
+    nameField: keyof T,
+    updateAction: (updatedEntity: T) => void,
+    updateMutation: (patch: U) => Promise<T>
 ) => {
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState(initialText);
     const inputRef = useRef<FieldT>(null);
-    const { updateNote: updNote } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
 
     useEffect(() => {
         if (!isEditing && text !== initialText) {
             const updateField = async (): Promise<void> => {
                 try {
-                    const newNote = await updateNote({
-                        id: note.id,
+                    const updatedEntity = await updateMutation({
+                        id: entity.id,
                         [nameField]: text,
-                    }).unwrap();
-                    updNote(newNote);
+                    } as U);
+                    updateAction(updatedEntity);
                 } catch (err) {
                     console.log(`Failed to update the note with value ${text}: `, err);
                 }
@@ -36,9 +36,7 @@ export const useEdit = (
 
     const handleDivClick = () => setIsEditing(true);
 
-    const handleInputBlur = () => {
-        setIsEditing(false);
-    } 
+    const handleInputBlur = () => setIsEditing(false);
 
     const handleTextChange = (e: React.ChangeEvent<FieldT>) => {
         setText(e.target.value);

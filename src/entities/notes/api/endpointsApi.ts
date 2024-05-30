@@ -6,31 +6,25 @@ export const endpointsApi = notesApi.injectEndpoints({
         createNote: builder.mutation<INote, INoteData>({
             query: note => ({
                 body: note,
-                url: "/notes",
+                url: "/",
                 method: "POST"
             }),
-            invalidatesTags: () => [
-                { type: "Notes" }
-            ]
+            invalidatesTags:  ["Notes"]
         }),
         deleteNote: builder.mutation<null, number >({
             query: (id) => ({
-                url: `/notes/${id}`,
+                url: `/${id}`,
                 method: "DELETE"
             }),
-            invalidatesTags: () => [
-                { type: "Notes" }
-            ]
+            invalidatesTags:  ["Notes"]
         }),
         updateNote: builder.mutation<INote, Partial<INote>>({
             query: ({ id, ...patch })  => ({
-                url: `/notes/${id}`,
+                url: `/${id}`,
                 method: "PATCH",
                 body: patch 
             }),
-            invalidatesTags: () => [
-                { type: "Notes" }
-            ]
+            invalidatesTags:  ["Notes"]
         }),
     }),
 });

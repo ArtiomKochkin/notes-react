@@ -14,8 +14,6 @@ const SidebarItem = ({ icon, name, link }: SidebarItemProps) => {
     const { showSidebar } = useContext(SidebarContext);
     const { theme } = useTheme();
     const nav = useNavigate();
-
-    // const handleClick = () => nav(link);
  
     return (
         <div 

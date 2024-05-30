@@ -1,5 +1,6 @@
+import { useUpdateNoteMutation } from "@/entities/notes";
 import { NoteView } from "@/shared/const";
-import { useEdit } from "@/shared/lib/hooks";
+import { useActions, useEdit } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { RefObject } from "react";
 
@@ -9,10 +10,17 @@ interface NoteNameProps {
 }
 
 const NoteName = ({ type, note }: NoteNameProps) => {
+    const { updateNote: updNote } = useActions();
+    const [updateNote] = useUpdateNoteMutation();
     const {
         isEditing, text, inputRef, 
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
-     } = useEdit(note, note.name, "name");
+     } = useEdit(note, note.name, "name", updNote, 
+        async (patch) => {
+            const result = await updateNote(patch).unwrap();
+            return result;
+        }
+     );
 
     return (
         <h3
