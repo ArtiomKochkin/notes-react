@@ -1,4 +1,4 @@
-import { ILabel, ILabelData, INote } from "@/shared/types";
+import { ILabel, ILabelData } from "@/shared/types";
 import { labelsApi } from "./labelsApi";
 
 export const endpointsApi = labelsApi.injectEndpoints({
@@ -18,7 +18,7 @@ export const endpointsApi = labelsApi.injectEndpoints({
             }),
             invalidatesTags:  ["Labels"]
         }),
-        updateLabel: builder.mutation<INote, Partial<INote>>({
+        updateLabel: builder.mutation<ILabel, Partial<ILabel>>({
             query: ({ id, ...patch }) => ({
                 url: `/${id}`,
                 method: "PATCH",

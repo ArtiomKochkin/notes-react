@@ -1,0 +1,1 @@
+export const LABELS_API_URL = "http://localhost:3000/labels";

@@ -25,11 +25,9 @@ const CopyNote = ({ note }: CopyNoteProps) => {
     return (
         <>
             {(!note.isDeleted && !note.isArchive) && (
-                <div>
-                    <NoteSettingsItem onClick={copyNote}>
-                        Создать копию
-                    </NoteSettingsItem>
-                </div>
+                <NoteSettingsItem onClick={copyNote}>
+                    Создать копию
+                </NoteSettingsItem>
             )}
         </>
     )

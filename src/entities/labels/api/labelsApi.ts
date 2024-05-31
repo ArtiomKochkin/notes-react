@@ -1,12 +1,11 @@
 import { ILabel } from "@/shared/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const API_URL = "http://localhost:3000/labels";
+import { LABELS_API_URL } from "../const/labels";
 
 export const labelsApi = createApi({
     reducerPath: "labels/api",
     tagTypes: ["Labels"],
-    baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: LABELS_API_URL }),
     endpoints: builder => ({
         getLabels: builder.query<ILabel[], null>({
             query: () => "/",

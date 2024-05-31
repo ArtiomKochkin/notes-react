@@ -26,7 +26,7 @@ export const useEdit = <
                     } as U);
                     updateAction(updatedEntity);
                 } catch (err) {
-                    console.log(`Failed to update the note with value ${text}: `, err);
+                    console.log(`Failed to update entity with value ${text}: `, err);
                 }
             };
 

@@ -30,7 +30,7 @@ const ClosedNote = ({ view, note }: NoteProps) => {
             <div
                 className={`flex flex-col custom-border cursor-pointer p-2 sm:p-4 relative transition-all lg:hover:shadow-custom ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"} ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`}
             >
-                <div className="flex-center justify-between">
+                <div className="flex-center justify-between flex-shrink-0">
                     <div onClick={toggleNote} className="flex-grow">
                         <NoteName note={note} type={NoteView.CLOSED} />
                     </div>
@@ -39,13 +39,11 @@ const ClosedNote = ({ view, note }: NoteProps) => {
                         <Dots refElement={settingsRef} show={isShowSettings} setShow={setIsShowSettings}/>
                     </div>
                 </div>
-                <div>
-                    <NoteSettings isShow={isShowSettings} note={note}/>
-                    <div onClick={toggleNote}>
-                        <NoteContent note={note} type={NoteView.CLOSED} />
-                        <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
-                    </div>
+                <NoteSettings isShow={isShowSettings} note={note}/>
+                <div onClick={toggleNote} className="flex-grow">
+                    <NoteContent note={note} type={NoteView.CLOSED} />
                 </div>
+                <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
             </div>
             {isOpenNote && <OpenedNote note={note} closeNote={() => closeNote(isOpenNote, setIsOpenNote)}/>}
         </>

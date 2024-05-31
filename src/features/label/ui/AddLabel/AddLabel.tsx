@@ -22,13 +22,22 @@ const AddLabel = () => {
 
     const handleAddLabel = async () => {
         try {
-            const newNote = await createLabel({ name: text }).unwrap();
-            addLabel(newNote);
+            const newLabel = await createLabel({ 
+                name: text,
+                notes: []
+            }).unwrap();
+            addLabel(newLabel);
         } catch (err) {
             console.error('Failed to create label:', err);
         }
         setText("");
         setHasValue(false);
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            handleAddLabel();
+        }
     };
 
     return (
@@ -39,6 +48,7 @@ const AddLabel = () => {
                 placeholder="Новый ярлык..."
                 value={text}
                 onChange={handleChangeInput}
+                onKeyDown={handleKeyPress}
             />
             <Button createButton onClick={handleAddLabel} disabled={!hasValue}>
                 <span className="mr-2">Создать ярлык</span>

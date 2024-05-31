@@ -1,12 +1,11 @@
 import { INote } from "@/shared/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const API_URL = "http://localhost:3000/notes";
+import { NOTES_API_URL } from "../const/notes";
 
 export const notesApi = createApi({
     reducerPath: "notes/api",
     tagTypes: ["Notes"],
-    baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: NOTES_API_URL }),
     endpoints: builder => ({
         getNotes: builder.query<INote[], null>({
             query: () => `/`,

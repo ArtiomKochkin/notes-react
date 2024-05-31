@@ -13,8 +13,10 @@ const NoteLabelList = ({ labels, type, onClick }: NoteLabelListProps) => {
     return (
         <ul 
             onClick={onClick}
-            className={`flex-center gap-1 ${type == NoteView.OPENED ? "flex-wrap" : "mx-0 mb-0 mt-auto overflow-hidden"}`}
-            >
+            className={`flex-center gap-1 ${type == NoteView.OPENED 
+                ? "flex-wrap" : "flex-shrink-0 overflow-hidden"
+            }`}
+        >
             {labels.map(label => 
                 <Label key={label.id} name={label.name} />
             )}

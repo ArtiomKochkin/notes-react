@@ -26,7 +26,7 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
     return (
         <div
             onClick={handleDivClick}
-            className={type == NoteView.OPENED ? "my-2 flex-grow cursor-text" : `py-2 leading-5 ${view == NotesView.GRID ? "line-clamp-6 sm:line-clamp-5 lg:line-clamp-4" : "line-clamp-4"}`}
+            className={type == NoteView.OPENED ? "my-2 flex-grow cursor-text" : `py-2 leading-5 h-full ${view == NotesView.GRID ? "line-clamp-6 sm:line-clamp-5 lg:line-clamp-4" : "line-clamp-4"}`}
             >
 
             {isEditing ? (
