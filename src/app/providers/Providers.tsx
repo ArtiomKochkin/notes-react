@@ -3,6 +3,7 @@ import { StoreProvider } from "./StoreProvider";
 import { NotesViewProvider } from "./NotesViewProvider";
 import { SidebarProvider } from "./SidebarProvider";
 import { ThemeProvider } from "./ThemeProvider";
+import { SearchProvider } from "./SearchProvider";
 
 interface ProvidersProps {
     children: ReactNode
@@ -15,7 +16,9 @@ const Providers = ({ children }: ProvidersProps) => {
             <ThemeProvider>
                 <SidebarProvider>
                     <NotesViewProvider>
-                        {children}
+                        <SearchProvider>
+                            {children}
+                        </SearchProvider>
                     </NotesViewProvider>
                 </SidebarProvider>
             </ThemeProvider>

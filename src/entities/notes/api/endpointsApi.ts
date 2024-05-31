@@ -26,7 +26,19 @@ export const endpointsApi = notesApi.injectEndpoints({
             }),
             invalidatesTags:  ["Notes"]
         }),
+        searchNotes: builder.query<INote[], string>({
+            query: (search) => ({
+                url: `?name=${search}`,
+                method: "GET",
+            }),
+            providesTags: ["Notes"]
+        })
     }),
 });
 
-export const { useCreateNoteMutation, useUpdateNoteMutation, useDeleteNoteMutation } = endpointsApi;
+export const { 
+    useCreateNoteMutation, 
+    useUpdateNoteMutation, 
+    useDeleteNoteMutation,
+    useSearchNotesQuery
+} = endpointsApi;

@@ -44,7 +44,7 @@
       "content": "ca.s/",
       "isArchive": false,
       "isPinned": false,
-      "isDeleted": true,
+      "isDeleted": false,
       "lastModifiedDate": "",
       "background": "",
       "labels": []
