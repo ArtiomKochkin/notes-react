@@ -32,6 +32,7 @@ const Search = () => {
                 : "relative ml-2 sm:ml-7"
             } `}
             onClick={handleClick}
+            title="Поиск"
             ref={ref}
         >
             <MdSearch className="absolute left-2"/>

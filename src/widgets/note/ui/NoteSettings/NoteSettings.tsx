@@ -18,8 +18,8 @@ const NoteSettings = ({ isShow, note }: NoteSettingsProps) => {
                     <DeleteNote note={note}/>
                     <RestoreNote note={note}/>
                     <ArchiveNote note={note}/>
-                    <CopyNote note={note}/>
                     <EditLabelsNote note={note}/>
+                    <CopyNote note={note}/>
                 </ul>
             </div>}
         </>

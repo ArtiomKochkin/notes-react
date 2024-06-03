@@ -7,7 +7,7 @@ const HeaderMenuButton = () => {
 
     return (
         <button 
-            title="Главное меню"
+            title="Меню"
             onClick={() => setShowSidebar(!showSidebar)}
         >
             <MdMenu />

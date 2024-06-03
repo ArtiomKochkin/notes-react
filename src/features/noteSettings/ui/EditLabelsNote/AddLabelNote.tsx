@@ -49,7 +49,11 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
                 onKeyDown={handleKeyPress}
                 onChange={(e) => setText(e.target.value)}
             />
-            <button onClick={handleAddLabel} className="outline-none">
+            <button 
+                onClick={handleAddLabel} 
+                className="outline-none"
+                title="Создать ярлык"
+            >
                 <FaRegPlusSquare className="text-lg"/>
             </button>
         </div>

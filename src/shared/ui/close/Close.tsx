@@ -7,7 +7,7 @@ interface CloseProps {
 const Close = ({ closeElement }: CloseProps) => {
  
     return (
-        <div onClick={() => closeElement()}>
+        <div onClick={() => closeElement()} title="Закрыть">
             <MdOutlineClose/>
         </div>
     )

@@ -10,7 +10,11 @@ interface DotsProps {
 const Dots = ({ refElement, show, setShow }: DotsProps) => {
  
     return (
-        <div ref={refElement} onClick={() => setShow(!show)}>
+        <div 
+            ref={refElement} 
+            onClick={() => setShow(!show)}
+            title="Настройки заметки"
+        >
             <BsThreeDotsVertical />
         </div>
     )

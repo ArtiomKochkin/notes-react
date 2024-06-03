@@ -12,7 +12,10 @@ const ViewSwitcher = () => {
 
     return (
         <button onClick={handleViewSwitcher}>
-            {notesView == NotesView.GRID ? <MdGridView/> : <MdOutlineViewAgenda/>}
+            {notesView == NotesView.GRID 
+                ? <MdGridView title="Сетка"/> 
+                : <MdOutlineViewAgenda title="Список"/>
+            }
         </button>
     )
 }

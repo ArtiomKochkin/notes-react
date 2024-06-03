@@ -13,7 +13,10 @@ const ThemeSwitcher = () => {
  
     return (
         <button className="ml-4" onClick={toggleTheme}>
-            {theme == Theme.LIGHT ? <MdLightMode/> : <MdDarkMode/>}
+            {theme == Theme.LIGHT 
+                ? <MdLightMode title="Светлая тема"/> 
+                : <MdDarkMode title="Темная тема"/>
+            }
         </button>
     )
 }

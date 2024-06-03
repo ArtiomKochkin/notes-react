@@ -26,7 +26,10 @@ const PinNote = ({ note }: PinNoteProps) => {
     return (
         <>
             {!(note.isArchive || note.isDeleted) && (
-                <div onClick={handlePinNote}>
+                <div 
+                    onClick={handlePinNote} 
+                    title={note.isPinned ? "Открепить" : "Закрепить"}
+                >
                     <TiPin />
                 </div>
             )}
