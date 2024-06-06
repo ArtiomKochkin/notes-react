@@ -1,4 +1,4 @@
-import { InputType } from "@/shared/const";
+import { InputType, LOCAL_STORAGE_SEARCH_KEY } from "@/shared/const";
 import { SearchContext } from "@/shared/lib/context";
 import { useWindowSize, useOutside } from "@/shared/lib/hooks";
 import { Input } from "@/shared/ui";
@@ -19,9 +19,15 @@ const Search = () => {
         }
     };
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+        localStorage.setItem(LOCAL_STORAGE_SEARCH_KEY, e.target.value);
+    };
+
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             nav("/search");
+            setIsShow(false);
         }
     };
  
@@ -41,7 +47,7 @@ const Search = () => {
                 inputType={InputType.SEARCH}
                 isShow={isShow}
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleChange}
                 onKeyDown={handleKeyPress}
             />
         </div>

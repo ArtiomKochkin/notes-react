@@ -1,4 +1,4 @@
-import { Theme } from "@/shared/const";
+import { LOCAL_STORAGE_THEME_KEY, Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 
@@ -7,7 +7,10 @@ const ThemeSwitcher = () => {
 
     const toggleTheme = () => {
         if (setTheme) {
-            (theme == Theme.LIGHT ? setTheme(Theme.DARK) : setTheme(Theme.LIGHT))
+            const newTheme = (theme == Theme.LIGHT) ? Theme.DARK : Theme.LIGHT;
+            
+            setTheme(newTheme);
+            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
         }
     }
  
