@@ -16,7 +16,7 @@ const ArchiveNote = ({ note }: ArchiveNoteProps) => {
             const updatedNote = await updateNote({
                 id: note.id,
                 isArchive: !note.isArchive, 
-                isDeleted: note.isArchive ? note.isDeleted : false 
+                isDeleted: note.isArchive ? note.isDeleted : false
             }).unwrap();
             updNote(updatedNote);
         } catch (err) {

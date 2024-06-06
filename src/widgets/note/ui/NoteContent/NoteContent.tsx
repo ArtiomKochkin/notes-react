@@ -18,7 +18,10 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
         handleDivClick, handleInputBlur, handleTextChange
     } = useEdit(note, note.content, "content", updNote, 
         async (patch) => {
-            const result = await updateNote(patch).unwrap();
+            const result = await updateNote({
+                ...patch,
+                lastModifiedDate: new Date()
+            }).unwrap();
             return result;
         }
     );

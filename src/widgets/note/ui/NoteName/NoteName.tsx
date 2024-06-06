@@ -17,18 +17,23 @@ const NoteName = ({ type, note }: NoteNameProps) => {
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
      } = useEdit(note, note.name, "name", updNote, 
         async (patch) => {
-            const result = await updateNote(patch).unwrap();
+            const result = await updateNote({
+                ...patch,
+                lastModifiedDate: new Date()
+            }).unwrap();
             return result;
         }
      );
 
     return (
-        <h3
-            className={type == NoteView.OPENED ? "font-semibold text-2xl cursor-text flex-grow" : "font-semibold text-lg leading-5 sm:leading-7"}
+        <h3 className={type == NoteView.OPENED 
+                ? "font-semibold text-2xl cursor-text flex-grow" 
+                : "font-semibold text-lg leading-5 sm:leading-7 text-ellipsis whitespace-nowrap overflow-hidden"
+            }
         >
             {isEditing ? (
                 <input
-                    className="bg-transparent outline-none"
+                    className="bg-transparent outline-none w-full"
                     ref={inputRef as RefObject<HTMLInputElement>}
                     value={text}
                     onChange={handleTextChange}
