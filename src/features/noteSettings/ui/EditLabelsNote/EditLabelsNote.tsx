@@ -25,7 +25,7 @@ const EditLabelsNote = ({ note }: EditLabelsNoteProps) => {
                         <span>Редактировать ярлыки</span>
                         {isHovered && (
                             <div 
-                                className={`min-w-[50%] absolute z-30 right-1 top-8 custom-border shadow-custom p-2
+                                className={`min-w-[50%] absolute z-30 right-1 bottom-1 custom-border shadow-custom p-2 h-[80%] scrollbar
                                     ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"
                                 }`}
                             >

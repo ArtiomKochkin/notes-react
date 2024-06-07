@@ -53,7 +53,7 @@ const DeleteNote = ({ note }: DeleteNoteProps) => {
             {note.isDeleted ? (
                 <NoteSettingsItem onClick={handleDeleteNoteFinally}>Удалить из корзины</NoteSettingsItem>
             ) : (
-                <NoteSettingsItem onClick={handleDeleteNote}>Удалить заметку</NoteSettingsItem>
+                <NoteSettingsItem onClick={handleDeleteNote}>Удалить</NoteSettingsItem>
             )}
         </>
     )

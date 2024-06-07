@@ -82,6 +82,22 @@ export default {
 						},
 					}
 				},
+			}),
+			addComponents({
+				".scrollbar": {
+					overflowY: "auto",
+
+					"&::-webkit-scrollbar": {
+						width: "5px",
+						backgroundColor: `${theme("colors.white")}`,
+						height: "100%"
+					},
+
+					"&::-webkit-scrollbar-thumb": {
+						borderRadius: "5px",
+						backgroundColor: `${theme("colors.blue")}`
+					}
+				}
 			})
 		}),
 	],

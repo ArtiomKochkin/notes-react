@@ -20,7 +20,12 @@ const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
  
     return (
         <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70 overflow-auto">
-            <div className={`relative flex flex-col custom-border w-[94vw] sm:w-4/5 lg:w-3/5 min-h-[80vh] mx-auto my-[1vh] p-4 ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`}>
+            <div 
+                className={`relative flex flex-col custom-border w-[94vw] sm:w-4/5 lg:w-3/5 min-h-[80vh] mx-auto my-[1vh] p-4 
+                    ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
+                    bg-no-repeat bg-center bg-cover`}
+                    style={{ backgroundImage: `url(${note.background})`}}
+            >
                 <div className="flex-center justify-between">
                     <NoteName note={note} type={NoteView.OPENED}/>
                     <div className="flex-center gap-1 cursor-pointer">

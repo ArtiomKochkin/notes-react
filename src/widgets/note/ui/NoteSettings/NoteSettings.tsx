@@ -1,4 +1,4 @@
-import { ArchiveNote, CopyNote, DeleteNote, EditLabelsNote, RestoreNote } from "@/features/noteSettings";
+import { ArchiveNote, ChangeBackgroundNote, CopyNote, DeleteNote, DownloadNoteDOCX, DownloadNotePDF, EditLabelsNote, RestoreNote } from "@/features/noteSettings";
 import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
@@ -18,8 +18,11 @@ const NoteSettings = ({ isShow, note }: NoteSettingsProps) => {
                     <DeleteNote note={note}/>
                     <RestoreNote note={note}/>
                     <ArchiveNote note={note}/>
-                    <EditLabelsNote note={note}/>
                     <CopyNote note={note}/>
+                    <ChangeBackgroundNote note={note}/>
+                    <DownloadNotePDF note={note}/>
+                    <DownloadNoteDOCX note={note}/>
+                    <EditLabelsNote note={note}/>
                 </ul>
             </div>}
         </>

@@ -7,7 +7,7 @@ export interface INote {
     isPinned: boolean,
     isArchive: boolean,
     isDeleted: boolean,
-    background?: string
+    background: string
 }
 
 export interface INoteData extends Omit<INote, "id"> {}

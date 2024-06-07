@@ -16,19 +16,21 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
     const [text, setText] = useState("");
 
     const handleAddLabel = async () => {
-        try {
-            const newLabel = await createLabel({ 
-                name: text,
-                notes: [note.id]
-            }).unwrap();
-            const updatedNote = await updateNote({
-                id: note.id,
-                labels: [...note.labels, newLabel.id]
-            }).unwrap();
-            addLabel(newLabel);
-            updLabel(updatedNote);
-        } catch (err) {
-            console.error('Failed to create label:', err);
+        if (text) {
+            try {
+                const newLabel = await createLabel({ 
+                    name: text,
+                    notes: [note.id]
+                }).unwrap();
+                const updatedNote = await updateNote({
+                    id: note.id,
+                    labels: [...note.labels, newLabel.id]
+                }).unwrap();
+                addLabel(newLabel);
+                updLabel(updatedNote);
+            } catch (err) {
+                console.error('Failed to create label:', err);
+            }
         }
         setText("");
     };
