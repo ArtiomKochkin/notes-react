@@ -18,7 +18,7 @@ const NoteList = ({ view, data, isLoading, isError, isSpecialList }: NoteListPro
  
     return (
         <div>
-            {!isSpecialList && <Title>Другое</Title>}
+            {!isSpecialList && data.length !== 0 && <Title>Другое</Title>}
             <Loading isLoading={isLoading}>Загрузка заметок...</Loading>
             <Error isError={isError}/>
             <ul className={`grid gap-2 sm:gap-4 ${view == NotesView.LIST ? "mx-auto grid-cols-1" : `grid-cols-2 ${showSidebar ? "lg:grid-cols-3" : "sm:grid-cols-3 lg:grid-cols-4"}`}`}>

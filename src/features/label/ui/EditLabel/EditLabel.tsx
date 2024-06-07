@@ -5,13 +5,14 @@ import { RefObject } from "react";
 import { MdOutlineEdit } from "react-icons/md";
 
 interface EditLabelProps {
-    label: ILabel
+    label: ILabel,
+    moveToLabel: () => void
 }
 
-const EditLabel = ({ label }: EditLabelProps) => {
+const EditLabel = ({ label, moveToLabel }: EditLabelProps) => {
     const { updateLabel: editLabel } = useActions();
     const [updateLabel] = useUpdateLabelMutation();
-    const { 
+    const {
         isEditing, text, inputRef, 
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
     } = useEdit(label, label.name, "name", editLabel, 
@@ -36,7 +37,12 @@ const EditLabel = ({ label }: EditLabelProps) => {
                     ref={inputRef as RefObject<HTMLInputElement>}
                 />
             ) : (
-                <div>{label.name}</div>
+                <div 
+                    className="w-full text-left"
+                    onClick={() => moveToLabel()}
+                >
+                    {label.name}
+                </div>
             )}
             <div onClick={handleDivClick}>
                 <MdOutlineEdit />

@@ -10,8 +10,6 @@ export enum NoteView {
     CLOSED = "closed"
 }
 
-export const NOTES_SETTINGS = ["Удалить заметку", "Архивировать", "Создать копию", "Редактировать ярлыки", "Изменить фон"];
-
 export const defaultValueNote: INoteData = {
     name: "Заголовок...",
     content: "Текст...",

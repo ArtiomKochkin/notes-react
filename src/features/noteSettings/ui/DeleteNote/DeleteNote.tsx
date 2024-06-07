@@ -1,3 +1,4 @@
+import { useGetLabelsQuery, useUpdateLabelMutation } from "@/entities/labels";
 import { useDeleteNoteMutation, useUpdateNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
@@ -8,9 +9,12 @@ interface DeleteNoteProps {
 }
 
 const DeleteNote = ({ note }: DeleteNoteProps) => {
-    const { updateNote: updNote, deleteNote } = useActions();
+    const { updateNote: updNote, deleteNote, updateLabel: updLabel } = useActions();
     const [updateNote] = useUpdateNoteMutation();
     const [deleteNoteFinally] = useDeleteNoteMutation();
+    const [updateLabel] = useUpdateLabelMutation();
+    const { data } = useGetLabelsQuery(null);
+    const filteredLabels = data?.filter(label => label.notes.includes(note.id));
  
     const handleDeleteNote = async () => {
         try {
@@ -29,6 +33,16 @@ const DeleteNote = ({ note }: DeleteNoteProps) => {
         try {
             await deleteNoteFinally(note.id).unwrap();
             deleteNote(note.id);
+
+            if (filteredLabels) {
+                for (const label of filteredLabels) {
+                    const updatedLabel = await updateLabel({
+                        id: label.id,
+                        notes: label.notes.filter(n => n !== note.id)
+                    }).unwrap();
+                    updLabel(updatedLabel);
+                }
+            }
         } catch (err) {
             console.error('Failed to delete note:', err);
         }

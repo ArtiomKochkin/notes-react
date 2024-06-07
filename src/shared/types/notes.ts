@@ -1,11 +1,9 @@
-import { ILabel } from "./labels";
-
 export interface INote {
     id: number,
     name: string,
     content: string,
     lastModifiedDate: Date | string,
-    labels: ILabel[],
+    labels: number[],
     isPinned: boolean,
     isArchive: boolean,
     isDeleted: boolean,

@@ -23,7 +23,7 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
             }).unwrap();
             const updatedNote = await updateNote({
                 id: note.id,
-                labels: [...note.labels, newLabel]
+                labels: [...note.labels, newLabel.id]
             }).unwrap();
             addLabel(newLabel);
             updLabel(updatedNote);

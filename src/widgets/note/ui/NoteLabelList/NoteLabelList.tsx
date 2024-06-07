@@ -1,26 +1,33 @@
+import { useGetLabelsQuery } from "@/entities/labels";
 import { NoteView } from "@/shared/const";
-import { ILabel } from "@/shared/types";
-import { Label } from "@/shared/ui";
+import { Label, Loading, Error } from "@/shared/ui";
 
 interface NoteLabelListProps {
-    labels: ILabel[],
+    labels: number[],
     type: NoteView,
     onClick?: () => void
 }
 
 const NoteLabelList = ({ labels, type, onClick }: NoteLabelListProps) => {
+    const { isLoading, isError, data = [] } = useGetLabelsQuery(null);
+    const filteredLabels = data?.filter(label => labels.includes(label.id));
  
     return (
-        <ul 
-            onClick={onClick}
-            className={`flex-center gap-1 ${type == NoteView.OPENED 
-                ? "flex-wrap" : "flex-shrink-0 overflow-hidden"
-            }`}
-        >
-            {labels.map(label => 
-                <Label key={label.id} name={label.name} />
-            )}
-        </ul>
+        <>
+            <Loading isLoading={isLoading}>Загрузка ярлыков...</Loading>
+            <Error isError={isError}/>
+            <ul 
+                onClick={onClick}
+                className={`flex-center gap-1 ${type == NoteView.OPENED 
+                    ? "flex-wrap" : "flex-shrink-0 overflow-hidden"
+                }`}
+            >
+                {filteredLabels.map(label => 
+                    <Label key={label.id} name={label.name} />
+                )}
+            </ul>
+        </>
+
     )
 }
 

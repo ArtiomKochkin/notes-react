@@ -12,7 +12,7 @@ interface EditLabelNoteProps {
 
 const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
     const { theme } = useTheme();
-    const [isChecked, setIsChecked] = useState(note.labels.find(l => l.id === label.id) ? true : false);
+    const [isChecked, setIsChecked] = useState(note.labels.find(l => l === label.id) ? true : false);
     const {updateNote: updNote, updateLabel: updLabel} = useActions();
     const [updateLabel] = useUpdateLabelMutation();
     const [updateNote] = useUpdateNoteMutation();
@@ -28,7 +28,7 @@ const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
                 }).unwrap();
                 updatedNotes = await updateNote({
                     id: note.id,
-                    labels: note.labels.filter(l => l.id !== label.id),
+                    labels: note.labels.filter(l => l !== label.id),
                     lastModifiedDate: new Date()
                 }).unwrap();
                 setIsChecked(false);
@@ -39,7 +39,7 @@ const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
                 }).unwrap();
                 updatedNotes = await updateNote({
                     id: note.id,
-                    labels: [...note.labels, label],
+                    labels: [...note.labels, label.id],
                     lastModifiedDate: new Date()
                 }).unwrap();
                 setIsChecked(true);

@@ -1,19 +1,24 @@
-import { ArchivePage } from "@/pages/archive";
-import { DeletedPage } from "@/pages/deleted";
-import { LabelsPage } from "@/pages/labels";
-import { MainPage } from "@/pages/main";
-import { SearchPage } from "@/pages/search";
+import { LabelPage } from "@/pages/label";
+import { ISidebarItemComponent } from "@/shared/types";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-const Router = () => {
+interface RouterProps {
+    items: ISidebarItemComponent[]
+}
+
+const Router = ({ items }: RouterProps) => {
  
     return (
         <Routes>
-            <Route element={<MainPage/>} path="/"/>
-            <Route element={<ArchivePage/>} path="/archive"/>
-            <Route element={<DeletedPage/>} path="/deleted"/>
-            <Route element={<LabelsPage/>} path="/labels"/>
-            <Route element={<SearchPage/>} path="/search"/>
+            {items.map(item => 
+                <Route 
+                    element={React.createElement(item.component)} 
+                    path={item.link} 
+                    key={item.name}
+                />
+            )}
+            <Route element={<LabelPage/>} path="/label"/>
         </Routes>
     )
 }

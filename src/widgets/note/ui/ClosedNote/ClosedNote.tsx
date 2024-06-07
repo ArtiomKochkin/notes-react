@@ -7,9 +7,9 @@ import OpenedNote from "../OpenedNote/OpenedNote";
 import NoteSettings from "../NoteSettings/NoteSettings";
 import NoteContent from "../NoteContent/NoteContent";
 import NoteName from "../NoteName/NoteName";
-import NoteLabelList from "../NoteLabelList/NoteLabelList";
 import { closeNote } from "../../lib";
 import { PinNote } from "@/features/noteSettings";
+import NoteLabelList from "../NoteLabelList/NoteLabelList";
 
 interface NoteProps {
     view: NotesView,
