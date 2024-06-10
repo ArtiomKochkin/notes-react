@@ -1,14 +1,17 @@
 import { useState } from "react";
-import OpenedNote from "../OpenedNote/OpenedNote";
 import { Button } from "@/shared/ui";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { INoteData } from "@/shared/types";
 import { useCreateNoteMutation } from "@/entities/notes";
-import { closeNote } from "../../lib";
-import { defaultValueNote } from "@/shared/const";
+import { NotesView, defaultValueNote } from "@/shared/const";
 import { useActions } from "@/shared/lib/hooks";
+import Note from "../Note/Note";
 
-const NewNote = () => {
+interface NewNoteProps {
+    view: NotesView,
+}
+
+const NewNote = ({ view }: NewNoteProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [note] = useState<INoteData>(defaultValueNote);
     const { addNote } = useActions();
@@ -17,12 +20,12 @@ const NewNote = () => {
     const handleCreateNote = async () => {
         try {
             const updNote = await createNote(note).unwrap();
-            setIsOpen(true);
             addNote(updNote);
+            setIsOpen(true);
         } catch (err) {
             console.error('Failed to create note:', err);
         }
-    }
+    };
  
     return (
         <div>
@@ -30,7 +33,9 @@ const NewNote = () => {
                 <span className="mr-2">Создать заметку</span>
                 <FaRegPlusSquare />
             </Button>
-            {isOpen && newNote && <OpenedNote note={newNote} closeNote={() => closeNote(isOpen, setIsOpen)}/>}
+            {isOpen && newNote && 
+                <Note note={newNote} view={view} isNewNote={isOpen} toggleNewNote={() => setIsOpen(false)}/>
+            }
         </div>
     )
 }

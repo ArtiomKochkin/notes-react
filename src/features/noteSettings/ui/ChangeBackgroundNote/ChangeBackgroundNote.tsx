@@ -12,7 +12,7 @@ const ChangeBackgroundNote = ({ note }: ChangeBackgroundNoteProps) => {
     const {updateNote: updNote} = useActions();
     const [updateNote] = useUpdateNoteMutation();
 
-    const handler = () => {
+    const changeBackground = () => {
         const input = document.createElement("input");
         input.type = "file";
         input.accept = "image/*";
@@ -30,9 +30,13 @@ const ChangeBackgroundNote = ({ note }: ChangeBackgroundNoteProps) => {
     }
 
     return (
-        <NoteSettingsItem onClick={handler}>
-            Изменить фон
-        </NoteSettingsItem>
+        <>
+            {(!note.isDeleted && !note.isArchive) && (
+            <NoteSettingsItem onClick={changeBackground}>
+                Изменить фон 
+            </NoteSettingsItem>
+            )}
+        </>
     )
 }
 

@@ -16,7 +16,7 @@ const MainPage = () => {
 
     return (
         <MainLayout>
-            <NewNote/>
+            <NewNote view={notesView!}/>
             <PinnedList view={notesView!} isLoading={isLoading} isError={isError} data={pinnedNotes!}/>
             <NoteList view={notesView!} isLoading={isLoading} isError={isError} data={otherNotes!} isSpecialList={pinnedNotes.length > 0 ? false : true}/>
         </MainLayout>

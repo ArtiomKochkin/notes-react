@@ -17,7 +17,7 @@ interface OpenedNoteProps {
 const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
     const { ref, isShow, setIsShow } = useOutside(false);
     const { theme } = useTheme();
- 
+    
     return (
         <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70 overflow-auto">
             <div 

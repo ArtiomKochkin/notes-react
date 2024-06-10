@@ -19,6 +19,7 @@ const Router = ({ items }: RouterProps) => {
                 />
             )}
             <Route element={<LabelPage/>} path="/label"/>
+            <Route path="*" element={<div>Not found</div>}/>
         </Routes>
     )
 }

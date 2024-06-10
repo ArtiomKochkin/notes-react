@@ -23,7 +23,7 @@ const NoteName = ({ type, note }: NoteNameProps) => {
             }).unwrap();
             return result;
         }
-     );
+    );
 
     return (
         <h3 className={type == NoteView.OPENED 
