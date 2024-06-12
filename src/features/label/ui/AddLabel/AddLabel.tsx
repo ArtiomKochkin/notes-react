@@ -21,17 +21,20 @@ const AddLabel = () => {
     };
 
     const handleAddLabel = async () => {
-        try {
-            const newLabel = await createLabel({ 
-                name: text,
-                notes: []
-            }).unwrap();
-            addLabel(newLabel);
-        } catch (err) {
-            console.error('Failed to create label:', err);
+        if (text) {
+            try {
+                const newLabel = await createLabel({ 
+                    name: text,
+                    notes: [],
+                    timestamp: Date.now()
+                }).unwrap();
+                addLabel(newLabel);
+            } catch (err) {
+                console.error('Failed to create label:', err);
+            }
+            setText("");
+            setHasValue(false);
         }
-        setText("");
-        setHasValue(false);
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {

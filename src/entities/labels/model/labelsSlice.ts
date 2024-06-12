@@ -2,7 +2,6 @@ import { ILabel } from "@/shared/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { LOCAL_STORAGE_LABELS_KEY } from "../const/labels";
 
-
 const getInitialState = (): ILabel[] => {
     const storedNotes = localStorage.getItem(LOCAL_STORAGE_LABELS_KEY);
     return storedNotes ? JSON.parse(storedNotes) : [];
@@ -16,7 +15,6 @@ export const labelsSlice = createSlice({
         addLabel: (state, action: PayloadAction<ILabel>) => {
             state.push(action.payload);
             localStorage.setItem(LOCAL_STORAGE_LABELS_KEY, JSON.stringify(state));
-
         },
         removeLabel: (state, action: PayloadAction<number>) => {
             const newState = state.filter(l => l.id !== action.payload);

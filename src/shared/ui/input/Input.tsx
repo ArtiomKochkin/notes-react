@@ -14,7 +14,7 @@ const Input = ({ inputType, isShow, ...props}: InputProps) => {
     
     return (
         <input
-            className={`custom-border px-5 py-2 text-sm ${isShow ? "w-[97vw] pl-10" : "pl-5"} ${inputType == InputType.SEARCH && searchStyles} ${theme == Theme.LIGHT ? "bg-light placeholder:text-dark" : "bg-dark placeholder:text-light"}`}
+            className={`custom-border px-5 py-2 text-sm ${isShow ? "w-[97vw] pl-10" : "pl-5 sm:w-2/3"} ${inputType == InputType.SEARCH && searchStyles} ${theme == Theme.LIGHT ? "bg-light placeholder:text-dark" : "bg-dark placeholder:text-light"}`}
             {...props}
         />
     )

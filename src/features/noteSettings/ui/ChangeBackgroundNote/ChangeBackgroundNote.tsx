@@ -20,7 +20,10 @@ const ChangeBackgroundNote = ({ note }: ChangeBackgroundNoteProps) => {
         
         input.onchange = (e: Event) => handleImage(e, note, input, "background", updNote, 
             async (patch) => {
-                const result = await updateNote(patch).unwrap();
+                const result = await updateNote({
+                    ...patch,
+                    timestamp: Date.now()
+                }).unwrap();
                 return result;
             }
         );

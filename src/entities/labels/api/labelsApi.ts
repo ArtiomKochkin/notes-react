@@ -9,7 +9,8 @@ export const labelsApi = createApi({
     endpoints: builder => ({
         getLabels: builder.query<ILabel[], null>({
             query: () => "/",
-            providesTags: ["Labels"]
+            providesTags: ["Labels"],
+            transformResponse: (response: ILabel[]) => response.sort((a, b) => b.timestamp - a.timestamp)
         }),
     }),
 });

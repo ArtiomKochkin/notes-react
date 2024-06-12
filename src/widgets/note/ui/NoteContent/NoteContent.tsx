@@ -20,7 +20,7 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
         async (patch) => {
             const result = await updateNote({
                 ...patch,
-                lastModifiedDate: new Date()
+                timestamp: Date.now()
             }).unwrap();
             return result;
         }

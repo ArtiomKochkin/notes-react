@@ -9,7 +9,8 @@ export const notesApi = createApi({
     endpoints: builder => ({
         getNotes: builder.query<INote[], null>({
             query: () => `/`,
-            providesTags: ["Notes"]
+            providesTags: ["Notes"],
+            transformResponse: (response: INote[]) => response.sort((a, b) => b.timestamp - a.timestamp)
         }),
     }),
 });

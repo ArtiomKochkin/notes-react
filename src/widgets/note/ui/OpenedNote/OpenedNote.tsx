@@ -38,7 +38,7 @@ const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
                 <NoteContent type={NoteView.OPENED} note={note}/>
                 <div className="mx-0 mb-0 mt-auto">
                     <NoteLabelList labels={note.labels} type={NoteView.OPENED}/>
-                    <LastModifiedDate date={note.lastModifiedDate}/>
+                    <LastModifiedDate date={note.timestamp}/>
                 </div>
             </div>
         </div>

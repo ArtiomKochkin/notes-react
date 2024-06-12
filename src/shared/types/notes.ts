@@ -2,7 +2,7 @@ export interface INote {
     id: number,
     name: string,
     content: string,
-    lastModifiedDate: Date | string,
+    timestamp: number,
     labels: number[],
     isPinned: boolean,
     isArchive: boolean,

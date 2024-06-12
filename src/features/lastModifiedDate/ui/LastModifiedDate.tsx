@@ -1,7 +1,7 @@
 import { getModifiedDate } from "../utils/getModifiedDate";
 
 interface LastModifiedDateProps {
-    date: Date | string
+    date: number
 }
 
 const LastModifiedDate = ({ date }: LastModifiedDateProps) => {

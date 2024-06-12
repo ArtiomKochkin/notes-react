@@ -20,11 +20,13 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
             try {
                 const newLabel = await createLabel({ 
                     name: text,
-                    notes: [note.id]
+                    notes: [note.id],
+                    timestamp: Date.now()
                 }).unwrap();
                 const updatedNote = await updateNote({
                     id: note.id,
-                    labels: [...note.labels, newLabel.id]
+                    labels: [...note.labels, newLabel.id],
+                    timestamp: Date.now()
                 }).unwrap();
                 addLabel(newLabel);
                 updLabel(updatedNote);

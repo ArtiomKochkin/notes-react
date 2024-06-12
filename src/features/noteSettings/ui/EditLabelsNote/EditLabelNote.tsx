@@ -29,7 +29,7 @@ const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
                 updatedNotes = await updateNote({
                     id: note.id,
                     labels: note.labels.filter(l => l !== label.id),
-                    lastModifiedDate: new Date()
+                    timestamp: Date.now()
                 }).unwrap();
                 setIsChecked(false);
             } else {
@@ -40,7 +40,7 @@ const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
                 updatedNotes = await updateNote({
                     id: note.id,
                     labels: [...note.labels, label.id],
-                    lastModifiedDate: new Date()
+                    timestamp: Date.now()
                 }).unwrap();
                 setIsChecked(true);
             }

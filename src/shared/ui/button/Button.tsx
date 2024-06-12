@@ -12,8 +12,12 @@ const Button = ({ children, createButton, ...props }: ButtonProps) => {
  
     return (
         <button 
-            className={`button sm:px-8 ${createButton && "sm:w-2/3 flex-center justify-center mx-auto my-4"} ${theme == Theme.LIGHT ? "text-dark hover:text-white" : "text-light hover:text-dark"}`}
             {...props}
+            className={
+                `button sm:px-8 
+                ${createButton && "sm:w-2/3 flex-center justify-center mx-auto my-4"} 
+                ${theme == Theme.LIGHT ? "text-dark hover:text-white" : "text-light hover:text-dark"}
+            `}
         >
             {children}
         </button>

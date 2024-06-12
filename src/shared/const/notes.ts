@@ -16,7 +16,7 @@ export const defaultValueNote: INoteData = {
     isArchive: false,
     isPinned: false,
     isDeleted: false,
-    lastModifiedDate: new Date(),
+    timestamp: Date.now(),
     background: "",
     labels: []
 };

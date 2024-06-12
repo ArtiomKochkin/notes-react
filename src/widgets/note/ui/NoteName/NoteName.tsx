@@ -19,7 +19,7 @@ const NoteName = ({ type, note }: NoteNameProps) => {
         async (patch) => {
             const result = await updateNote({
                 ...patch,
-                lastModifiedDate: new Date()
+                timestamp: Date.now()
             }).unwrap();
             return result;
         }
