@@ -1,5 +1,6 @@
 import { MainLayout } from "@/app/layouts";
 import { useGetNotesQuery } from "@/entities/notes";
+import { DeleteAllNotes } from "@/features/deleteAllNotes";
 import { NotesViewContext } from "@/shared/lib/context";
 import { Title } from "@/shared/ui";
 import { NoteList } from "@/widgets/noteList";
@@ -12,11 +13,20 @@ const DeletedPage = () => {
     
     return (
         <MainLayout>
-            {filteredNotes!.length > 0 
-                ? <Title>Корзина</Title> 
-                : <Title>В корзине нет заметок</Title>
+            {filteredNotes!.length > 0 ? (
+                    <>
+                        <Title>Корзина</Title> 
+                        <DeleteAllNotes notes={filteredNotes}/>
+                        <NoteList 
+                            isSpecialList 
+                            view={notesView!} 
+                            isLoading={isLoading} 
+                            isError={isError} 
+                            data={filteredNotes!}
+                        />
+                    </>
+                ) : <Title>В корзине нет заметок</Title>
             }
-            <NoteList isSpecialList view={notesView!} isLoading={isLoading} isError={isError} data={filteredNotes!}/>
         </MainLayout>
     )
 }

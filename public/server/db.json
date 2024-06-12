@@ -1,61 +1,5 @@
 {
-  "notes": [
-    {
-      "id": "d88b",
-      "name": "Заголовок...13",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718162170689,
-      "background": "",
-      "labels": []
-    },
-    {
-      "id": "efd7",
-      "name": "Заголовок...46",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718162189917,
-      "background": "",
-      "labels": []
-    },
-    {
-      "id": "ce6a",
-      "name": "Заголовок...789",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718162207443,
-      "background": "",
-      "labels": []
-    },
-    {
-      "id": "832d",
-      "name": "Заголовок...753",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718162220026,
-      "background": "",
-      "labels": []
-    },
-    {
-      "id": "fd31",
-      "name": "Заголовок...",
-      "content": "Текст...",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": true,
-      "timestamp": 1718165050683,
-      "background": "",
-      "labels": []
-    }
-  ],
+  "notes": [],
   "labels": [
     {
       "id": "0fb5",
@@ -66,20 +10,18 @@
     {
       "id": "c771",
       "name": "456",
-      "notes": [],
+      "notes": [
+        "8721"
+      ],
       "timestamp": 1718162066553
     },
     {
       "id": "4abd",
       "name": "789",
-      "notes": [],
+      "notes": [
+        "8721"
+      ],
       "timestamp": 1718162069323
-    },
-    {
-      "id": "8e63",
-      "name": "0",
-      "notes": [],
-      "timestamp": 1718162148622
     }
   ]
 }
