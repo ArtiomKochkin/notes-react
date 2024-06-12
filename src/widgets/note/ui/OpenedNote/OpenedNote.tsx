@@ -8,6 +8,7 @@ import NoteContent from "../NoteContent/NoteContent";
 import NoteName from "../NoteName/NoteName";
 import NoteLabelList from "../NoteLabelList/NoteLabelList";
 import { PinNote } from "@/features/noteSettings";
+import { useEffect } from "react";
 
 interface OpenedNoteProps {
     note: INote,
@@ -17,11 +18,16 @@ interface OpenedNoteProps {
 const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
     const { ref, isShow, setIsShow } = useOutside(false);
     const { theme } = useTheme();
+
+    useEffect(() => {
+        document.body.style.overflowY = "hidden";
+        return () => {document.body.style.overflowY = "auto"};
+    }, []);
     
     return (
-        <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70 overflow-auto">
+        <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70">
             <div 
-                className={`relative flex flex-col custom-border w-[94vw] sm:w-4/5 lg:w-3/5 min-h-[80vh] mx-auto my-[1vh] p-4 
+                className={`relative flex flex-col custom-border w-[94vw] sm:w-4/5 lg:w-3/5 h-[95vh] mx-auto my-[1vh] p-4 scrollbar
                     ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
                     bg-no-repeat bg-center bg-cover`}
                     style={{ backgroundImage: `url(${note.background})`}}

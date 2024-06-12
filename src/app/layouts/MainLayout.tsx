@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     const { theme } = useTheme();
     return (
         <main className={
-            `mt-10 min-h-screen sm:mt-14 p-4 
+            `mt-10 min-h-screen sm:mt-[55px] p-4 
             ${showSidebar ? "hidden sm:block sm:ml-[20%]" : "ml-12 sm:ml-14 lg:ml-20"} 
             ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
         `}>

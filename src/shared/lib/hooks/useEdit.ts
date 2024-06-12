@@ -31,15 +31,27 @@ export const useEdit = <
             };
 
             updateField();
+        } else if (isEditing) {
+            autoResizeTextarea(inputRef.current as HTMLTextAreaElement);
         }
     }, [isEditing]);
 
-    const handleDivClick = () => setIsEditing(true);
+    const handleDivClick = () => {
+        setIsEditing(true);
+    } 
 
     const handleInputBlur = () => setIsEditing(false);
 
-    const handleTextChange = (e: React.ChangeEvent<FieldT>) => {
-        setText(e.target.value);
+    const handleTextChange = (e: React.FormEvent<FieldT>) => {
+        setText(e.currentTarget.value);
+        if (e.currentTarget.tagName === "TEXTAREA") {
+            autoResizeTextarea(e.currentTarget as HTMLTextAreaElement);
+        }
+    };
+
+    const autoResizeTextarea = (textarea: HTMLTextAreaElement) => {
+        textarea.style.height = "auto";
+        textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<FieldT>) => {

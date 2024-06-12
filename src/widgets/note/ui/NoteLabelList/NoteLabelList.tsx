@@ -19,7 +19,7 @@ const NoteLabelList = ({ labels, type, onClick }: NoteLabelListProps) => {
             <ul 
                 onClick={onClick}
                 className={`flex-center gap-1 ${type == NoteView.OPENED 
-                    ? "flex-wrap" : "flex-shrink-0 overflow-hidden"
+                    ? "flex-wrap" : "flex-shrink-0 overflow-hidden pt-1"
                 }`}
             >
                 {filteredLabels.map(label => 
