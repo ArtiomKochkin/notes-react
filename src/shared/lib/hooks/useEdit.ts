@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { createOrderedList } from "../utils";
 
 type FieldT =  HTMLInputElement | HTMLTextAreaElement;
 
@@ -58,6 +59,7 @@ export const useEdit = <
         if (e.key === "Enter" && e.currentTarget.tagName === "INPUT") {
             setIsEditing(false);
         }
+        createOrderedList(e as React.KeyboardEvent<HTMLTextAreaElement>);
     };
 
     return { 

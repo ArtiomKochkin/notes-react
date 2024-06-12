@@ -1,3 +1,4 @@
 import { filterNotes } from "./notes/filterNotes";
+import { createOrderedList } from "./notes/createOrderedList";
 
-export { filterNotes };
+export { filterNotes, createOrderedList };

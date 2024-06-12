@@ -16,7 +16,7 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
     const [updateNote] = useUpdateNoteMutation();
     const {
         isEditing, text, inputRef, 
-        handleDivClick, handleInputBlur, handleTextChange
+        handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
     } = useEdit(note, note.content, "content", updNote, 
         async (patch) => {
             const result = await updateNote({
@@ -43,11 +43,12 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
                         value={text}
                         onChange={handleTextChange}
                         onBlur={handleInputBlur}
+                        onKeyDown={handleKeyPress}
                         autoFocus
                     ></textarea>
                 </div>
             ) : (
-                <div className="whitespace-pre-wrap w-full">
+                <div className="whitespace-pre-wrap w-full" title="Введите текст...">
                     {formatText(text)}
                 </div>
             )}

@@ -37,7 +37,7 @@ const ClosedNote = ({ view, note, toggleNote }: NoteProps) => {
             </div>
             <NoteSettings isShow={isShowSettings} note={note}/>
             <div onClick={toggleNote} className="flex-grow">
-                <NoteContent note={note} type={NoteView.CLOSED} />
+                <NoteContent note={note} type={NoteView.CLOSED} view={view}/>
             </div>
             <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
         </div>
