@@ -1,5 +1,5 @@
-import { NoteView, NotesView, Theme } from "@/shared/const";
-import { useOutside, useTheme } from "@/shared/lib/hooks";
+import { NoteView, NotesView } from "@/shared/const";
+import { useOutside } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Dots } from "@/shared/ui";
 import NoteSettings from "../NoteSettings/NoteSettings";
@@ -15,16 +15,19 @@ interface NoteProps {
 }
 
 const ClosedNote = ({ view, note, toggleNote }: NoteProps) => {
-    const { ref: settingsRef, isShow: isShowSettings, setIsShow: setIsShowSettings } = useOutside(false);
-    const { theme } = useTheme();
+    const { ref: settingsRef, isShow, setIsShow } = useOutside<HTMLDivElement>(false);
 
     return (
         <div
-            className={`flex flex-col custom-border cursor-pointer p-2 sm:p-3 relative transition-all sm:hover:shadow-custom 
-                ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"} 
-                ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
-                bg-no-repeat bg-center bg-cover`}
-            style={{ backgroundImage: `url(${note.background})`}}
+            className={
+                `flex flex-col custom-border cursor-pointer p-2 sm:p-3 relative transition-all sm:hover:shadow-custom bg-no-repeat bg-center bg-cover bg-inherit text-inherit
+                ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"} `
+            }
+            style={{
+                backgroundImage: `url(${note.backgroundImage})`,
+                backgroundColor: `${note.background}`,
+                color: `${note.colorText}`
+            }}
         >
             <div className="flex-center justify-between flex-shrink-0">
                 <div onClick={toggleNote} className="w-full sm:w-[80%]">
@@ -32,10 +35,10 @@ const ClosedNote = ({ view, note, toggleNote }: NoteProps) => {
                 </div>
                 <div className="hidden sm:flex sm:flex-center gap-1">
                     <PinNote note={note}/>
-                    <Dots refElement={settingsRef} show={isShowSettings} setShow={setIsShowSettings}/>
+                    <Dots refElement={settingsRef} show={isShow} setShow={setIsShow}/>
                 </div>
             </div>
-            <NoteSettings isShow={isShowSettings} note={note}/>
+            <NoteSettings isShow={isShow} note={note} refElement={settingsRef}/>
             <div onClick={toggleNote} className="flex-grow">
                 <NoteContent note={note} type={NoteView.CLOSED} view={view}/>
             </div>

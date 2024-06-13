@@ -16,7 +16,7 @@ interface OpenedNoteProps {
 }
 
 const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
-    const { ref, isShow, setIsShow } = useOutside(false);
+    const { ref: settingsRef, isShow, setIsShow } = useOutside<HTMLDivElement>(false);
     const { theme } = useTheme();
 
     useEffect(() => {
@@ -26,25 +26,32 @@ const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
     
     return (
         <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70">
-            <div 
-                className={`relative flex flex-col custom-border w-[94vw] sm:w-4/5 lg:w-3/5 h-[95vh] mx-auto my-[1vh] p-4 scrollbar
-                    ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
-                    bg-no-repeat bg-center bg-cover`}
-                    style={{ backgroundImage: `url(${note.background})`}}
-            >
-                <div className="flex-center justify-between">
-                    <NoteName note={note} type={NoteView.OPENED}/>
-                    <div className="flex-center gap-1 cursor-pointer">
-                        <PinNote note={note}/>
-                        <Dots refElement={ref} show={isShow} setShow={setIsShow}/>
-                        <Close closeElement={closeNote}/>
+            <div className={
+                `relative custom-border w-[94vw] sm:w-4/5 lg:w-3/5 h-[95vh] mx-auto my-[1vh] scrollbar
+                ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`
+            }>
+                <div 
+                    className={`h-full flex flex-col p-4 bg-no-repeat bg-center bg-cover text-inherit`}
+                    style={{
+                        backgroundImage: `url(${note.backgroundImage})`,
+                        backgroundColor: `${note.background}`,
+                        color: `${note.colorText}`
+                    }}
+                >
+                    <div className="flex-center justify-between">
+                        <NoteName note={note} type={NoteView.OPENED}/>
+                        <div className="flex-center gap-1 cursor-pointer">
+                            <PinNote note={note}/>
+                            <Dots refElement={settingsRef} show={isShow} setShow={setIsShow}/>
+                            <Close closeElement={closeNote}/>
+                        </div>
                     </div>
-                </div>
-                <NoteSettings isShow={isShow} note={note}/>
-                <NoteContent type={NoteView.OPENED} note={note}/>
-                <NoteLabelList labels={note.labels} type={NoteView.OPENED}/>
-                <div className="mx-0 mb-0 mt-auto">
-                    <LastModifiedDate date={note.timestamp}/>
+                    <NoteSettings isShow={isShow} note={note} refElement={settingsRef}/>
+                    <NoteContent type={NoteView.OPENED} note={note}/>
+                    <NoteLabelList labels={note.labels} type={NoteView.OPENED}/>
+                    <div className="mx-0 mb-0 mt-auto">
+                        <LastModifiedDate date={note.timestamp}/>
+                    </div>
                 </div>
             </div>
         </div>

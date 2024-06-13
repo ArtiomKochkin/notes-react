@@ -44,10 +44,10 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
     };
 
     return (
-        <div className="flex-center p-1">
+        <div className="flex-center p-1 gap-1">
             <input 
                 autoFocus
-                className="bg-transparent outline-none"                 
+                className="bg-transparent outline-none w-[90%]"                 
                 placeholder="Новый ярлык..."
                 value={text}
                 onKeyDown={handleKeyPress}

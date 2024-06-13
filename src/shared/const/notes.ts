@@ -17,6 +17,8 @@ export const defaultValueNote: INoteData = {
     isPinned: false,
     isDeleted: false,
     timestamp: Date.now(),
-    background: "",
+    backgroundImage: "",
+    background: "inherit",
+    colorText: "inherit",
     labels: []
 };

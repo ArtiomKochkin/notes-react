@@ -8,8 +8,11 @@ import Dots from "./dots/Dots";
 import Close from "./close/Close";
 import Title from "./title/Title";
 import NoteSettingsItem from "./noteSettingsItem/NoteSettingsItem";
+import NoteSubSettings from "./noteSubSettings/NoteSubSettings";
 
 export { 
-    Button, Input, Logo, Loading, Error, Label, Dots, Close, Title, 
-    NoteSettingsItem 
+    Button, Input, Logo, 
+    Loading, Error, Label, 
+    Dots, Close, Title, 
+    NoteSettingsItem, NoteSubSettings
 };
