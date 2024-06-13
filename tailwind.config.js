@@ -41,6 +41,7 @@ export default {
 	},
 	plugins: [
 		plugin(function({ addUtilities }) {
+			// TODO: remove utils
 			addUtilities({
 				".text-shadow": {
 					textShadow: "1.5px 1.5px rgba(128, 43, 177, 0.4)",
@@ -94,7 +95,6 @@ export default {
 					},
 
 					"&::-webkit-scrollbar-thumb": {
-						borderRadius: "5px",
 						backgroundColor: `${theme("colors.blue")}`
 					}
 				}

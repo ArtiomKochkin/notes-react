@@ -23,7 +23,7 @@ const SidebarItem = ({ icon, name, link }: ISidebarItem) => {
             onClick={moveToAnotherPage}
             title={name}
             className={
-                `flex-center py-4 pl-3 pr-1 cursor-pointer transition-colors sm:hover:bg-blue rounded-tr-3xl rounded-br-3xl 
+                `flex-center py-4 pl-3 pr-1 cursor-pointer transition-colors sm:hover:bg-blue rounded-tr-3xl rounded-br-3xl sm:hover:shadow-custom 
                 ${theme == Theme.LIGHT ? "text-dark sm:hover:text-light" : "text-light sm:hover:text-dark"}
             `}
         >

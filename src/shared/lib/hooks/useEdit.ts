@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { createOrderedList } from "../utils";
+import { autoResizeTextarea, createOrderedList } from "../utils";
 
 type FieldT =  HTMLInputElement | HTMLTextAreaElement;
 
@@ -37,10 +37,7 @@ export const useEdit = <
         }
     }, [isEditing]);
 
-    const handleDivClick = () => {
-        setIsEditing(true);
-    } 
-
+    const handleDivClick = () =>  setIsEditing(true);
     const handleInputBlur = () => setIsEditing(false);
 
     const handleTextChange = (e: React.FormEvent<FieldT>) => {
@@ -48,11 +45,6 @@ export const useEdit = <
         if (e.currentTarget.tagName === "TEXTAREA") {
             autoResizeTextarea(e.currentTarget as HTMLTextAreaElement);
         }
-    };
-
-    const autoResizeTextarea = (textarea: HTMLTextAreaElement) => {
-        textarea.style.height = "auto";
-        textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<FieldT>) => {

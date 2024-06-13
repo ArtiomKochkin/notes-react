@@ -42,8 +42,8 @@ const OpenedNote = ({ note, closeNote }: OpenedNoteProps) => {
                 </div>
                 <NoteSettings isShow={isShow} note={note}/>
                 <NoteContent type={NoteView.OPENED} note={note}/>
+                <NoteLabelList labels={note.labels} type={NoteView.OPENED}/>
                 <div className="mx-0 mb-0 mt-auto">
-                    <NoteLabelList labels={note.labels} type={NoteView.OPENED}/>
                     <LastModifiedDate date={note.timestamp}/>
                 </div>
             </div>
