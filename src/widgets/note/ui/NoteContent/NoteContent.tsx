@@ -16,7 +16,7 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
     const [updateNote] = useUpdateNoteMutation();
     const {
         isEditing, text, inputRef, 
-        handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
+        handleDivClick, handleInputBlur, handleTextChange, handleKeyPress,
     } = useEdit(note, note.content, "content", updNote, 
         async (patch) => {
             const result = await updateNote({

@@ -9,7 +9,15 @@ export interface INote {
     isDeleted: boolean,
     backgroundImage: string,
     background: string,
-    colorText: string
+    colorText: string,
+    isList: boolean,
+    listContent: IListContent[]
+}
+
+export interface IListContent {
+    id: number
+    isChecked: boolean,
+    text: string,
 }
 
 export interface INoteData extends Omit<INote, "id"> {}

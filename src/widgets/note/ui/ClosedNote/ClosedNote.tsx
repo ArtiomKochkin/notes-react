@@ -7,6 +7,7 @@ import NoteContent from "../NoteContent/NoteContent";
 import NoteName from "../NoteName/NoteName";
 import { PinNote } from "@/features/noteSettings";
 import NoteLabelList from "../NoteLabelList/NoteLabelList";
+import NoteContentList from "../NoteContentList/NoteContentList";
 
 interface NoteProps {
     view: NotesView,
@@ -39,8 +40,11 @@ const ClosedNote = ({ view, note, toggleNote }: NoteProps) => {
                 </div>
             </div>
             <NoteSettings isShow={isShow} note={note} refElement={settingsRef}/>
-            <div onClick={toggleNote} className="flex-grow">
-                <NoteContent note={note} type={NoteView.CLOSED} view={view}/>
+            <div onClick={toggleNote} className="flex-grow overflow-y-hidden">
+                {note.isList 
+                    ? <NoteContentList type={NoteView.OPENED} note={note}/> 
+                    : <NoteContent type={NoteView.OPENED} note={note}/>
+                }
             </div>
             <NoteLabelList labels={note.labels} type={NoteView.CLOSED} />
         </div>

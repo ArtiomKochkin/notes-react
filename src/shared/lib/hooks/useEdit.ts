@@ -56,6 +56,6 @@ export const useEdit = <
 
     return { 
         isEditing, text, inputRef, 
-        handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
+        handleDivClick, handleInputBlur, handleTextChange, handleKeyPress, 
     }
 }

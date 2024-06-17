@@ -9,7 +9,7 @@ export const createOrderedList = (e: React.KeyboardEvent<HTMLTextAreaElement>) =
         const textAfterCursor = text.slice(start);
         const linesBeforeCursor = textBeforeCursor.split('\n');
         const currentLine = linesBeforeCursor[linesBeforeCursor.length - 1];
-        const match = currentLine.match(/^(\d+)[)\. ] ?/);
+        const match = currentLine.match(/^(\d+)[). ] ?/);
         let nextNumber = 1;
     
         if (match) {

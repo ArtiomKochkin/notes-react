@@ -9,10 +9,12 @@ import Close from "./close/Close";
 import Title from "./title/Title";
 import NoteSettingsItem from "./noteSettingsItem/NoteSettingsItem";
 import NoteSubSettings from "./noteSubSettings/NoteSubSettings";
+import DivEditable from "./divEditable/DivEditable";
 
 export { 
     Button, Input, Logo, 
     Loading, Error, Label, 
     Dots, Close, Title, 
-    NoteSettingsItem, NoteSubSettings
+    NoteSettingsItem, NoteSubSettings,
+    DivEditable
 };

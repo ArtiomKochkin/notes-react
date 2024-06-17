@@ -17,9 +17,12 @@ const NewNote = ({ view }: NewNoteProps) => {
     const { addNote } = useActions();
     const [createNote, { data: newNote, isLoading}] = useCreateNoteMutation();
 
-    const handleCreateNote = async () => {
+    const handleCreateNote = async (isListNote: boolean) => {
         try {
-            const updNote = await createNote(note).unwrap();
+            const updNote = await createNote({
+                ...note,
+                isList: isListNote
+            }).unwrap();
             addNote(updNote);
             setIsOpen(true);
         } catch (err) {
@@ -28,9 +31,13 @@ const NewNote = ({ view }: NewNoteProps) => {
     };
  
     return (
-        <div>
-            <Button createButton onClick={handleCreateNote} disabled={isLoading}>
+        <div className="leading-5">
+            <Button createButton onClick={() => handleCreateNote(false)} disabled={isLoading}>
                 <span className="mr-2">Создать заметку</span>
+                <FaRegPlusSquare />
+            </Button>
+            <Button createButton onClick={() => handleCreateNote(true)} disabled={isLoading}>
+                <span className="mr-2">Создать заметку в виде списка</span>
                 <FaRegPlusSquare />
             </Button>
             {isOpen && newNote && 

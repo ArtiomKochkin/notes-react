@@ -1,114 +1,62 @@
 {
   "notes": [
     {
-      "id": "d00b",
-      "name": "Заголовок...sdakma",
-      "content": "ываываыв\n1.sdf \n2. fdsd\n3. kerdlf;c\n4.sdfsdfm\n5. fdfd\n6. fd\n7.  smdsd\nds\ndsaa\nhttps://google.com\n\nадывабыв\n\n1. тектв\n2. дплвьбв\n3. ыввы\n4. выа\n5. ывав\n6. ывфаф\n7. dsffsd\n8. ds\n9 sd\n10. \n11. \n12. adsadad\n13. adas\n\nassa\n,daa\n\ndmsaa\nadad\ndad\n\n1.\n2. 2\n3. daaa",
+      "id": "7958",
+      "name": "Заметка",
+      "content": "",
       "isArchive": false,
       "isPinned": false,
       "isDeleted": false,
-      "timestamp": 1718252638843,
-      "background": "",
-      "labels": [
-        "0fb5"
+      "isList": true,
+      "timestamp": 1718633119909,
+      "backgroundImage": "",
+      "background": "inherit",
+      "colorText": "inherit",
+      "labels": [],
+      "listContent": [
+        {
+          "id": 1718633119909,
+          "isChecked": false,
+          "text": "Текст...1",
+          "index": 0
+        },
+        {
+          "id": 1718633131088,
+          "isChecked": false,
+          "text": "ntrcn 2",
+          "index": 1
+        },
+        {
+          "id": 1718633142285,
+          "isChecked": false,
+          "text": "3",
+          "index": 2
+        },
+        {
+          "id": 1718633157396,
+          "isChecked": false,
+          "text": "4",
+          "index": 2
+        },
+        {
+          "id": 1718633161850,
+          "isChecked": false,
+          "text": "5",
+          "index": 1
+        },
+        {
+          "id": 1718633194055,
+          "isChecked": false,
+          "text": "6",
+          "index": 1
+        },
+        {
+          "id": 1718633199325,
+          "isChecked": false,
+          "text": "7",
+          "index": 1
+        }
       ]
-    },
-    {
-      "id": "5026",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718281215816,
-      "background": "inherit",
-      "labels": [
-        "0fb5",
-        "ab1a"
-      ],
-      "backgroundImage": "",
-      "colorText": "inherit"
-    },
-    {
-      "id": "a56b",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718278390960,
-      "background": "inherit",
-      "labels": [],
-      "backgroundImage": "",
-      "colorText": "inherit"
-    },
-    {
-      "id": "e707",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718273324008,
-      "background": "inherit",
-      "labels": [],
-      "backgroundImage": "",
-      "colorText": "inherit"
-    },
-    {
-      "id": "6af0",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718273324008,
-      "background": "inherit",
-      "labels": [],
-      "backgroundImage": "",
-      "colorText": "inherit"
-    },
-    {
-      "id": "1dfa",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718273324008,
-      "background": "inherit",
-      "labels": [],
-      "backgroundImage": "",
-      "colorText": "inherit"
-    },
-    {
-      "id": "e4fa",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718278390960,
-      "background": "inherit",
-      "labels": [],
-      "backgroundImage": "",
-      "colorText": "inherit"
-    },
-    {
-      "id": "aea4",
-      "name": "Заголовок...",
-      "content": "Текст... https://google.com ",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "timestamp": 1718278822290,
-      "background": "inherit",
-      "labels": [
-        "0fb5",
-        "c771"
-      ],
-      "backgroundImage": "",
-      "colorText": "inherit"
     }
   ],
   "labels": [
@@ -117,7 +65,8 @@
       "name": "123",
       "notes": [
         "d00b",
-        "5026"
+        "5026",
+        "4345"
       ],
       "timestamp": 1718162057629
     },

@@ -11,14 +11,20 @@ export enum NoteView {
 }
 
 export const defaultValueNote: INoteData = {
-    name: "Заголовок...",
-    content: "Текст...",
+    name: "Заметка",
+    content: "",
     isArchive: false,
     isPinned: false,
     isDeleted: false,
+    isList: false,
     timestamp: Date.now(),
     backgroundImage: "",
     background: "inherit",
     colorText: "inherit",
-    labels: []
+    labels: [],
+    listContent: [{
+        id: Date.now(),
+        isChecked: false,
+        text: "Текст...",
+    }]
 };
