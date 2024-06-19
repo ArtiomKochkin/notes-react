@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(container!);
 
 root.render(
 	<Providers>
-		<BrowserRouter>
+		<BrowserRouter basename={import.meta.env.BASE_URL}>
 			<BaseLayout/>
 		</BrowserRouter>
 	</Providers>
