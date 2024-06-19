@@ -1,52 +1,53 @@
 import { Theme } from "@/shared/const";
 import { ILabel, INote } from "@/shared/types";
 import { useActions, useTheme } from "@/shared/lib/hooks";
-import { useUpdateLabelMutation } from "@/entities/labels";
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdLabelMutation } from "@/entities/labels";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useState } from "react";
+import React from "react";
 
 interface EditLabelNoteProps {
     label: ILabel,
     note: INote
 }
 
-const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
+export const EditLabelNote = React.memo(({ label, note }: EditLabelNoteProps) => {
     const { theme } = useTheme();
     const [isChecked, setIsChecked] = useState(note.labels.find(l => l === label.id) ? true : false);
-    const {updateNote: updNote, updateLabel: updLabel} = useActions();
-    const [updateLabel] = useUpdateLabelMutation();
-    const [updateNote] = useUpdateNoteMutation();
+    const {updateNote, updateLabel} = useActions();
+    const [updLabel] = useUpdLabelMutation();
+    const [updNote] = useUpdNoteMutation();
 
     const handleEditLabels = async (label: ILabel) => {
 
         try {
             let updatedLabel: ILabel, updatedNotes: INote;
+            
             if (isChecked) {
-                updatedLabel = await updateLabel({
+                updatedLabel = await updLabel({
                     id: label.id,
                     notes: label.notes.filter(n => n !== note.id)
                 }).unwrap();
-                updatedNotes = await updateNote({
+                updatedNotes = await updNote({
                     id: note.id,
                     labels: note.labels.filter(l => l !== label.id),
                     timestamp: Date.now()
                 }).unwrap();
                 setIsChecked(false);
             } else {
-                updatedLabel = await updateLabel({
+                updatedLabel = await updLabel({
                     id: label.id,
                     notes: [...label.notes, note.id]
                 }).unwrap();
-                updatedNotes = await updateNote({
+                updatedNotes = await updNote({
                     id: note.id,
                     labels: [...note.labels, label.id],
                     timestamp: Date.now()
                 }).unwrap();
                 setIsChecked(true);
             }
-
-            updNote(updatedNotes);
-            updLabel(updatedLabel);
+            updateNote(updatedNotes);
+            updateLabel(updatedLabel);
         } catch (err) {
             console.error('Failed to edit labels:', err);
         }
@@ -68,6 +69,4 @@ const EditLabelNote = ({ label, note }: EditLabelNoteProps) => {
             </label>
         </li>
     )
-}
-
-export default EditLabelNote;
+})

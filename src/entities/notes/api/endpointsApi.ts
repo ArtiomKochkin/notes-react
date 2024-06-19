@@ -18,7 +18,7 @@ export const endpointsApi = notesApi.injectEndpoints({
             }),
             invalidatesTags:  ["Notes"]
         }),
-        updateNote: builder.mutation<INote, Partial<INote>>({
+        updNote: builder.mutation<INote, Partial<INote>>({
             query: ({ id, ...patch })  => ({
                 url: `/${id}`,
                 method: "PATCH",
@@ -38,7 +38,7 @@ export const endpointsApi = notesApi.injectEndpoints({
 
 export const { 
     useCreateNoteMutation, 
-    useUpdateNoteMutation, 
+    useUpdNoteMutation, 
     useDeleteNoteMutation,
     useSearchNotesQuery
 } = endpointsApi;

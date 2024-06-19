@@ -1,6 +1,7 @@
-import { useUpdateLabelMutation } from "@/entities/labels";
+import { useUpdLabelMutation } from "@/entities/labels";
 import { useActions, useEdit } from "@/shared/lib/hooks";
 import { ILabel } from "@/shared/types";
+import React from "react";
 import { RefObject } from "react";
 import { MdOutlineEdit } from "react-icons/md";
 
@@ -9,22 +10,21 @@ interface EditLabelProps {
     moveToLabel: () => void
 }
 
-const EditLabel = ({ label, moveToLabel }: EditLabelProps) => {
-    const { updateLabel: editLabel } = useActions();
-    const [updateLabel] = useUpdateLabelMutation();
+export const EditLabel = React.memo(({ label, moveToLabel }: EditLabelProps) => {
+    const { updateLabel } = useActions();
+    const [updLabel] = useUpdLabelMutation();
     const {
         isEditing, text, inputRef, 
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
-    } = useEdit(label, label.name, "name", editLabel, 
+    } = useEdit(label, label.name, "name", updateLabel, 
         async (patch) => {
-            const result = await updateLabel(patch).unwrap();
+            const result = await updLabel(patch).unwrap();
             return result;
         }
     );
 
     return (
         <div className="flex-center justify-between flex-grow mx-2">
-           
             {isEditing ? (
                 <input
                     className="outline-none w-full mr-1 bg-transparent"
@@ -37,10 +37,7 @@ const EditLabel = ({ label, moveToLabel }: EditLabelProps) => {
                     ref={inputRef as RefObject<HTMLInputElement>}
                 />
             ) : (
-                <div 
-                    className="w-full text-left"
-                    onClick={() => moveToLabel()}
-                >
+                <div className="w-full text-left" onClick={() => moveToLabel()}>
                     {label.name}
                 </div>
             )}
@@ -49,6 +46,4 @@ const EditLabel = ({ label, moveToLabel }: EditLabelProps) => {
             </div>
         </div>
     )
-}
-
-export default EditLabel;
+})

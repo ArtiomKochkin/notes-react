@@ -1,12 +1,13 @@
 import { ILabel, INote } from "@/shared/types";
-import EditLabelNote from "./EditLabelNote";
+import { EditLabelNote } from "./EditLabelNote";
+import React from "react";
 
 interface EditLabelListNoteProps {
     labels: ILabel[],
     note: INote
 }
 
-const EditLabelListNote = ({ labels, note }: EditLabelListNoteProps) => {
+export const EditLabelListNote = React.memo(({ labels, note }: EditLabelListNoteProps) => {
  
     return (
         <ul className="flex flex-col gap-1">
@@ -15,6 +16,4 @@ const EditLabelListNote = ({ labels, note }: EditLabelListNoteProps) => {
             )}
         </ul>
     )
-}
-
-export default EditLabelListNote;
+})

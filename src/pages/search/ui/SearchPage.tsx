@@ -5,7 +5,7 @@ import { Title } from "@/shared/ui";
 import { NoteList } from "@/widgets/noteList";
 import { useContext } from "react";
 
-const SearchPage = () => {
+export const SearchPage = () => {
     const { notesView } = useContext(NotesViewContext);
     const { searchTerm } = useContext(SearchContext);
     const { data, isLoading, isError } = useSearchNotesQuery(searchTerm, { skip: !searchTerm });
@@ -20,5 +20,3 @@ const SearchPage = () => {
         </MainLayout>
     )
 }
-
-export default SearchPage;

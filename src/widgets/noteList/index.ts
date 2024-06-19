@@ -1,3 +1,1 @@
-import NoteList from "./ui/NoteList";
-
-export { NoteList };
+export { NoteList } from "./ui/NoteList";

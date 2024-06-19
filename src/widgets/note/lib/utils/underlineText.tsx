@@ -1,5 +1,6 @@
 export const underlineText = (text: string) => {
     const linkRegEx = /(http|https|ftp):\/\//;
+    
     return text.split(" ").map((word, i) => {
         if (linkRegEx.test(word)) {
             return (

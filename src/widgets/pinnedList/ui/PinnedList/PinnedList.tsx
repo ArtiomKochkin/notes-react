@@ -2,6 +2,7 @@ import { NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
 import { Title } from "@/shared/ui";
 import { NoteList } from "@/widgets/noteList";
+import React from "react";
 
 interface PinnedListProps {
     view: NotesView,
@@ -10,7 +11,7 @@ interface PinnedListProps {
     isError?: boolean,
 }
 
-const PinnedList = ({ view, data, isLoading, isError }: PinnedListProps) => {
+export const PinnedList = React.memo(({ view, data, isLoading, isError }: PinnedListProps) => {
 
     return (
         <div>
@@ -22,6 +23,4 @@ const PinnedList = ({ view, data, isLoading, isError }: PinnedListProps) => {
             )}
         </div>
     )
-}
-
-export default PinnedList;
+})

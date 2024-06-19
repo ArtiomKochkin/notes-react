@@ -3,7 +3,7 @@ import { Sidebar } from "@/widgets/sidebar";
 import { Router } from "../routers";
 import { SIDEBAR_ITEMS } from "@/shared/const";
 
-const BaseLayout = () => {
+export const BaseLayout = () => {
  
     return (
         <div className="min-h-screen">
@@ -13,5 +13,3 @@ const BaseLayout = () => {
         </div>
     )
 }
-
-export default BaseLayout;

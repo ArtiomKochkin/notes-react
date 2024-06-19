@@ -1,3 +1,1 @@
-import SearchPage from "./ui/SearchPage";
-
-export { SearchPage };
+export { SearchPage } from "./ui/SearchPage";

@@ -1,3 +1,1 @@
-import NotesViewProvider from "./ui/NotesViewProvider";
-
-export { NotesViewProvider };
+export { NotesViewProvider } from "./ui/NotesViewProvider";

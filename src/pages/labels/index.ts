@@ -1,3 +1,1 @@
-import LabelsPage from "./ui/LabelsPage";
-
-export { LabelsPage };
+export { LabelsPage } from "./ui/LabelsPage";

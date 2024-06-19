@@ -1,16 +1,17 @@
 import { useOutside } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem, NoteSubSettings } from "@/shared/ui";
-import SetCustomBgNote from "./SetCustomBgNote";
-import SetBgNote from "./SetBgNote";
-import SetColorTextNote from "./SetColorTextNote";
-import SetInitialColors from "./SetInitialColors";
+import { SetCustomBgNote } from "./SetCustomBgNote";
+import { SetBgNote } from "./SetBgNote";
+import { SetColorTextNote } from "./SetColorTextNote";
+import { SetInitialColors } from "./SetInitialColors";
+import React from "react";
 
 interface StylizeNoteProps {
     note: INote
 }
 
-const StylizeNote = ({ note }: StylizeNoteProps) => {
+export const StylizeNote = React.memo(({ note }: StylizeNoteProps) => {
     const { ref: styleRef, isShow, setIsShow } = useOutside<HTMLLIElement>(false);
  
     return (
@@ -30,6 +31,4 @@ const StylizeNote = ({ note }: StylizeNoteProps) => {
             )}
         </>
     )
-}
-
-export default StylizeNote;
+})

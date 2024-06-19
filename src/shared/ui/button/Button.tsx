@@ -7,21 +7,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     createButton?: boolean,
 }
 
-const Button = ({ children, createButton, ...props }: ButtonProps) => {
+export const Button = ({ children, createButton, ...props }: ButtonProps) => {
     const { theme } = useTheme();
  
     return (
         <button 
             {...props}
             className={
-                `button sm:px-8 
+                `button sm:px-8 text-inherit
                 ${createButton && "sm:w-2/3 flex-center justify-center mx-auto my-4"} 
-                ${theme == Theme.LIGHT ? "text-dark hover:text-white" : "text-light hover:text-dark"}
+                ${theme == Theme.LIGHT ? "hover:text-white" : "hover:text-dark"}
             `}
         >
             {children}
         </button>
     )
 }
-
-export default Button;

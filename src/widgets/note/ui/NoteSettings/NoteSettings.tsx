@@ -1,11 +1,9 @@
-import { 
-    ArchiveNote, CopyNote, DeleteNote, DownloadNoteDOCX, 
-    DownloadNotePDF, EditLabelsNote, RestoreNote, StylizeNote
-} from "@/features/noteSettings";
 import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { RefObject } from "react";
+import { NOTE_SETTINGS_COMPONENTS } from "../../lib";
+import React from "react";
 
 interface NoteSettingsProps {
     isShow: boolean,
@@ -13,7 +11,7 @@ interface NoteSettingsProps {
     refElement: RefObject<HTMLDivElement>,
 }
 
-const NoteSettings = ({ isShow, note, refElement }: NoteSettingsProps) => {
+export const NoteSettings = React.memo(({ isShow, note, refElement }: NoteSettingsProps) => {
     const { theme } = useTheme();
 
     return (
@@ -23,23 +21,16 @@ const NoteSettings = ({ isShow, note, refElement }: NoteSettingsProps) => {
                     ref={refElement}
                     className={
                         `absolute z-20 right-1 top-1 custom-border shadow-custom p-2 
-                        ${theme == Theme.LIGHT ? "bg-light " : "bg-dark"}`
+                        ${theme == Theme.LIGHT ? "bg-light" : "bg-dark"}`
                     }
                 >
                     <ul className="flex flex-col gap-1">
-                        <DeleteNote note={note}/>
-                        <RestoreNote note={note}/>
-                        <ArchiveNote note={note}/>
-                        <CopyNote note={note}/>
-                        <DownloadNotePDF note={note}/>
-                        <DownloadNoteDOCX note={note}/>
-                        <EditLabelsNote note={note}/>
-                        <StylizeNote note={note}/>
+                        {NOTE_SETTINGS_COMPONENTS.map((Component, i) => (
+                            <Component key={i} note={note} />
+                        ))}
                     </ul>
                 </div>
             }
         </>
     )
-}
-
-export default NoteSettings;
+})

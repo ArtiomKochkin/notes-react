@@ -18,7 +18,7 @@ export const endpointsApi = labelsApi.injectEndpoints({
             }),
             invalidatesTags:  ["Labels"]
         }),
-        updateLabel: builder.mutation<ILabel, Partial<ILabel>>({
+        updLabel: builder.mutation<ILabel, Partial<ILabel>>({
             query: ({ id, ...patch }) => ({
                 url: `/${id}`,
                 method: "PATCH",
@@ -29,4 +29,4 @@ export const endpointsApi = labelsApi.injectEndpoints({
     }),
 });
 
-export const { useCreateLabelMutation, useDeleteLabelMutation, useUpdateLabelMutation } = endpointsApi;
+export const { useCreateLabelMutation, useDeleteLabelMutation, useUpdLabelMutation } = endpointsApi;

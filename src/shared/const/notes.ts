@@ -27,4 +27,4 @@ export const defaultValueNote: INoteData = {
         isChecked: false,
         text: "Текст...",
     }]
-};
+}

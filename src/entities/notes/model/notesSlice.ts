@@ -23,7 +23,7 @@ export const notesSlice = createSlice({
             }
             localStorage.setItem(LOCAL_STORAGE_NOTES_KEY, JSON.stringify(state));
         },
-        deleteNote: (state, action: PayloadAction<number>) => {
+        removeNote: (state, action: PayloadAction<number>) => {
             const newState = state.filter(n => n.id !== action.payload);
             localStorage.setItem(LOCAL_STORAGE_NOTES_KEY, JSON.stringify(newState));
             return newState;

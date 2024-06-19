@@ -2,14 +2,15 @@ import { NunitoSans } from "@/shared/assets";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
 import jsPDF from "jspdf";
+import React from "react";
 
 interface DownloadNotePDFProps {
     note: INote
 }
 
-const DownloadNotePDF = ({ note }: DownloadNotePDFProps) => {
+export const DownloadNotePDF = React.memo(({ note }: DownloadNotePDFProps) => {
 
-    const handleClick = () => {
+    const downloadNote = () => {
         const doc = new jsPDF();
         doc.addFileToVFS('Nunito-Sans.ttf', NunitoSans.replace('data:font/ttf;base64,', ''));
         doc.addFont('Nunito-Sans.ttf', 'NunitoSans', 'normal');
@@ -23,10 +24,8 @@ const DownloadNotePDF = ({ note }: DownloadNotePDFProps) => {
     };
  
     return (
-        <NoteSettingsItem onClick={handleClick}>
+        <NoteSettingsItem onClick={downloadNote}>
             Скачать заметку в PDF
         </NoteSettingsItem>
     )
-}
-
-export default DownloadNotePDF;
+})

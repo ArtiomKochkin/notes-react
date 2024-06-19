@@ -1,6 +1,3 @@
-import { rootActions } from "./config/actions";
-import { RootState } from "./config/store";
-import StoreProvider from "./ui/StoreProvider";
-
-export { StoreProvider, rootActions };
-export type { RootState };
+export { rootActions } from "./config/actions";
+export { StoreProvider } from "./ui/StoreProvider";
+export type { RootState } from "./config/store";

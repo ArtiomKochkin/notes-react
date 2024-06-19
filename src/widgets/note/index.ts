@@ -1,6 +1,4 @@
-import ClosedNote from "./ui/ClosedNote/ClosedNote";
-import OpenedNote from "./ui/OpenedNote/OpenedNote";
-import NewNote from "./ui/NewNote/NewNote";
-import Note from "./ui/Note/Note";
-
-export { ClosedNote, OpenedNote, NewNote, Note };
+export { ClosedNote } from "./ui/ClosedNote/ClosedNote";
+export { OpenedNote } from "./ui/OpenedNote/OpenedNote";
+export { NewNote } from "./ui/NewNote/NewNote";
+export { Note } from "./ui/Note/Note";

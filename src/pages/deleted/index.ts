@@ -1,3 +1,1 @@
-import DeletedPage from "./ui/DeletedPage";
-
-export { DeletedPage };
+export { DeletedPage } from "./ui/DeletedPage";

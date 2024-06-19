@@ -1,23 +1,24 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
+import React from "react";
 import { TiPin } from "react-icons/ti";
 
 interface PinNoteProps {
     note: INote
 }
 
-const PinNote = ({ note }: PinNoteProps) => {
-    const { updateNote: updNote } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+export const PinNote = React.memo(({ note }: PinNoteProps) => {
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
 
     const handlePinNote = async () => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 isPinned: !note.isPinned
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to pin/unpin note:', err);
         }
@@ -35,6 +36,4 @@ const PinNote = ({ note }: PinNoteProps) => {
             )}
         </>
     )
-}
-
-export default PinNote;
+})

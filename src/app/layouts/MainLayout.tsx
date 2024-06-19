@@ -7,12 +7,13 @@ interface MainLayoutProps {
     children: ReactNode
 }
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+export const MainLayout = ({ children }: MainLayoutProps) => {
     const { showSidebar } = useContext(SidebarContext);
     const { theme } = useTheme();
+    
     return (
         <main className={
-            `mt-10 min-h-screen sm:mt-[55px] p-4 
+            `pt-14 min-h-screen sm:pt-[70px] p-4 
             ${showSidebar ? "hidden sm:block sm:ml-[20%]" : "ml-12 sm:ml-14 lg:ml-20"} 
             ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
         `}>
@@ -20,5 +21,3 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         </main>
     )
 }
-
-export default MainLayout;

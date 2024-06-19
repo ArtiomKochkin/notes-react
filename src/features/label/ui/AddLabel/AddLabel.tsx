@@ -1,24 +1,16 @@
 import { useCreateLabelMutation } from "@/entities/labels";
 import { InputType } from "@/shared/const";
 import { useActions } from "@/shared/lib/hooks";
+import { handleEnterPress } from "@/shared/lib/utils";
 import { Button, Input } from "@/shared/ui";
 import { ChangeEvent, useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 
-const AddLabel = () => {
+export const AddLabel = () => {
     const [createLabel] = useCreateLabelMutation();
     const { addLabel } = useActions();
     const [hasValue, setHasValue] = useState(false);
     const [text, setText] = useState("");
-
-    const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-        setText(e.target.value);
-        if (e.target.value != "") {
-            setHasValue(true);
-        } else {
-            setHasValue(false);
-        }
-    };
 
     const handleAddLabel = async () => {
         if (text) {
@@ -37,10 +29,9 @@ const AddLabel = () => {
         }
     };
 
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            handleAddLabel();
-        }
+    const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+        setText(e.target.value);
+        (e.target.value != "") ? setHasValue(true) : setHasValue(false)
     };
 
     return (
@@ -51,7 +42,7 @@ const AddLabel = () => {
                 placeholder="Новый ярлык..."
                 value={text}
                 onChange={handleChangeInput}
-                onKeyDown={handleKeyPress}
+                onKeyDown={e => handleEnterPress(e, handleAddLabel)}
             />
             <Button createButton onClick={handleAddLabel} disabled={!hasValue}>
                 <span className="mr-2">Создать ярлык</span>
@@ -60,5 +51,3 @@ const AddLabel = () => {
         </div>
     )
 }
-
-export default AddLabel;

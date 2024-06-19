@@ -2,15 +2,21 @@ import { Search } from "@/features/search";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { ViewSwitcher } from "@/features/viewSwitcher";
 import { Logo } from "@/shared/ui";
-import HeaderMenuButton from "../HeaderMenuButton/HeaderMenuButton";
+import { HeaderMenuButton } from "../HeaderMenuButton/HeaderMenuButton";
 import { useTheme } from "@/shared/lib/hooks";
 import { Theme } from "@/shared/const";
+import React from "react";
 
-const Header = () => {
+export const Header = React.memo(() => {
     const { theme } = useTheme();
 
     return (
-        <div className={`fixed top-0 left-0 z-50 w-screen flex justify-between items-center py-2 px-3 sm:px-5 border-blue border-b shadow-md ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}`}>
+        <div 
+            className={`
+                fixed top-0 left-0 z-50 w-screen flex justify-between items-center py-2 px-3 sm:px-5 border-blue border-b shadow-md 
+                ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
+            `}
+            >
             <div className="flex-center w-2/3">
                 <HeaderMenuButton/>
                 <Logo/>
@@ -22,6 +28,4 @@ const Header = () => {
             </div>
         </div>
     )
-}
-
-export default Header;
+})

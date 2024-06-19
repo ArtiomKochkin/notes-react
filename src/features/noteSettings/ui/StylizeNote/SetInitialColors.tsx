@@ -1,26 +1,27 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Theme } from "@/shared/const";
+import React from "react";
 
 interface SetInitialColorsProps {
     note: INote
 }
 
-const SetInitialColors = ({ note }: SetInitialColorsProps) => {
+export const SetInitialColors = React.memo(({ note }: SetInitialColorsProps) => {
     const { theme } = useTheme();
-    const {updateNote: updNote} = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
 
     const changeColors = async () => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 colorText: "inherit",
                 background: "inherit",
                 backgroundImage: ""
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.log(`Failed to update note: `, err);
         }
@@ -36,5 +37,4 @@ const SetInitialColors = ({ note }: SetInitialColorsProps) => {
             Сбросить стилизацию
         </div>
     )
-}
-export default SetInitialColors;
+})

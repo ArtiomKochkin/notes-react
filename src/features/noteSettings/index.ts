@@ -1,17 +1,9 @@
-import ArchiveNote from "./ui/ArchiveNote/ArchiveNote";
-import CopyNote from "./ui/CopyNote/CopyNote";
-import DeleteNote from "./ui/DeleteNote/DeleteNote";
-import DownloadNoteDOCX from "./ui/DownloadNote/DownloadNoteDOCX";
-import DownloadNotePDF from "./ui/DownloadNote/DownloadNotePDF";
-import EditLabelsNote from "./ui/EditLabelsNote/EditLabelsNote";
-import PinNote from "./ui/PinNote/PinNote";
-import RestoreNote from "./ui/RestoreNote/RestoreNote";
-import StylizeNote from "./ui/StylizeNote/StylizeNote";
-
-export { 
-    DeleteNote, RestoreNote, 
-    ArchiveNote, PinNote, 
-    CopyNote, EditLabelsNote, 
-    DownloadNotePDF, DownloadNoteDOCX,
-    StylizeNote
-};
+export { ArchiveNote } from "./ui/ArchiveNote/ArchiveNote";
+export { CopyNote } from "./ui/CopyNote/CopyNote";
+export { DeleteNote } from "./ui/DeleteNote/DeleteNote";
+export { DownloadNoteDOCX } from "./ui/DownloadNote/DownloadNoteDOCX";
+export { DownloadNotePDF } from "./ui/DownloadNote/DownloadNotePDF";
+export { EditLabelsNote } from "./ui/EditLabelsNote/EditLabelsNote";
+export { PinNote } from "./ui/PinNote/PinNote";
+export { RestoreNote } from "./ui/RestoreNote/RestoreNote";
+export { StylizeNote } from "./ui/StylizeNote/StylizeNote";

@@ -9,7 +9,7 @@ interface ProvidersProps {
     children: ReactNode
 }
 
-const Providers = ({ children }: ProvidersProps) => {
+export const Providers = ({ children }: ProvidersProps) => {
  
     return (
         <StoreProvider>
@@ -25,5 +25,3 @@ const Providers = ({ children }: ProvidersProps) => {
         </StoreProvider>
     )
 }
-
-export default Providers;

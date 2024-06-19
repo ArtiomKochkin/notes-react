@@ -1,7 +1,9 @@
 import { useCreateLabelMutation } from "@/entities/labels";
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
+import { handleEnterPress } from "@/shared/lib/utils";
 import { INote } from "@/shared/types";
+import React from "react";
 import { useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 
@@ -9,10 +11,10 @@ interface AddLabelNoteProps {
     note: INote
 }
 
-const AddLabelNote = ({ note }: AddLabelNoteProps) => {
+export const AddLabelNote = React.memo(({ note }: AddLabelNoteProps) => {
     const [createLabel] = useCreateLabelMutation();
-    const [updateNote] = useUpdateNoteMutation();
-    const { addLabel, updateNote: updLabel } = useActions();
+    const [updNote] = useUpdNoteMutation();
+    const { addLabel, updateNote } = useActions();
     const [text, setText] = useState("");
 
     const handleAddLabel = async () => {
@@ -23,24 +25,18 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
                     notes: [note.id],
                     timestamp: Date.now()
                 }).unwrap();
-                const updatedNote = await updateNote({
+                const updatedNote = await updNote({
                     id: note.id,
                     labels: [...note.labels, newLabel.id],
                     timestamp: Date.now()
                 }).unwrap();
                 addLabel(newLabel);
-                updLabel(updatedNote);
+                updateNote(updatedNote);
             } catch (err) {
                 console.error('Failed to create label:', err);
             }
         }
         setText("");
-    };
-
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            handleAddLabel();
-        }
     };
 
     return (
@@ -50,7 +46,7 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
                 className="bg-transparent outline-none w-[90%]"                 
                 placeholder="Новый ярлык..."
                 value={text}
-                onKeyDown={handleKeyPress}
+                onKeyDown={e => handleEnterPress(e, handleAddLabel)}
                 onChange={(e) => setText(e.target.value)}
             />
             <button 
@@ -62,6 +58,4 @@ const AddLabelNote = ({ note }: AddLabelNoteProps) => {
             </button>
         </div>
     )
-}
-
-export default AddLabelNote;
+})

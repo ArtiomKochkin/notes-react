@@ -3,7 +3,7 @@ import { SidebarContext } from "@/shared/lib/context";
 import { useContext } from "react";
 import { MdMenu } from "react-icons/md";
 
-const HeaderMenuButton = () => {
+export const HeaderMenuButton = () => {
     const { showSidebar, setShowSidebar } = useContext(SidebarContext);
 
     const handleClick = () => {
@@ -19,5 +19,3 @@ const HeaderMenuButton = () => {
         </button>
     )
 }
-
-export default HeaderMenuButton;

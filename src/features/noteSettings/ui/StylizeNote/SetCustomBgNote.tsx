@@ -1,17 +1,18 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { handleImage } from "../../lib";
 import { Theme } from "@/shared/const";
+import React from "react";
 
 interface SetCustomBgNoteProps {
     note: INote
 }
 
-const SetCustomBgNote = ({ note }: SetCustomBgNoteProps) => {
+export const SetCustomBgNote = React.memo(({ note }: SetCustomBgNoteProps) => {
     const { theme } = useTheme();
-    const {updateNote: updNote} = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
 
     const changeBackground = () => {
         const input = document.createElement("input");
@@ -19,9 +20,9 @@ const SetCustomBgNote = ({ note }: SetCustomBgNoteProps) => {
         input.accept = "image/*";
         input.style.display = "none";
         
-        input.onchange = (e: Event) => handleImage(e, note, input, "backgroundImage", updNote, 
+        input.onchange = (e: Event) => handleImage(e, note, input, "backgroundImage", updateNote, 
             async (patch) => {
-                const result = await updateNote({
+                const result = await updNote({
                     ...patch,
                     timestamp: Date.now()
                 }).unwrap();
@@ -43,6 +44,4 @@ const SetCustomBgNote = ({ note }: SetCustomBgNoteProps) => {
             Установить свой фон
         </div>
     )
-}
-
-export default SetCustomBgNote;
+})

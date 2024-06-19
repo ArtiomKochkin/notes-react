@@ -4,7 +4,7 @@ interface SetColorsProps {
     setColor: (color: string) => void
 }
 
-const SetColors = ({ setColor }: SetColorsProps) => {
+export const SetColors = ({ setColor }: SetColorsProps) => {
  
     return (
         <ul className="flex-center gap-1 bg-inherit py-1">
@@ -21,5 +21,3 @@ const SetColors = ({ setColor }: SetColorsProps) => {
         </ul>
     )
 }
-
-export default SetColors;

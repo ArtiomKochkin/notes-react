@@ -1,6 +1,7 @@
 import { NoteView, NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
-import NoteContentListItem from "./NoteContentListItem";
+import { NoteContentListItem } from "./NoteContentListItem";
+import React from "react";
 
 interface NoteContentListProps {
     type: NoteView,
@@ -8,7 +9,7 @@ interface NoteContentListProps {
     view?: NotesView
 }
 
-const NoteContentList = ({  type, note, view }: NoteContentListProps) => {
+export const NoteContentList = React.memo(({  type, note, view }: NoteContentListProps) => {
  
     return (
         <div
@@ -24,6 +25,4 @@ const NoteContentList = ({  type, note, view }: NoteContentListProps) => {
             </div>
         </div>
     )
-}
-
-export default NoteContentList;
+})

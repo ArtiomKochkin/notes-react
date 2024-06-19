@@ -1,23 +1,24 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
+import React from "react";
 
 interface RestoreNoteProps {
     note: INote
 }
 
-const RestoreNote = ({ note }: RestoreNoteProps) => {
-    const { updateNote: updNote } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+export const RestoreNote = React.memo(({ note }: RestoreNoteProps) => {
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
  
     const restoreNote = async () => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 isDeleted: false
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to restore note:', err);
         }
@@ -32,6 +33,4 @@ const RestoreNote = ({ note }: RestoreNoteProps) => {
             )}
         </>
     )
-}
-
-export default RestoreNote;
+})

@@ -1,3 +1,1 @@
-import LastModifiedDate from "./ui/LastModifiedDate";
-
-export { LastModifiedDate };
+export { LastModifiedDate } from "./ui/LastModifiedDate";

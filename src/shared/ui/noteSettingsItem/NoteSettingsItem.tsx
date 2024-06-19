@@ -8,22 +8,21 @@ interface NoteSettingsItemProps {
     innerRef?: RefObject<HTMLLIElement>
 }
 
-const NoteSettingsItem = ({ children, onClick, innerRef }: NoteSettingsItemProps) => {
+export const NoteSettingsItem = ({ children, onClick, innerRef }: NoteSettingsItemProps) => {
     const { theme } = useTheme();
  
     return (
         <li 
             onClick={onClick}
             ref={innerRef}
-            className={`py-1 px-2 text-sm rounded-md cursor-pointer ${
-                theme == Theme.LIGHT 
+            className={
+                `py-1 px-2 text-sm rounded-md cursor-pointer ${theme == Theme.LIGHT 
                     ? "text-dark hover:text-light hover:bg-blue" 
-                    : "text-light hover:text-blue hover:bg-inherit"
-            }`}
+                    : "text-light hover:text-blue hover:bg-inherit"}
+                `
+            }
         >
             {children}
         </li>
     )
 }
-
-export default NoteSettingsItem;

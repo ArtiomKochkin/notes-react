@@ -8,7 +8,7 @@ interface SearchProviderProps {
 
 const defaultTerm = (localStorage.getItem(LOCAL_STORAGE_SEARCH_KEY) as string) || "";
 
-const SearchProvider = ({ children }: SearchProviderProps) => {
+export const SearchProvider = ({ children }: SearchProviderProps) => {
     const [searchTerm, setSearchTerm] = useState(defaultTerm);
  
     return (
@@ -17,5 +17,3 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
         </SearchContext.Provider>
     )
 }
-
-export default SearchProvider;

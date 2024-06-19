@@ -1,3 +1,1 @@
-import DeleteAllNotes from "./ui/DeleteAllNotes";
-
-export { DeleteAllNotes };
+export { DeleteAllNotes } from "./ui/DeleteAllNotes";

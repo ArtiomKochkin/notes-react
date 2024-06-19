@@ -1,29 +1,30 @@
-import { useGetLabelsQuery, useUpdateLabelMutation } from "@/entities/labels";
-import { useDeleteNoteMutation, useUpdateNoteMutation } from "@/entities/notes";
+import { useGetLabelsQuery, useUpdLabelMutation } from "@/entities/labels";
+import { useDeleteNoteMutation, useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
+import React from "react";
 
 interface DeleteNoteProps {
     note: INote
 }
 
-const DeleteNote = ({ note }: DeleteNoteProps) => {
-    const { updateNote: updNote, deleteNote, updateLabel: updLabel } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+export const DeleteNote = React.memo(({ note }: DeleteNoteProps) => {
+    const { updateNote, removeNote, updateLabel } = useActions();
+    const [updNote] = useUpdNoteMutation();
     const [deleteNoteFinally] = useDeleteNoteMutation();
-    const [updateLabel] = useUpdateLabelMutation();
+    const [updLabel] = useUpdLabelMutation();
     const { data } = useGetLabelsQuery(null);
     const filteredLabels = data?.filter(label => label.notes.includes(note.id));
  
     const handleDeleteNote = async () => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 isDeleted: true,
                 isArchive: false
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to delete note:', err);
         }
@@ -32,15 +33,15 @@ const DeleteNote = ({ note }: DeleteNoteProps) => {
     const handleDeleteNoteFinally = async () => {
         try {
             await deleteNoteFinally(note.id).unwrap();
-            deleteNote(note.id);
+            removeNote(note.id);
 
             if (filteredLabels) {
                 for (const label of filteredLabels) {
-                    const updatedLabel = await updateLabel({
+                    const updatedLabel = await updLabel({
                         id: label.id,
                         notes: label.notes.filter(n => n !== note.id)
                     }).unwrap();
-                    updLabel(updatedLabel);
+                    updateLabel(updatedLabel);
                 }
             }
         } catch (err) {
@@ -57,6 +58,4 @@ const DeleteNote = ({ note }: DeleteNoteProps) => {
             )}
         </>
     )
-}
-
-export default DeleteNote;
+})

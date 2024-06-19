@@ -1,5 +1,4 @@
-const plugin = require('tailwindcss/plugin');
-
+import plugin from 'tailwindcss/plugin';
 
 /** @type {import('tailwindcss').Config} */
 
@@ -41,7 +40,6 @@ export default {
 	},
 	plugins: [
 		plugin(function({ addUtilities }) {
-			// TODO: remove utils
 			addUtilities({
 				".text-shadow": {
 					textShadow: "1.5px 1.5px rgba(128, 43, 177, 0.4)",
@@ -102,4 +100,3 @@ export default {
 		}),
 	],
 }
-

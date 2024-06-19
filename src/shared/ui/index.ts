@@ -1,20 +1,12 @@
-import Button from "./button/Button";
-import Input from "./input/Input";
-import Logo from "./logo/Logo";
-import Loading from "./loading/Loading";
-import Error from "./error/Error";
-import Label from "./label/Label";
-import Dots from "./dots/Dots";
-import Close from "./close/Close";
-import Title from "./title/Title";
-import NoteSettingsItem from "./noteSettingsItem/NoteSettingsItem";
-import NoteSubSettings from "./noteSubSettings/NoteSubSettings";
-import DivEditable from "./divEditable/DivEditable";
-
-export { 
-    Button, Input, Logo, 
-    Loading, Error, Label, 
-    Dots, Close, Title, 
-    NoteSettingsItem, NoteSubSettings,
-    DivEditable
-};
+export { Button } from "./button/Button";
+export { Input } from "./input/Input";
+export { Logo } from "./logo/Logo";
+export { Loading } from "./loading/Loading";
+export { Error } from "./error/Error";
+export { Label } from "./label/Label";
+export { Dots } from "./dots/Dots";
+export { Close } from "./close/Close";
+export { Title } from "./title/Title";
+export { NoteSettingsItem } from "./noteSettingsItem/NoteSettingsItem";
+export { NoteSubSettings } from "./noteSubSettings/NoteSubSettings";
+export { DivEditable } from "./divEditable/DivEditable";

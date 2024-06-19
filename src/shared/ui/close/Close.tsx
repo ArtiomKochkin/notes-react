@@ -4,7 +4,7 @@ interface CloseProps {
     closeElement: () => void
 }
 
-const Close = ({ closeElement }: CloseProps) => {
+export const Close = ({ closeElement }: CloseProps) => {
  
     return (
         <div onClick={() => closeElement()} title="Закрыть">
@@ -12,5 +12,3 @@ const Close = ({ closeElement }: CloseProps) => {
         </div>
     )
 }
-
-export default Close;

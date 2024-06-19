@@ -10,7 +10,7 @@ const defaultSidebarView = localStorage.getItem(LOCAL_STORAGE_SIDEBAR_KEY);
 const defaultSidebarViewByWidth = window.innerWidth > 640;
 const initialSidebarView = defaultSidebarView !== null ? JSON.parse(defaultSidebarView) : defaultSidebarViewByWidth;
 
-const SidebarProvider = ({ children }: SidebarProviderProps) => {
+export const SidebarProvider = ({ children }: SidebarProviderProps) => {
     const [showSidebar, setShowSidebar] = useState<boolean>(initialSidebarView);
 
     return (
@@ -19,5 +19,3 @@ const SidebarProvider = ({ children }: SidebarProviderProps) => {
         </SidebarContext.Provider>
     )
 }
-
-export default SidebarProvider;

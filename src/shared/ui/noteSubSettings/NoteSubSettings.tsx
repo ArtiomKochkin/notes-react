@@ -6,7 +6,7 @@ interface NoteSubSettingsProps {
     children: ReactNode
 }
 
-const NoteSubSettings = ({ children }: NoteSubSettingsProps) => {
+export const NoteSubSettings = ({ children }: NoteSubSettingsProps) => {
     const { theme } = useTheme();
  
     return (
@@ -18,5 +18,3 @@ const NoteSubSettings = ({ children }: NoteSubSettingsProps) => {
         </div>
     )
 }
-
-export default NoteSubSettings;

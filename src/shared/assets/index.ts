@@ -1,3 +1,1 @@
-import { NunitoSans } from "./fonts/NunitoSans";
-
-export { NunitoSans };
+export { NunitoSans } from "./fonts/NunitoSans";

@@ -1,17 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/shared/ui";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { INoteData } from "@/shared/types";
 import { useCreateNoteMutation } from "@/entities/notes";
 import { NotesView, defaultValueNote } from "@/shared/const";
 import { useActions } from "@/shared/lib/hooks";
-import Note from "../Note/Note";
+import { Note } from "../Note/Note";
 
 interface NewNoteProps {
     view: NotesView,
 }
 
-const NewNote = ({ view }: NewNoteProps) => {
+export const NewNote = React.memo(({ view }: NewNoteProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [note] = useState<INoteData>(defaultValueNote);
     const { addNote } = useActions();
@@ -29,7 +29,7 @@ const NewNote = ({ view }: NewNoteProps) => {
             console.error('Failed to create note:', err);
         }
     };
- 
+    
     return (
         <div className="leading-5">
             <Button createButton onClick={() => handleCreateNote(false)} disabled={isLoading}>
@@ -45,6 +45,4 @@ const NewNote = ({ view }: NewNoteProps) => {
             }
         </div>
     )
-}
-
-export default NewNote;
+})

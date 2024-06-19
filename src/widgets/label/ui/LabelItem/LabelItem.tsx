@@ -1,5 +1,6 @@
 import { EditLabel, RemoveLabel } from "@/features/label";
 import { ILabel } from "@/shared/types";
+import React from "react";
 import { MdOutlineLabel } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -7,9 +8,8 @@ interface LabelItemProps {
     label: ILabel
 }
 
-const LabelItem = ({ label }: LabelItemProps) => {
+export const LabelItem = React.memo(({ label }: LabelItemProps) => {
     const nav = useNavigate();
-
     const moveToLabel = () => nav("/label", { state: label });
 
     return (
@@ -19,6 +19,4 @@ const LabelItem = ({ label }: LabelItemProps) => {
             <RemoveLabel id={label.id}/>
         </li>
     )
-}
-
-export default LabelItem;
+})

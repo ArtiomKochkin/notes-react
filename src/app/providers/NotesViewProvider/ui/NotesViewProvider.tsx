@@ -5,10 +5,10 @@ import { ReactNode, useState } from "react";
 interface NotesViewProviderProps {
     children: ReactNode
 }
+
 const defaultView = (localStorage.getItem(LOCAL_STORAGE_NOTES_VIEW_KEY) as NotesView) || NotesView.GRID;
 
-
-const NotesViewProvider = ({ children }: NotesViewProviderProps) => {
+export const NotesViewProvider = ({ children }: NotesViewProviderProps) => {
     const [notesView, setNotesView] = useState<NotesView>(defaultView);
 
     return (
@@ -17,5 +17,3 @@ const NotesViewProvider = ({ children }: NotesViewProviderProps) => {
         </NotesViewContext.Provider>
     )
 }
-
-export default NotesViewProvider;

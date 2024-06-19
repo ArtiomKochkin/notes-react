@@ -1,26 +1,27 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Theme } from "@/shared/const";
-import SetColors from "./SetColors";
+import { SetColors } from "./SetColors";
+import React from "react";
 
 interface SetBgNoteProps {
     note: INote
 }
 
-const SetBgNote = ({ note }: SetBgNoteProps) => {
+export const SetBgNote = React.memo(({ note }: SetBgNoteProps) => {
     const { theme } = useTheme();
-    const {updateNote: updNote} = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
 
     const changeBackground = async (color: string) => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 background: color,
                 backgroundImage: ""
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.log(`Failed to update note: `, err);
         }
@@ -36,6 +37,4 @@ const SetBgNote = ({ note }: SetBgNoteProps) => {
             <SetColors setColor={changeBackground}/>
         </div>
     )
-}
-
-export default SetBgNote;
+})

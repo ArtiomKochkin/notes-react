@@ -8,7 +8,7 @@ interface NoteLabelListProps {
     onClick?: () => void
 }
 
-const NoteLabelList = ({ labels, type, onClick }: NoteLabelListProps) => {
+export const NoteLabelList = ({ labels, type, onClick }: NoteLabelListProps) => {
     const { isLoading, isError, data = [] } = useGetLabelsQuery(null);
     const filteredLabels = data?.filter(label => labels.includes(label.id));
  
@@ -30,5 +30,3 @@ const NoteLabelList = ({ labels, type, onClick }: NoteLabelListProps) => {
 
     )
 }
-
-export default NoteLabelList;

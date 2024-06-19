@@ -1,10 +1,10 @@
 import { useGetLabelsQuery } from "@/entities/labels";
-import LabelItem from "../LabelItem/LabelItem";
+import { LabelItem } from "../LabelItem/LabelItem";
 import { Loading, Error } from "@/shared/ui";
 
-const LabelList = () => {
+export const LabelList = () => {
     const { isLoading, isError, data = [] } = useGetLabelsQuery(null);
- 
+
     return (
         <div>
             <Loading isLoading={isLoading}>Загрузка ярлыков...</Loading>
@@ -17,5 +17,3 @@ const LabelList = () => {
         </div>
     )
 }
-
-export default LabelList;

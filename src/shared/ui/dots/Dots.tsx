@@ -7,7 +7,7 @@ interface DotsProps {
     setShow: (show: boolean) => void
 }
 
-const Dots = ({ refElement, show, setShow }: DotsProps) => {
+export const Dots = ({ refElement, show, setShow }: DotsProps) => {
  
     return (
         <div 
@@ -19,5 +19,3 @@ const Dots = ({ refElement, show, setShow }: DotsProps) => {
         </div>
     )
 }
-
-export default Dots;

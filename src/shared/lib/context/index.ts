@@ -1,6 +1,4 @@
-import { NotesViewContext } from "./NotesViewContext";
-import { SearchContext } from "./SearchContext";
-import { SidebarContext } from "./SidebarContext";
-import { ThemeContext } from "./ThemeContext";
-
-export { NotesViewContext, SidebarContext, ThemeContext, SearchContext };
+export { NotesViewContext } from "./NotesViewContext";
+export { SearchContext } from "./SearchContext";
+export { SidebarContext } from "./SidebarContext";
+export { ThemeContext } from "./ThemeContext";

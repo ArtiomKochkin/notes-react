@@ -1,19 +1,36 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { IListContent, INote } from "@/shared/types";
 import { DivEditable } from "@/shared/ui";
 import { useActions } from "@/shared/lib/hooks";
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
+import React from "react";
 
 interface NoteContentListItem {
     line: IListContent,
     note: INote,
 }
 
-const NoteContentListItem = ({ line, note }: NoteContentListItem) => {
+export const NoteContentListItem = React.memo(({ line, note }: NoteContentListItem) => {
     const [isChecked, setIsChecked] = useState(line.isChecked);
     const [content, setContent] = useState(line.text);
-    const { updateNote: updNote } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
+
+    const handleChangeListContent = useCallback(async ( newContent: string, checkbox: boolean) => {
+        try {
+            const updatedListContent = note.listContent.map(item => 
+                item.id === line.id ? { ...item, text: newContent, isChecked: checkbox } : item
+            );
+            const updatedNote = await updNote({
+                id: note.id,
+                timestamp: Date.now(),
+                listContent: updatedListContent
+            }).unwrap();
+            updateNote(updatedNote);
+        } catch (err) {
+            console.error("Failed to update note:", err);
+        }
+    }, [note, line.id, updNote, updateNote]);
 
     const handleChangeText = (newText: string) => {
         setContent(newText);
@@ -25,27 +42,11 @@ const NoteContentListItem = ({ line, note }: NoteContentListItem) => {
         handleChangeListContent(content, value);
     };
 
-    const handleChangeListContent = async ( newContent: string, checkbox: boolean) => {
-        try {
-            const updatedListContent = note.listContent.map(item => 
-                item.id === line.id ? { ...item, text: newContent, isChecked: checkbox } : item
-            );
-            const updatedNote = await updateNote({
-                id: note.id,
-                timestamp: Date.now(),
-                listContent: updatedListContent
-            }).unwrap();
-            updNote(updatedNote);
-        } catch (err) {
-            console.error("Failed to update note:", err);
-        }
-    };
-
     const handleKeyDown = async (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key === "Enter") {
             e.preventDefault();
             try {
-                const updatedNote = await updateNote({
+                const updatedNote = await updNote({
                     id: note.id,
                     timestamp: Date.now(),
                     listContent: [...note.listContent, {
@@ -54,18 +55,18 @@ const NoteContentListItem = ({ line, note }: NoteContentListItem) => {
                         text: "",
                     }]
                 }).unwrap();
-                updNote(updatedNote);
+                updateNote(updatedNote);
             } catch (err) {
                 console.error("Failed to update note:", err);
             }
         } else if (e.key === "Backspace" && e.currentTarget.innerText === "") {
             try {
-                const updatedNote = await updateNote({
+                const updatedNote = await updNote({
                     id: note.id,
                     timestamp: Date.now(),
                     listContent: note.listContent.filter(l => l.id !== line.id)
                 }).unwrap();
-                updNote(updatedNote);
+                updateNote(updatedNote);
             } catch (err) {
                 console.error("Failed to update note:", err);
             }
@@ -88,6 +89,4 @@ const NoteContentListItem = ({ line, note }: NoteContentListItem) => {
             />
         </div>
     )
-}
-
-export default NoteContentListItem;
+})

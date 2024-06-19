@@ -1,18 +1,19 @@
 import { useDeleteLabelMutation } from "@/entities/labels";
-import { useGetNotesQuery, useUpdateNoteMutation } from "@/entities/notes";
+import { useGetNotesQuery, useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
+import React from "react";
 import { BsTrash } from "react-icons/bs";
 
 interface RemoveLabelProps {
     id: number
 }
 
-const RemoveLabel = ({ id }: RemoveLabelProps) => {
-    const { removeLabel, updateNote: updNote  } = useActions();
+export const RemoveLabel = React.memo(({ id }: RemoveLabelProps) => {
+    const { removeLabel, updateNote } = useActions();
     const [deleteLabel] = useDeleteLabelMutation();
     const { data } = useGetNotesQuery(null);
     const filteredNotes = data?.filter(note => note.labels.includes(id));
-    const [updateNote] = useUpdateNoteMutation();
+    const [updNote] = useUpdNoteMutation();
 
     const handleRemoveLabel = async () => {
         try {
@@ -21,11 +22,11 @@ const RemoveLabel = ({ id }: RemoveLabelProps) => {
 
             if (filteredNotes) {
                 for (const note of filteredNotes!) {
-                    const updatedNote = await updateNote({
+                    const updatedNote = await updNote({
                         id: note.id,
                         labels: note.labels.filter(l => l !== id)
                     }).unwrap();
-                    updNote(updatedNote);
+                    updateNote(updatedNote);
                 }
             }
         } catch (err) {
@@ -38,6 +39,4 @@ const RemoveLabel = ({ id }: RemoveLabelProps) => {
             <BsTrash />
         </div>
     )
-}
-
-export default RemoveLabel;
+})

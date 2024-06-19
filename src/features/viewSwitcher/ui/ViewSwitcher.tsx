@@ -1,19 +1,20 @@
 import { LOCAL_STORAGE_NOTES_VIEW_KEY, NotesView } from "@/shared/const";
 import { NotesViewContext } from "@/shared/lib/context";
-import { useContext } from "react";
+import React from "react";
+import { useContext, useCallback } from "react";
 import { MdGridView, MdOutlineViewAgenda } from "react-icons/md";
 
-const ViewSwitcher = () => {
+export const ViewSwitcher = React.memo(() => {
     const { notesView, setNotesView } = useContext(NotesViewContext);
 
-    const handleViewSwitcher = () => {
+    const handleViewSwitcher = useCallback(() => {
         if (setNotesView) {
             const newView = (notesView == NotesView.GRID) ? NotesView.LIST : NotesView.GRID;
             
             setNotesView(newView);
             localStorage.setItem(LOCAL_STORAGE_NOTES_VIEW_KEY, newView);
         }
-    }
+    }, [notesView, setNotesView]);
 
     return (
         <button onClick={handleViewSwitcher}>
@@ -23,6 +24,4 @@ const ViewSwitcher = () => {
             }
         </button>
     )
-}
-
-export default ViewSwitcher;
+})

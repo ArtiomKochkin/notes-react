@@ -2,7 +2,7 @@ interface LabelProps {
     name: string
 }
 
-const Label = ({ name }: LabelProps) => {
+export const Label = ({ name }: LabelProps) => {
  
     return (
         <li className="custom-border inline py-1 px-2 text-sm">
@@ -10,5 +10,3 @@ const Label = ({ name }: LabelProps) => {
         </li>
     )
 }
-
-export default Label;

@@ -1,10 +1,4 @@
-import { useCreateNoteMutation, useDeleteNoteMutation, useSearchNotesQuery, useUpdateNoteMutation } from "./api/endpointsApi";
-import { notesApi, useGetNotesQuery } from "./api/notesApi";
-import { NOTES_API_URL } from "./const/notes";
-import { notesActions, notesReducer } from "./model/notesSlice";
-
-export { 
-    notesReducer, notesActions, notesApi,
-    useGetNotesQuery, useCreateNoteMutation, useUpdateNoteMutation,
-    useDeleteNoteMutation, useSearchNotesQuery, NOTES_API_URL
-};
+export { useCreateNoteMutation, useDeleteNoteMutation, useSearchNotesQuery, useUpdNoteMutation } from "./api/endpointsApi";
+export { notesApi, useGetNotesQuery } from "./api/notesApi";
+export { NOTES_API_URL } from "./const/notes";
+export { notesActions, notesReducer } from "./model/notesSlice";

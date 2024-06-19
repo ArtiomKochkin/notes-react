@@ -1,3 +1,1 @@
-import LabelPage from "./ui/LabelPage";
-
-export { LabelPage };
+export { LabelPage } from "./ui/LabelPage";

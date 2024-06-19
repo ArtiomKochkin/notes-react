@@ -1,24 +1,25 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
+import React from "react";
 
 interface ArchiveNoteProps {
     note: INote
 }
 
-const ArchiveNote = ({ note }: ArchiveNoteProps) => {
-    const { updateNote: updNote } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+export const ArchiveNote = React.memo(({ note }: ArchiveNoteProps) => {
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
 
     const archiveNote = async () => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 isArchive: !note.isArchive, 
                 isDeleted: note.isArchive ? note.isDeleted : false
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to archive note:', err);
         }
@@ -33,6 +34,4 @@ const ArchiveNote = ({ note }: ArchiveNoteProps) => {
             )}
         </>
     )
-}
-
-export default ArchiveNote;
+})

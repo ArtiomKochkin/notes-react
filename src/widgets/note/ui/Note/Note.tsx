@@ -1,8 +1,8 @@
 import { NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
 import { useState } from "react";
-import ClosedNote from "../ClosedNote/ClosedNote";
-import OpenedNote from "../OpenedNote/OpenedNote";
+import { ClosedNote } from "../ClosedNote/ClosedNote";
+import { OpenedNote } from "../OpenedNote/OpenedNote";
 
 interface NoteProps {
     view: NotesView,
@@ -11,7 +11,7 @@ interface NoteProps {
     toggleNewNote?: () => void
 }
 
-const Note = ({ view, note, isNewNote, toggleNewNote }: NoteProps) => {
+export const Note = ({ view, note, isNewNote, toggleNewNote }: NoteProps) => {
     const [isOpenNote, setIsOpenNote] = useState(isNewNote);
 
     const toggleNote = () => {
@@ -27,11 +27,9 @@ const Note = ({ view, note, isNewNote, toggleNewNote }: NoteProps) => {
     return (
         <>
             {!isOpenNote
-                ? <ClosedNote note={note} view={view} toggleNote={toggleNote}/>
-                : <OpenedNote note={note} closeNote={toggleNote}/>
+                ? <ClosedNote note={note} view={view} toggleNote={toggleNote} isOpen={isOpenNote!}/>
+                : <OpenedNote note={note} closeNote={toggleNote} isOpen={isOpenNote}/>
             }
         </>
     )
 }
-
-export default Note;

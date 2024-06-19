@@ -1,25 +1,26 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Theme } from "@/shared/const";
-import SetColors from "./SetColors";
+import { SetColors } from "./SetColors";
+import React from "react";
 
 interface SetColorTextNoteProps {
     note: INote
 }
 
-const SetColorTextNote = ({ note }: SetColorTextNoteProps) => {
+export const SetColorTextNote = React.memo(({ note }: SetColorTextNoteProps) => {
     const { theme } = useTheme();
-    const {updateNote: updNote} = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
 
     const changeColorText = async (color: string) => {
         try {
-            const updatedNote = await updateNote({
+            const updatedNote = await updNote({
                 id: note.id,
                 colorText: color,
             }).unwrap();
-            updNote(updatedNote);
+            updateNote(updatedNote);
         } catch (err) {
             console.log(`Failed to update note: `, err);
         }
@@ -35,6 +36,4 @@ const SetColorTextNote = ({ note }: SetColorTextNoteProps) => {
             <SetColors setColor={changeColorText}/>
         </div>
     )
-}
-
-export default SetColorTextNote;
+})

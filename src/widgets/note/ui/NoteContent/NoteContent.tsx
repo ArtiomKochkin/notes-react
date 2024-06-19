@@ -1,9 +1,10 @@
-import { useUpdateNoteMutation } from "@/entities/notes";
+import { useUpdNoteMutation } from "@/entities/notes";
 import { NoteView, NotesView } from "@/shared/const";
 import { useActions, useEdit } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { RefObject } from "react";
 import { formatText } from "../../lib";
+import React from "react";
 
 interface NoteContentPRops {
     type: NoteView,
@@ -11,15 +12,15 @@ interface NoteContentPRops {
     view?: NotesView
 }
 
-const NoteContent = ({ type, note, view }: NoteContentPRops) => {
-    const { updateNote: updNote } = useActions();
-    const [updateNote] = useUpdateNoteMutation();
+export const NoteContent = React.memo(({ type, note, view }: NoteContentPRops) => {
+    const { updateNote } = useActions();
+    const [updNote] = useUpdNoteMutation();
     const {
         isEditing, text, inputRef, 
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress,
-    } = useEdit(note, note.content, "content", updNote, 
+    } = useEdit(note, note.content, "content", updateNote, 
         async (patch) => {
-            const result = await updateNote({
+            const result = await updNote({
                 ...patch,
                 timestamp: Date.now()
             }).unwrap();
@@ -54,6 +55,4 @@ const NoteContent = ({ type, note, view }: NoteContentPRops) => {
             )}
         </div>
     )
-}
-
-export default NoteContent;
+})

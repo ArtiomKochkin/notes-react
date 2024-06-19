@@ -1,3 +1,1 @@
-import SearchProvider from "./ui/SearchProvider";
-
-export { SearchProvider };
+export { SearchProvider } from "./ui/SearchProvider";

@@ -6,7 +6,7 @@ import { Title } from "@/shared/ui";
 import { NoteList } from "@/widgets/noteList";
 import { useContext } from "react";
 
-const DeletedPage = () => {
+export const DeletedPage = () => {
     const { isLoading, isError, data } = useGetNotesQuery(null);
     const filteredNotes = data?.filter(item => item.isDeleted) || [];
     const { notesView } = useContext(NotesViewContext);
@@ -30,5 +30,3 @@ const DeletedPage = () => {
         </MainLayout>
     )
 }
-
-export default DeletedPage;

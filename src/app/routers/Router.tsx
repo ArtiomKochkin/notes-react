@@ -1,4 +1,5 @@
 import { LabelPage } from "@/pages/label";
+import { MainPage } from "@/pages/main";
 import { ISidebarItemComponent } from "@/shared/types";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
@@ -7,7 +8,7 @@ interface RouterProps {
     items: ISidebarItemComponent[]
 }
 
-const Router = ({ items }: RouterProps) => {
+export const Router = ({ items }: RouterProps) => {
  
     return (
         <Routes>
@@ -19,9 +20,7 @@ const Router = ({ items }: RouterProps) => {
                 />
             )}
             <Route element={<LabelPage/>} path="/label"/>
-            <Route path="*" element={<div>Not found</div>}/>
+            <Route element={<MainPage/>} path="*"/>
         </Routes>
     )
 }
-
-export default Router;

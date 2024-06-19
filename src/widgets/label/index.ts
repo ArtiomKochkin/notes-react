@@ -1,3 +1,1 @@
-import LabelList from "./ui/LabelList/LabelList";
-
-export { LabelList };
+export { LabelList } from "./ui/LabelList/LabelList";

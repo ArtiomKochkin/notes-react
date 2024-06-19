@@ -1,3 +1,1 @@
-import ArchivePage from "./ui/ArchivePage";
-
-export { ArchivePage };
+export { ArchivePage } from "./ui/ArchivePage";

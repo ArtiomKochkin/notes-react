@@ -2,12 +2,13 @@ import { useCreateNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote, INoteData } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
+import React from "react";
 
 interface CopyNoteProps {
     note: INote
 }
 
-const CopyNote = ({ note }: CopyNoteProps) => {
+export const CopyNote = React.memo(({ note }: CopyNoteProps) => {
     const { addNote } = useActions();
     const [createNote] = useCreateNoteMutation();
 
@@ -31,6 +32,4 @@ const CopyNote = ({ note }: CopyNoteProps) => {
             )}
         </>
     )
-}
-
-export default CopyNote;
+})

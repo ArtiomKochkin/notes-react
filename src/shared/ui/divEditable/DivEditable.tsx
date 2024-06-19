@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 interface DivEditableProps {
     html: string,
@@ -7,7 +7,7 @@ interface DivEditableProps {
     onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => Promise<void>
 }
 
-const DivEditable = ({ html, className, onChange, onKeyDown }: DivEditableProps) => {
+export const DivEditable = ({ html, className, onChange, onKeyDown }: DivEditableProps) => {
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -16,11 +16,9 @@ const DivEditable = ({ html, className, onChange, onKeyDown }: DivEditableProps)
         }
     }, [html]);
 
-    const handleBlur = () => {
-        if (ref.current) {
-            onChange(ref.current.innerHTML);
-        }
-    };
+    const handleBlur = useCallback(() => {
+        if (ref.current) onChange(ref.current.innerHTML)
+    }, [onChange]);
 
     return (
         <div
@@ -33,5 +31,3 @@ const DivEditable = ({ html, className, onChange, onKeyDown }: DivEditableProps)
         ></div>
     );
 }
-
-export default DivEditable;

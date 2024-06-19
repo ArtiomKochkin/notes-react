@@ -5,22 +5,26 @@ import { filterNotes } from "@/shared/lib/utils";
 import { NewNote } from "@/widgets/note";
 import { NoteList } from "@/widgets/noteList";
 import { PinnedList } from "@/widgets/pinnedList";
-import { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 
-const MainPage = () => {
+export const MainPage = React.memo(() => {
     const { notesView } = useContext(NotesViewContext);
     const { isLoading, isError, data } = useGetNotesQuery(null);
-    const filtered = filterNotes(data!);
-    const pinnedNotes = filtered.filter(item => item.isPinned);
-    const otherNotes = filtered.filter(item => !item.isPinned);
+    const filtered = useMemo(() => filterNotes(data || []), [data]);
+    const pinnedNotes = useMemo(() => filtered.filter(item => item.isPinned), [filtered]);
+    const otherNotes = useMemo(() => filtered.filter(item => !item.isPinned), [filtered]);
 
     return (
         <MainLayout>
             <NewNote view={notesView!}/>
             <PinnedList view={notesView!} isLoading={isLoading} isError={isError} data={pinnedNotes!}/>
-            <NoteList view={notesView!} isLoading={isLoading} isError={isError} data={otherNotes!} isSpecialList={pinnedNotes.length > 0 ? false : true}/>
+            <NoteList 
+                view={notesView!} 
+                isLoading={isLoading} 
+                isError={isError} 
+                data={otherNotes!} 
+                isSpecialList={pinnedNotes.length > 0 ? false : true}
+            />
         </MainLayout>
     )
-}
-
-export default MainPage;
+})

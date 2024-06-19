@@ -1,3 +1,1 @@
-import SidebarProvider from "./ui/SidebarProvider";
-
-export { SidebarProvider };
+export { SidebarProvider } from "./ui/SidebarProvider";

@@ -5,7 +5,7 @@ import { Title } from "@/shared/ui";
 import { NoteList } from "@/widgets/noteList";
 import { useContext } from "react";
 
-const ArchivePage = () => {
+export const ArchivePage = () => {
     const { isLoading, isError, data } = useGetNotesQuery(null);
     const { notesView } = useContext(NotesViewContext);
     const filteredNotes = data?.filter(item => item.isArchive) || [];
@@ -20,5 +20,3 @@ const ArchivePage = () => {
         </MainLayout>
     )
 }
-
-export default ArchivePage;
