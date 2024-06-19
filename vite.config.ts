@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
 	plugins: [react()],
-	base: '/notes',
+	base: '/notes-react',
 	css: {
 		postcss: 'postcss.config.js',
 	},
