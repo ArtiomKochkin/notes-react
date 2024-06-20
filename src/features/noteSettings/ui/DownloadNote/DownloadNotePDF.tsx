@@ -24,8 +24,12 @@ export const DownloadNotePDF = React.memo(({ note }: DownloadNotePDFProps) => {
     };
  
     return (
-        <NoteSettingsItem onClick={downloadNote}>
-            Скачать заметку в PDF
-        </NoteSettingsItem>
+        <>
+            {!(note.isArchive || note.isDeleted || note.isList) && (
+                <NoteSettingsItem onClick={downloadNote}>
+                    Скачать заметку в PDF
+                </NoteSettingsItem>
+            )}
+        </>
     )
 })

@@ -20,8 +20,12 @@ export const DownloadNoteDOCX = React.memo(({ note }: DownloadNoteDOCXProps) => 
     };
 
     return (
-        <NoteSettingsItem onClick={downloadNote}>
-            Скачать заметку в Docx
-        </NoteSettingsItem>
+        <>
+            {!(note.isArchive || note.isDeleted || note.isList) && (
+                <NoteSettingsItem onClick={downloadNote}>
+                    Скачать заметку в Docx
+                </NoteSettingsItem>
+            )}
+        </>
     )
 })
