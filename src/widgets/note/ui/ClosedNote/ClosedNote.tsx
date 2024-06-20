@@ -23,7 +23,7 @@ export const ClosedNote = React.memo(({ isOpen, view, note, toggleNote }: NotePr
             className={`
                 flex flex-col custom-border cursor-pointer p-2 sm:p-3 relative transition-all 
                 sm:hover:shadow-custom bg-no-repeat bg-center bg-cover bg-inherit text-inherit
-                ${view == NotesView.GRID ? "h-[42vh] md:h-[40vh] lg:h-[35vh]" : "h-[34vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"}
+                ${view == NotesView.GRID ? "h-[34vh] md:h-[40vh] lg:h-[35vh]" : "h-[25vh] sm:h-[38vh] lg:h-fit lg:max-h-[38vh]"}
             `}
             style={{
                 backgroundImage: `url(${note.backgroundImage})`,

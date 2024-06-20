@@ -32,7 +32,7 @@ export const NoteContent = React.memo(({ type, note, view }: NoteContentPRops) =
         <div
             onClick={handleDivClick}
             className={
-                type == NoteView.OPENED ? "my-2 flex flex-grow cursor-text" : `py-2 leading-5 h-full 
+                type == NoteView.OPENED ? "my-2 flex flex-grow cursor-text" : `py-2 leading-5 h-full
                 ${view == NotesView.GRID ? "line-clamp-6 sm:line-clamp-5 lg:line-clamp-4" : "line-clamp-4"}`
             }
         >
@@ -49,7 +49,7 @@ export const NoteContent = React.memo(({ type, note, view }: NoteContentPRops) =
                     ></textarea>
                 </div>
             ) : (
-                <div className="whitespace-pre-wrap w-full" title="Введите текст...">
+                <div className="whitespace-pre-wrap w-full break-words" title="Введите текст...">
                     {formatText(text)}
                 </div>
             )}
