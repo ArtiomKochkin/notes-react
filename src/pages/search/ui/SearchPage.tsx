@@ -8,14 +8,15 @@ import { useContext } from "react";
 export const SearchPage = () => {
     const { notesView } = useContext(NotesViewContext);
     const { searchTerm } = useContext(SearchContext);
-    const { data, isLoading, isError } = useSearchNotesQuery(searchTerm, { skip: !searchTerm });
+    const { data, isLoading, isError } = useSearchNotesQuery();
+    const filteredData = data?.filter(note => note.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <MainLayout>
             <Title>Результаты по запросу: {searchTerm}</Title>
-            {!data || data.length === 0
+            {!filteredData || filteredData.length === 0
                 ? <div className="text-center">Ничего не найдено</div>
-                : <NoteList view={notesView!} isLoading={isLoading} isError={isError} data={data!} isSpecialList/>
+                : <NoteList view={notesView!} isLoading={isLoading} isError={isError} data={filteredData!} isSpecialList/>
             }
         </MainLayout>
     )
