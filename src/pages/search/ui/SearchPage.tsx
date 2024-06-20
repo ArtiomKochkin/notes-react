@@ -14,7 +14,7 @@ export const SearchPage = () => {
     return (
         <MainLayout>
             <Title>Результаты по запросу: {searchTerm}</Title>
-            {!filteredData || filteredData.length === 0
+            {!filteredData || filteredData.length === 0 || searchTerm === ""
                 ? <div className="text-center">Ничего не найдено</div>
                 : <NoteList view={notesView!} isLoading={isLoading} isError={isError} data={filteredData!} isSpecialList/>
             }
