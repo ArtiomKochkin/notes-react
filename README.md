@@ -63,10 +63,14 @@ P.S. Проект не завершен и  находится в разрабо
 
 Решить проблему можно следующим образом:
 1. Склонируйте себе этот репозиторий
-2. В файле src/entities/labels/const/labels.ts замените 1 строку на `export const LABELS_API_URL = "http://localhost:3000/labels";`
-3. В файле src/entities/notes/const/notes.ts замените 1 строку на `export const NOTES_API_URL = "http://localhost:3000/notes";`
-4. Установите зависисимости командой `npm install`
-5. Запустите проект в режиме разработки командой `npm run dev`
-6. Добавьте второй терминал и перейдите в папку public/server, введя 2 команды: `cd public` и `cd server`
-7. Запустите json-server командой `json-server -w db.json`
-8. Перейдите в браузер по ссылке http://localhost:5173/notes-react
+2. В файле src/entities/labels/const/labels.ts замените 1 строку на
+   
+   `export const LABELS_API_URL = "http://localhost:3000/labels";`
+5. В файле src/entities/notes/const/notes.ts замените 1 строку на
+
+   `export const NOTES_API_URL = "http://localhost:3000/notes";`
+7. Установите зависисимости командой `npm install`
+8. Запустите проект в режиме разработки командой `npm run dev`
+9. Добавьте второй терминал и перейдите в папку public/server, введя 2 команды: `cd public` и `cd server`
+10. Запустите json-server командой `json-server -w db.json`
+11. Перейдите в браузер по ссылке http://localhost:5173/notes-react
