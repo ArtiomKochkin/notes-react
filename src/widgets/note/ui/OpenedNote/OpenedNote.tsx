@@ -28,7 +28,7 @@ export const OpenedNote = React.memo(({ isOpen, note, closeNote }: OpenedNotePro
     return (
         <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-dark bg-opacity-70">
             <div className={`
-                relative custom-border w-[94vw] sm:w-4/5 lg:w-3/5 h-[95vh] mx-auto my-[1vh] scrollbar
+                relative custom-border w-[94vw] sm:w-4/5 lg:w-3/5 h-[90vh] sm:h-[95vh] mx-auto my-[1vh] scrollbar
                 ${theme == Theme.LIGHT ? "bg-light text-dark" : "bg-dark text-light"}
             `}>
                 <div 
