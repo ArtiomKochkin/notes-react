@@ -1,11 +1,11 @@
-import { NoteView, NotesView } from "@/shared/const";
+import React from "react";
 import { useOutside } from "@/shared/lib/hooks";
+import { NoteView, NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
 import { NoteSettings } from "../NoteSettings/NoteSettings";
 import { NoteContent } from "../NoteContent/NoteContent";
 import { NoteLabelList } from "../NoteLabelList/NoteLabelList";
 import { NoteContentList } from "../NoteContentList/NoteContentList";
-import React from "react";
 import { NoteHeader } from "../NoteHeader/NoteHeader";
 
 interface NoteProps {

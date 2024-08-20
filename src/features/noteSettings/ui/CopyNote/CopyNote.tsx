@@ -1,8 +1,8 @@
+import React from "react";
 import { useCreateNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote, INoteData } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
-import React from "react";
 
 interface CopyNoteProps {
     note: INote

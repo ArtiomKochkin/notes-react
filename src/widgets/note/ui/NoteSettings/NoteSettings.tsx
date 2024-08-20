@@ -1,9 +1,8 @@
+import React, { RefObject } from "react";
 import { Theme } from "@/shared/const";
-import { useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
-import { RefObject } from "react";
+import { useTheme } from "@/shared/lib/hooks";
 import { NOTE_SETTINGS_COMPONENTS } from "../../lib";
-import React from "react";
 
 interface NoteSettingsProps {
     isShow: boolean,

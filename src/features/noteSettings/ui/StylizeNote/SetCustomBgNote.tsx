@@ -1,9 +1,9 @@
+import React from "react";
 import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
-import { handleImage } from "../../lib";
 import { Theme } from "@/shared/const";
-import React from "react";
+import { handleImage } from "../../lib";
 
 interface SetCustomBgNoteProps {
     note: INote

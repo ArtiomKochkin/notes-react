@@ -1,10 +1,10 @@
+import React from "react";
 import { useGetLabelsQuery } from "@/entities/labels";
 import { useOutside } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Error, Loading, NoteSettingsItem, NoteSubSettings } from "@/shared/ui";
 import { EditLabelListNote } from "./EditLabelListNote";
 import { AddLabelNote } from "./AddLabelNote";
-import React from "react";
 
 interface EditLabelsNoteProps {
     note: INote

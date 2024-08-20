@@ -1,6 +1,6 @@
+import { InputHTMLAttributes } from "react";
 import { InputType, Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import { InputHTMLAttributes } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     inputType: InputType,

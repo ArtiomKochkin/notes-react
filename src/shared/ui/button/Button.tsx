@@ -1,6 +1,6 @@
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,

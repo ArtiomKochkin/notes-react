@@ -1,8 +1,8 @@
+import React from "react";
+import { TiPin } from "react-icons/ti";
 import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
-import React from "react";
-import { TiPin } from "react-icons/ti";
 
 interface PinNoteProps {
     note: INote

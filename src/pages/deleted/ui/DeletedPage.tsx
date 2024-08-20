@@ -1,10 +1,10 @@
+import { useContext } from "react";
 import { MainLayout } from "@/app/layouts";
-import { useGetNotesQuery } from "@/entities/notes";
+import { NoteList } from "@/widgets/noteList";
 import { DeleteAllNotes } from "@/features/deleteAllNotes";
+import { useGetNotesQuery } from "@/entities/notes";
 import { NotesViewContext } from "@/shared/lib/context";
 import { Title } from "@/shared/ui";
-import { NoteList } from "@/widgets/noteList";
-import { useContext } from "react";
 
 export const DeletedPage = () => {
     const { isLoading, isError, data } = useGetNotesQuery(null);

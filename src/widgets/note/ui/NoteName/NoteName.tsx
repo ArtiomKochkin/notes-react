@@ -1,9 +1,8 @@
+import React, { RefObject } from "react";
 import { useUpdNoteMutation } from "@/entities/notes";
-import { NoteView } from "@/shared/const";
 import { useActions, useEdit } from "@/shared/lib/hooks";
+import { NoteView } from "@/shared/const";
 import { INote } from "@/shared/types";
-import React from "react";
-import { RefObject } from "react";
 
 interface NoteNameProps {
     type: NoteView,

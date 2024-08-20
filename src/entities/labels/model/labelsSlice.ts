@@ -1,5 +1,5 @@
-import { ILabel } from "@/shared/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ILabel } from "@/shared/types";
 import { LOCAL_STORAGE_LABELS_KEY } from "../const/labels";
 
 const getInitialState = (): ILabel[] => {

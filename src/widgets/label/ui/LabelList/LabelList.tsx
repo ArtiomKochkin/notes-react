@@ -1,6 +1,6 @@
 import { useGetLabelsQuery } from "@/entities/labels";
-import { LabelItem } from "../LabelItem/LabelItem";
 import { Loading, Error } from "@/shared/ui";
+import { LabelItem } from "../LabelItem/LabelItem";
 
 export const LabelList = () => {
     const { isLoading, isError, data = [] } = useGetLabelsQuery(null);

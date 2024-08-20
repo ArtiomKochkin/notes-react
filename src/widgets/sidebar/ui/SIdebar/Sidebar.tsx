@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { SidebarContext } from "@/shared/lib/context";
-import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ISidebarItem } from "@/shared/types";
+import { SidebarItem } from "../SidebarItem/SidebarItem";
 
 interface SidebarProps {
     items: ISidebarItem[]

@@ -1,9 +1,9 @@
+import { useContext } from "react";
 import { MainLayout } from "@/app/layouts";
+import { NoteList } from "@/widgets/noteList";
 import { useGetNotesQuery } from "@/entities/notes";
 import { NotesViewContext } from "@/shared/lib/context";
 import { Title } from "@/shared/ui";
-import { NoteList } from "@/widgets/noteList";
-import { useContext } from "react";
 
 export const ArchivePage = () => {
     const { isLoading, isError, data } = useGetNotesQuery(null);

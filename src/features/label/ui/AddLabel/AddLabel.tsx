@@ -1,10 +1,10 @@
+import { ChangeEvent, useState } from "react";
+import { FaRegPlusSquare } from "react-icons/fa";
 import { useCreateLabelMutation } from "@/entities/labels";
-import { InputType } from "@/shared/const";
 import { useActions } from "@/shared/lib/hooks";
 import { handleEnterPress } from "@/shared/lib/utils";
 import { Button, Input } from "@/shared/ui";
-import { ChangeEvent, useState } from "react";
-import { FaRegPlusSquare } from "react-icons/fa";
+import { InputType } from "@/shared/const";
 
 export const AddLabel = () => {
     const [createLabel] = useCreateLabelMutation();

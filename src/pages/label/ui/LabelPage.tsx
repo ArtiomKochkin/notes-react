@@ -1,11 +1,11 @@
+import { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { MainLayout } from "@/app/layouts";
+import { NoteList } from "@/widgets/noteList";
+import { PinnedList } from "@/widgets/pinnedList";
 import { useGetNotesQuery } from "@/entities/notes";
 import { NotesViewContext } from "@/shared/lib/context";
 import { Title } from "@/shared/ui";
-import { NoteList } from "@/widgets/noteList";
-import { PinnedList } from "@/widgets/pinnedList";
-import { useContext } from "react";
-import { useLocation } from "react-router-dom";
 
 export const LabelPage = () => {
     const location = useLocation();

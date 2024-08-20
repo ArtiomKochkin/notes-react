@@ -1,8 +1,8 @@
-import { NunitoSans } from "@/shared/assets";
+import React from "react";
+import jsPDF from "jspdf";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
-import jsPDF from "jspdf";
-import React from "react";
+import { NunitoSans } from "@/shared/assets";
 
 interface DownloadNotePDFProps {
     note: INote

@@ -1,5 +1,5 @@
-import { SlNote } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
+import { SlNote } from "react-icons/sl";
 
 export const Logo = () => {
     const nav = useNavigate();

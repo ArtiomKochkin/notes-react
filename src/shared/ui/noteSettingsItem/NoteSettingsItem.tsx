@@ -1,6 +1,6 @@
+import { MouseEvent, ReactNode, RefObject } from "react";
 import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import { MouseEvent, ReactNode, RefObject } from "react";
 
 interface NoteSettingsItemProps {
     children: ReactNode,

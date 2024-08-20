@@ -1,8 +1,8 @@
+import React from "react";
+import { NoteList } from "@/widgets/noteList";
 import { NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
 import { Title } from "@/shared/ui";
-import { NoteList } from "@/widgets/noteList";
-import React from "react";
 
 interface PinnedListProps {
     view: NotesView,

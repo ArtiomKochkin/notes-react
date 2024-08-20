@@ -1,8 +1,7 @@
+import React, { useCallback } from "react";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { LOCAL_STORAGE_THEME_KEY, Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import React from "react";
-import { useCallback } from "react";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 export const ThemeSwitcher = React.memo(() => {
     const { theme, setTheme } = useTheme();

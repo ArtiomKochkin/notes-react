@@ -1,9 +1,9 @@
-import { PinNote } from "@/features/noteSettings"
-import { NoteView } from "@/shared/const"
-import { INote } from "@/shared/types"
-import { Close, Dots } from "@/shared/ui"
-import React, { RefObject } from "react"
-import { NoteName } from "../NoteName/NoteName"
+import React, { RefObject } from "react";
+import { PinNote } from "@/features/noteSettings";
+import { NoteView } from "@/shared/const";
+import { INote } from "@/shared/types";
+import { Close, Dots } from "@/shared/ui";
+import { NoteName } from "../NoteName/NoteName";
 
 interface NoteHeaderProps {
     note: INote,

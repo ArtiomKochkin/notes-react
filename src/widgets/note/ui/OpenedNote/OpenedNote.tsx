@@ -1,13 +1,12 @@
+import React, { useEffect } from "react";
 import { LastModifiedDate } from "@/features/lastModifiedDate";
 import { NoteView, Theme } from "@/shared/const";
-import { useOutside, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
+import { useOutside, useTheme } from "@/shared/lib/hooks";
 import { NoteSettings } from "../NoteSettings/NoteSettings";
 import { NoteContent } from "../NoteContent/NoteContent";
 import { NoteLabelList } from "../NoteLabelList/NoteLabelList";
-import { useEffect } from "react";
 import { NoteContentList } from "../NoteContentList/NoteContentList";
-import React from "react";
 import { NoteHeader } from "../NoteHeader/NoteHeader";
 
 interface OpenedNoteProps {

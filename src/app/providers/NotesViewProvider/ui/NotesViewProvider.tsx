@@ -1,6 +1,6 @@
+import { ReactNode, useState } from "react";
 import { LOCAL_STORAGE_NOTES_VIEW_KEY, NotesView } from "@/shared/const";
 import { NotesViewContext } from "@/shared/lib/context";
-import { ReactNode, useState } from "react";
 
 interface NotesViewProviderProps {
     children: ReactNode

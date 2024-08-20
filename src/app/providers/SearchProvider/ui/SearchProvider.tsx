@@ -1,6 +1,6 @@
+import { ReactNode, useState } from "react";
 import { LOCAL_STORAGE_SEARCH_KEY } from "@/shared/const";
 import { SearchContext } from "@/shared/lib/context";
-import { ReactNode, useState } from "react";
 
 interface SearchProviderProps {
     children: ReactNode

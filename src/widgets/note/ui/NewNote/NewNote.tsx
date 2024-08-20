@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button } from "@/shared/ui";
 import { FaRegPlusSquare } from "react-icons/fa";
-import { INoteData } from "@/shared/types";
 import { useCreateNoteMutation } from "@/entities/notes";
-import { NotesView, defaultValueNote } from "@/shared/const";
 import { useActions } from "@/shared/lib/hooks";
+import { NotesView, defaultValueNote } from "@/shared/const";
+import { Button } from "@/shared/ui";
+import { INoteData } from "@/shared/types";
 import { Note } from "../Note/Note";
 
 interface NewNoteProps {

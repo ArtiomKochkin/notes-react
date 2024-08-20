@@ -1,6 +1,6 @@
+import { ReactNode, useState } from "react";
 import { LOCAL_STORAGE_SIDEBAR_KEY } from "@/shared/const";
 import { SidebarContext } from "@/shared/lib/context";
-import { ReactNode, useState } from "react";
 
 interface SidebarProviderProps {
     children: ReactNode,

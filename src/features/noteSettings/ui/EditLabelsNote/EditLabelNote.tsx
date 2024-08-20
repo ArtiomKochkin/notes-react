@@ -1,10 +1,9 @@
-import { Theme } from "@/shared/const";
-import { ILabel, INote } from "@/shared/types";
-import { useActions, useTheme } from "@/shared/lib/hooks";
+import React, { useState } from "react";
 import { useUpdLabelMutation } from "@/entities/labels";
 import { useUpdNoteMutation } from "@/entities/notes";
-import { useState } from "react";
-import React from "react";
+import { useActions, useTheme } from "@/shared/lib/hooks";
+import { ILabel, INote } from "@/shared/types";
+import { Theme } from "@/shared/const";
 
 interface EditLabelNoteProps {
     label: ILabel,

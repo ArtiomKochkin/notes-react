@@ -1,6 +1,6 @@
+import { combineReducers } from "@reduxjs/toolkit";
 import { labelsApi, labelsReducer } from "@/entities/labels";
 import { notesApi, notesReducer } from "@/entities/notes";
-import { combineReducers } from "@reduxjs/toolkit";
 
 export const rootReducer = combineReducers({
     notes: notesReducer,

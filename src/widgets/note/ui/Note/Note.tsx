@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
-import { useState } from "react";
 import { ClosedNote } from "../ClosedNote/ClosedNote";
 import { OpenedNote } from "../OpenedNote/OpenedNote";
 

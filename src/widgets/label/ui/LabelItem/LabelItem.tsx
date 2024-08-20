@@ -1,8 +1,8 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { MdOutlineLabel } from "react-icons/md";
 import { EditLabel, RemoveLabel } from "@/features/label";
 import { ILabel } from "@/shared/types";
-import React from "react";
-import { MdOutlineLabel } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 
 interface LabelItemProps {
     label: ILabel

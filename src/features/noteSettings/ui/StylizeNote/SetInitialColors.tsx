@@ -1,8 +1,8 @@
+import React from "react";
 import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions, useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Theme } from "@/shared/const";
-import React from "react";
 
 interface SetInitialColorsProps {
     note: INote

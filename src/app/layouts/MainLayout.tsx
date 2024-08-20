@@ -1,5 +1,5 @@
-import { SidebarContext } from "@/shared/lib/context";
 import { ReactNode, useContext } from "react";
+import { SidebarContext } from "@/shared/lib/context";
 
 interface MainLayoutProps {
     children: ReactNode

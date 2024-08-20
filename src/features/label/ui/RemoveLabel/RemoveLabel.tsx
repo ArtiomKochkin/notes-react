@@ -1,8 +1,8 @@
+import React from "react";
+import { BsTrash } from "react-icons/bs";
 import { useDeleteLabelMutation } from "@/entities/labels";
 import { useGetNotesQuery, useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
-import React from "react";
-import { BsTrash } from "react-icons/bs";
 
 interface RemoveLabelProps {
     id: number

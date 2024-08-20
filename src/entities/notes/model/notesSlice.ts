@@ -1,5 +1,5 @@
-import { INote } from "@/shared/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { INote } from "@/shared/types";
 import { LOCAL_STORAGE_NOTES_KEY } from "../const/notes";
 
 const getInitialState = (): INote[] => {

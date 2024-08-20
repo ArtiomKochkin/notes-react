@@ -1,8 +1,7 @@
+import React, { useContext, useCallback } from "react";
+import { MdGridView, MdOutlineViewAgenda } from "react-icons/md";
 import { LOCAL_STORAGE_NOTES_VIEW_KEY, NotesView } from "@/shared/const";
 import { NotesViewContext } from "@/shared/lib/context";
-import React from "react";
-import { useContext, useCallback } from "react";
-import { MdGridView, MdOutlineViewAgenda } from "react-icons/md";
 
 export const ViewSwitcher = React.memo(() => {
     const { notesView, setNotesView } = useContext(NotesViewContext);

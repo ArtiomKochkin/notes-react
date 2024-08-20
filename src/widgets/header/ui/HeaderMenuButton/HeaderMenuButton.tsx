@@ -1,7 +1,7 @@
-import { LOCAL_STORAGE_SIDEBAR_KEY } from "@/shared/const";
-import { SidebarContext } from "@/shared/lib/context";
 import { useContext } from "react";
 import { MdMenu } from "react-icons/md";
+import { LOCAL_STORAGE_SIDEBAR_KEY } from "@/shared/const";
+import { SidebarContext } from "@/shared/lib/context";
 
 export const HeaderMenuButton = () => {
     const { showSidebar, setShowSidebar } = useContext(SidebarContext);

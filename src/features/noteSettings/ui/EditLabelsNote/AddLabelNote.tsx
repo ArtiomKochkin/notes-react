@@ -1,11 +1,10 @@
+import React, { useState } from "react";
+import { FaRegPlusSquare } from "react-icons/fa";
 import { useCreateLabelMutation } from "@/entities/labels";
 import { useUpdNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { handleEnterPress } from "@/shared/lib/utils";
 import { INote } from "@/shared/types";
-import React from "react";
-import { useState } from "react";
-import { FaRegPlusSquare } from "react-icons/fa";
 
 interface AddLabelNoteProps {
     note: INote

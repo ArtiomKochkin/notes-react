@@ -1,7 +1,7 @@
+import React from "react";
 import { NoteView, NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
 import { NoteContentListItem } from "./NoteContentListItem";
-import React from "react";
 
 interface NoteContentListProps {
     type: NoteView,

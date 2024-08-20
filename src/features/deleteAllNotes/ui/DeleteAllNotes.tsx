@@ -1,9 +1,9 @@
+import React from "react";
 import { useUpdLabelMutation, useGetLabelsQuery } from "@/entities/labels";
 import { useDeleteNoteMutation } from "@/entities/notes";
 import { useActions } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Button } from "@/shared/ui";
-import React from "react";
 
 interface DeleteAllNotesProps {
     notes: INote[]

@@ -1,5 +1,5 @@
-import { ILabel } from "@/shared/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ILabel } from "@/shared/types";
 import { LABELS_API_URL } from "../const/labels";
 
 export const labelsApi = createApi({

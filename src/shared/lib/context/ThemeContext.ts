@@ -1,5 +1,5 @@
-import { Theme } from "@/shared/const";
 import { createContext } from "react";
+import { Theme } from "@/shared/const";
 
 interface IThemeContext {
     theme?: Theme,

@@ -1,9 +1,9 @@
-import { Theme } from "@/shared/const";
-import { SidebarContext } from "@/shared/lib/context";
-import { useTheme, useWindowSize } from "@/shared/lib/hooks";
-import { ISidebarItem } from "@/shared/types";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme, useWindowSize } from "@/shared/lib/hooks";
+import { SidebarContext } from "@/shared/lib/context";
+import { ISidebarItem } from "@/shared/types";
+import { Theme } from "@/shared/const";
 
 export const SidebarItem = ({ icon, name, link }: ISidebarItem) => {
     const { showSidebar, setShowSidebar } = useContext(SidebarContext);

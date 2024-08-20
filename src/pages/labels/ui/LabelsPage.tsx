@@ -1,6 +1,6 @@
 import { MainLayout } from "@/app/layouts";
-import { AddLabel } from "@/features/label";
 import { LabelList } from "@/widgets/label";
+import { AddLabel } from "@/features/label";
 
 export const LabelsPage = () => {
 

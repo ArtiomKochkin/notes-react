@@ -1,9 +1,8 @@
 import { Header } from "@/widgets/header";
 import { Sidebar } from "@/widgets/sidebar";
-import { Router } from "../routers";
-import { SIDEBAR_ITEMS } from "@/shared/const";
+import { SIDEBAR_ITEMS, Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import { Theme } from "@/shared/const";
+import { Router } from "../routers";
 
 export const BaseLayout = () => {
     const { theme } = useTheme();

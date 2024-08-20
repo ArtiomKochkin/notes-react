@@ -1,6 +1,6 @@
+import React from "react";
 import { ILabel, INote } from "@/shared/types";
 import { EditLabelNote } from "./EditLabelNote";
-import React from "react";
 
 interface EditLabelListNoteProps {
     labels: ILabel[],

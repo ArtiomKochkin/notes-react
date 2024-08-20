@@ -1,10 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 
+import { lazy } from "react";
+import { SlNote } from "react-icons/sl";
 import { BsTrash } from "react-icons/bs";
 import { MdOutlineLabel, MdOutlineArchive, MdSearch } from "react-icons/md";
-import { SlNote } from "react-icons/sl";
 import { ISidebarItemComponent } from "../types";
-import { lazy } from "react";
 
 const ArchivePage = lazy(() => import("@/pages/archive").then(module => ({ default: module.ArchivePage})));
 const DeletedPage = lazy(() => import("@/pages/deleted").then(module => ({ default: module.DeletedPage})));

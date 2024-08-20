@@ -1,3 +1,4 @@
+import React from "react";
 import { useOutside } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem, NoteSubSettings } from "@/shared/ui";
@@ -5,7 +6,6 @@ import { SetCustomBgNote } from "./SetCustomBgNote";
 import { SetBgNote } from "./SetBgNote";
 import { SetColorTextNote } from "./SetColorTextNote";
 import { SetInitialColors } from "./SetInitialColors";
-import React from "react";
 
 interface StylizeNoteProps {
     note: INote

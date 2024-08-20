@@ -1,7 +1,7 @@
-import { rootActions } from "@/app/providers/StoreProvider";
-import { bindActionCreators } from "@reduxjs/toolkit";
 import { useMemo } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { rootActions } from "@/app/providers/StoreProvider";
 
 export const useActions = () => {
     const dispatch = useDispatch();

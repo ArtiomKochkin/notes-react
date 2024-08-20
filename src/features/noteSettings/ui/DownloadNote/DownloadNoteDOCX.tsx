@@ -1,9 +1,9 @@
-import { INote } from "@/shared/types";
-import { NoteSettingsItem } from "@/shared/ui";
+import React from "react";
 import { Packer } from 'docx';
 import { saveAs } from 'file-saver';
+import { INote } from "@/shared/types";
+import { NoteSettingsItem } from "@/shared/ui";
 import { createDocx } from "../../lib";
-import React from "react";
 
 interface DownloadNoteDOCXProps {
     note: INote

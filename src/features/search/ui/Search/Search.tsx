@@ -1,11 +1,11 @@
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { MdSearch } from "react-icons/md";
 import { InputType, LOCAL_STORAGE_SEARCH_KEY } from "@/shared/const";
 import { SearchContext } from "@/shared/lib/context";
 import { useWindowSize, useOutside } from "@/shared/lib/hooks";
 import { handleEnterPress } from "@/shared/lib/utils";
 import { Input } from "@/shared/ui";
-import React, { useContext } from "react";
-import { MdSearch } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
     const { width } = useWindowSize();

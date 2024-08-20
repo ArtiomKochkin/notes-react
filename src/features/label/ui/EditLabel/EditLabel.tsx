@@ -1,9 +1,8 @@
+import React, { RefObject } from "react";
+import { MdOutlineEdit } from "react-icons/md";
 import { useUpdLabelMutation } from "@/entities/labels";
 import { useActions, useEdit } from "@/shared/lib/hooks";
 import { ILabel } from "@/shared/types";
-import React from "react";
-import { RefObject } from "react";
-import { MdOutlineEdit } from "react-icons/md";
 
 interface EditLabelProps {
     label: ILabel,

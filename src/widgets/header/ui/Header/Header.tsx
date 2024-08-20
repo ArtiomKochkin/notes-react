@@ -1,9 +1,9 @@
+import React from "react";
 import { Search } from "@/features/search";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { ViewSwitcher } from "@/features/viewSwitcher";
 import { Logo } from "@/shared/ui";
 import { HeaderMenuButton } from "../HeaderMenuButton/HeaderMenuButton";
-import React from "react";
 
 export const Header = React.memo(() => {
     return (

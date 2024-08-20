@@ -1,9 +1,8 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
+import { useUpdNoteMutation } from "@/entities/notes";
+import { useActions } from "@/shared/lib/hooks";
 import { IListContent, INote } from "@/shared/types";
 import { DivEditable } from "@/shared/ui";
-import { useActions } from "@/shared/lib/hooks";
-import { useUpdNoteMutation } from "@/entities/notes";
-import React from "react";
 
 interface NoteContentListItem {
     line: IListContent,

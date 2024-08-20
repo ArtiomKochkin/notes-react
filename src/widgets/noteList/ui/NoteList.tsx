@@ -1,10 +1,9 @@
+import React, { useContext } from "react";
+import { Note } from "@/widgets/note";
 import { NotesView } from "@/shared/const";
 import { SidebarContext } from "@/shared/lib/context";
 import { INote } from "@/shared/types";
 import { Error, Loading, Title } from "@/shared/ui";
-import { Note } from "@/widgets/note";
-import React from "react";
-import { useContext } from "react";
 
 interface NoteListProps {
     view: NotesView,

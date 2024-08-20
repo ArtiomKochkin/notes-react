@@ -1,6 +1,6 @@
+import { ReactNode } from "react";
 import { Theme } from "@/shared/const";
 import { useTheme } from "@/shared/lib/hooks";
-import { ReactNode } from "react";
 
 interface NoteSubSettingsProps {
     children: ReactNode
