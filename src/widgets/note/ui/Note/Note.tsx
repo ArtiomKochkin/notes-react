@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { NotesView } from "@/shared/const";
 import { INote } from "@/shared/types";
-import { ClosedNote } from "../ClosedNote/ClosedNote";
-import { OpenedNote } from "../OpenedNote/OpenedNote";
+import { Loading } from "@/shared/ui";
+
+const ClosedNote = lazy(() => import("../ClosedNote/ClosedNote").then(module => ({ default: module.ClosedNote })));
+const OpenedNote = lazy(() => import("../OpenedNote//OpenedNote").then(module => ({ default: module.OpenedNote })));
 
 interface NoteProps {
     view: NotesView,
@@ -25,11 +27,11 @@ export const Note = ({ view, note, isNewNote, toggleNewNote }: NoteProps) => {
     };
  
     return (
-        <>
+        <Suspense fallback={<Loading>Загрузка...</Loading>}>
             {!isOpenNote
                 ? <ClosedNote note={note} view={view} toggleNote={toggleNote} isOpen={isOpenNote!}/>
                 : <OpenedNote note={note} closeNote={toggleNote} isOpen={isOpenNote}/>
             }
-        </>
+        </Suspense>
     )
 }
