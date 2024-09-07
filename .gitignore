@@ -7,9 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node modules and lock files
+frontend/node_modules
+frontend/package-lock.json
+backend/node_modules
+backend/package-lock.json
+
+# Build directories
+backend/dist
+backend/dist-ssr
+frontend/dist
+frontend/dist-ssr
 *.local
 
 # Editor directories and files
