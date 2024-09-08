@@ -1,6 +1,5 @@
 import React from "react";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
 
@@ -9,17 +8,15 @@ interface ArchiveNoteProps {
 }
 
 export const ArchiveNote = React.memo(({ note }: ArchiveNoteProps) => {
-    const { updateNote } = useActions();
-    const [updNote] = useUpdNoteMutation();
+    const [updateNote] = useUpdateNoteMutation();
 
     const archiveNote = async () => {
         try {
-            const updatedNote = await updNote({
+            await updateNote({
                 id: note.id,
                 isArchive: !note.isArchive, 
                 isDeleted: note.isArchive ? note.isDeleted : false
             }).unwrap();
-            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to archive note:', err);
         }

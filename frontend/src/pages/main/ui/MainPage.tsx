@@ -10,6 +10,7 @@ import React, { useContext, useMemo } from "react";
 export const MainPage = React.memo(() => {
     const { notesView } = useContext(NotesViewContext);
     const { isLoading, isError, data } = useGetNotesQuery(null);
+    
     const filtered = useMemo(() => filterNotes(data || []), [data]);
     const pinnedNotes = useMemo(() => filtered.filter(item => item.isPinned), [filtered]);
     const otherNotes = useMemo(() => filtered.filter(item => !item.isPinned), [filtered]);

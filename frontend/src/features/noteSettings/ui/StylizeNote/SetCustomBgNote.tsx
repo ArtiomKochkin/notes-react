@@ -1,6 +1,6 @@
 import React from "react";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions, useTheme } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
+import { useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Theme } from "@/shared/const";
 import { handleImage } from "../../lib";
@@ -11,8 +11,7 @@ interface SetCustomBgNoteProps {
 
 export const SetCustomBgNote = React.memo(({ note }: SetCustomBgNoteProps) => {
     const { theme } = useTheme();
-    const { updateNote } = useActions();
-    const [updNote] = useUpdNoteMutation();
+    const [updateNote] = useUpdateNoteMutation();
 
     const changeBackground = () => {
         const input = document.createElement("input");
@@ -20,9 +19,9 @@ export const SetCustomBgNote = React.memo(({ note }: SetCustomBgNoteProps) => {
         input.accept = "image/*";
         input.style.display = "none";
         
-        input.onchange = (e: Event) => handleImage(e, note, input, "backgroundImage", updateNote, 
+        input.onchange = (e: Event) => handleImage(e, note, input, "backgroundImage", 
             async (patch) => {
-                const result = await updNote({
+                const result = await updateNote({
                     ...patch,
                     timestamp: Date.now()
                 }).unwrap();

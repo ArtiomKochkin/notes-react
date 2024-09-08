@@ -6,7 +6,6 @@ export const handleImage = <
     entity: T,
     element: HTMLInputElement,
     nameField: keyof T,
-    updateAction: (updatedEntity: T) => void,
     updateMutation: (patch: U) => Promise<T>
     
 ) => {
@@ -20,11 +19,10 @@ export const handleImage = <
         reader.onloadend = async () => {
             try {
                 const base64file = reader.result as string;
-                const updatedEntity = await updateMutation({
+                await updateMutation({
                     id: entity.id,
                     [nameField]: base64file
                 } as U);
-                updateAction(updatedEntity);
             } catch (err) {
                 console.log(`Failed to update entity: `, err);
             }

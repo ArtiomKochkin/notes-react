@@ -1,7 +1,7 @@
 import React, { RefObject } from "react";
 import { MdOutlineEdit } from "react-icons/md";
-import { useUpdLabelMutation } from "@/entities/labels";
-import { useActions, useEdit } from "@/shared/lib/hooks";
+import { useUpdateLabelMutation } from "@/entities/labels";
+import { useEdit } from "@/shared/lib/hooks";
 import { ILabel } from "@/shared/types";
 
 interface EditLabelProps {
@@ -10,16 +10,15 @@ interface EditLabelProps {
 }
 
 export const EditLabel = React.memo(({ label, moveToLabel }: EditLabelProps) => {
-    const { updateLabel } = useActions();
-    const [updLabel] = useUpdLabelMutation();
+    const [updateLabel] = useUpdateLabelMutation();
     const {
         isEditing, text, inputRef, 
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
-    } = useEdit(label, label.name, "name", updateLabel, 
+    } = useEdit(label, label.name, "name", 
         async (patch) => {
-            const result = await updLabel(patch).unwrap();
+            const result = await updateLabel(patch).unwrap();
             return result;
-        }
+        },
     );
 
     return (

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { useCreateLabelMutation } from "@/entities/labels";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
 import { handleEnterPress } from "@/shared/lib/utils";
 import { INote } from "@/shared/types";
 
@@ -10,27 +9,29 @@ interface AddLabelNoteProps {
     note: INote
 }
 
+const initialLabel = {
+    id: Date.now(),
+    notes: [],
+    timestamp: Date.now()  
+}
+
 export const AddLabelNote = React.memo(({ note }: AddLabelNoteProps) => {
     const [createLabel] = useCreateLabelMutation();
-    const [updNote] = useUpdNoteMutation();
-    const { addLabel, updateNote } = useActions();
+    const [updateNote] = useUpdateNoteMutation();
     const [text, setText] = useState("");
 
     const handleAddLabel = async () => {
         if (text) {
             try {
                 const newLabel = await createLabel({ 
+                    ...initialLabel,
                     name: text,
-                    notes: [note.id],
-                    timestamp: Date.now()
                 }).unwrap();
-                const updatedNote = await updNote({
+                await updateNote({
                     id: note.id,
                     labels: [...note.labels, newLabel.id],
                     timestamp: Date.now()
                 }).unwrap();
-                addLabel(newLabel);
-                updateNote(updatedNote);
             } catch (err) {
                 console.error('Failed to create label:', err);
             }

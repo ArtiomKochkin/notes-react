@@ -1,7 +1,6 @@
 import React from "react";
 import { useCreateNoteMutation } from "@/entities/notes";
-import { useActions } from "@/shared/lib/hooks";
-import { INote, INoteData } from "@/shared/types";
+import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
 
 interface CopyNoteProps {
@@ -9,15 +8,13 @@ interface CopyNoteProps {
 }
 
 export const CopyNote = React.memo(({ note }: CopyNoteProps) => {
-    const { addNote } = useActions();
     const [createNote] = useCreateNoteMutation();
 
     const copyNote = async () => {
         try {
-            const newNote = { ...note } as Partial<INote>;
-            delete newNote.id;
-            const createdNote = await createNote(newNote as INoteData).unwrap();
-            addNote(createdNote);
+            const newNote = { ...note };
+            newNote.id = Date.now();
+            await createNote(newNote).unwrap();
         } catch (err) {
             console.error('Failed to copy note:', err);
         }

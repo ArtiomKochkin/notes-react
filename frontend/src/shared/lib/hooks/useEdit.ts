@@ -10,8 +10,7 @@ export const useEdit = <
     entity: T, 
     initialText: string, 
     nameField: keyof T,
-    updateAction: (updatedEntity: T) => void,
-    updateMutation: (patch: U) => Promise<T>
+    updateMutation: (patch: U) => Promise<T>,
 ) => {
     const [isEditing, setIsEditing] = useState(false);
     const [text, setText] = useState(initialText);
@@ -21,11 +20,10 @@ export const useEdit = <
         if (!isEditing && text !== initialText) {
             const updateField = async (): Promise<void> => {
                 try {
-                    const updatedEntity = await updateMutation({
+                    await updateMutation({
                         id: entity.id,
                         [nameField]: text,
                     } as U);
-                    updateAction(updatedEntity);
                 } catch (err) {
                     console.log(`Failed to update entity with value ${text}: `, err);
                 }

@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
 import { IListContent, INote } from "@/shared/types";
 import { DivEditable } from "@/shared/ui";
 
@@ -12,24 +11,22 @@ interface NoteContentListItem {
 export const NoteContentListItem = React.memo(({ line, note }: NoteContentListItem) => {
     const [isChecked, setIsChecked] = useState(line.isChecked);
     const [content, setContent] = useState(line.text);
-    const { updateNote } = useActions();
-    const [updNote] = useUpdNoteMutation();
+    const [updateNote] = useUpdateNoteMutation();
 
     const handleChangeListContent = useCallback(async ( newContent: string, checkbox: boolean) => {
         try {
             const updatedListContent = note.listContent.map(item => 
                 item.id === line.id ? { ...item, text: newContent, isChecked: checkbox } : item
             );
-            const updatedNote = await updNote({
+            await updateNote({
                 id: note.id,
                 timestamp: Date.now(),
                 listContent: updatedListContent
             }).unwrap();
-            updateNote(updatedNote);
         } catch (err) {
             console.error("Failed to update note:", err);
         }
-    }, [note, line.id, updNote, updateNote]);
+    }, [note, line.id, updateNote]);
 
     const handleChangeText = (newText: string) => {
         setContent(newText);
@@ -45,7 +42,7 @@ export const NoteContentListItem = React.memo(({ line, note }: NoteContentListIt
         if (e.key === "Enter") {
             e.preventDefault();
             try {
-                const updatedNote = await updNote({
+                await updateNote({
                     id: note.id,
                     timestamp: Date.now(),
                     listContent: [...note.listContent, {
@@ -54,18 +51,16 @@ export const NoteContentListItem = React.memo(({ line, note }: NoteContentListIt
                         text: "",
                     }]
                 }).unwrap();
-                updateNote(updatedNote);
             } catch (err) {
                 console.error("Failed to update note:", err);
             }
         } else if (e.key === "Backspace" && e.currentTarget.innerText === "") {
             try {
-                const updatedNote = await updNote({
+                await updateNote({
                     id: note.id,
                     timestamp: Date.now(),
                     listContent: note.listContent.filter(l => l.id !== line.id)
                 }).unwrap();
-                updateNote(updatedNote);
             } catch (err) {
                 console.error("Failed to update note:", err);
             }

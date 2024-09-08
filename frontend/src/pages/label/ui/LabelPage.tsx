@@ -12,6 +12,7 @@ export const LabelPage = () => {
     const label = location.state || {};
     const { notesView } = useContext(NotesViewContext);
     const { isLoading, isError, data } = useGetNotesQuery(null);
+    
     const filteredNotes = data?.filter(item => item.labels.includes(label.id) && !item.isDeleted && !item.isArchive) || [];
     const pinnedNotes = filteredNotes.filter(item => item.isPinned);
     const otherNotes = filteredNotes.filter(item => !item.isPinned);

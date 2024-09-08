@@ -1,6 +1,6 @@
 import React from "react";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions, useTheme } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
+import { useTheme } from "@/shared/lib/hooks";
 import { INote } from "@/shared/types";
 import { Theme } from "@/shared/const";
 import { SetColors } from "./SetColors";
@@ -11,16 +11,14 @@ interface SetColorTextNoteProps {
 
 export const SetColorTextNote = React.memo(({ note }: SetColorTextNoteProps) => {
     const { theme } = useTheme();
-    const { updateNote } = useActions();
-    const [updNote] = useUpdNoteMutation();
+    const [updateNote] = useUpdateNoteMutation();
 
     const changeColorText = async (color: string) => {
         try {
-            const updatedNote = await updNote({
+            await updateNote({
                 id: note.id,
                 colorText: color,
             }).unwrap();
-            updateNote(updatedNote);
         } catch (err) {
             console.log(`Failed to update note: `, err);
         }

@@ -1,6 +1,5 @@
 import React from "react";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
 
@@ -9,16 +8,14 @@ interface RestoreNoteProps {
 }
 
 export const RestoreNote = React.memo(({ note }: RestoreNoteProps) => {
-    const { updateNote } = useActions();
-    const [updNote] = useUpdNoteMutation();
+    const [updateNote] = useUpdateNoteMutation();
  
     const restoreNote = async () => {
         try {
-            const updatedNote = await updNote({
+            await updateNote({
                 id: note.id,
                 isDeleted: false
             }).unwrap();
-            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to restore note:', err);
         }

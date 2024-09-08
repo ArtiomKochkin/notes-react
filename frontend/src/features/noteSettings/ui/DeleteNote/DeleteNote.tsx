@@ -1,7 +1,6 @@
 import React from "react";
-import { useGetLabelsQuery, useUpdLabelMutation } from "@/entities/labels";
-import { useDeleteNoteMutation, useUpdNoteMutation } from "@/entities/notes";
-import { useActions } from "@/shared/lib/hooks";
+import { useGetLabelsQuery, useUpdateLabelMutation } from "@/entities/labels";
+import { useDeleteNoteMutation, useUpdateNoteMutation } from "@/entities/notes";
 import { INote } from "@/shared/types";
 import { NoteSettingsItem } from "@/shared/ui";
 
@@ -10,21 +9,19 @@ interface DeleteNoteProps {
 }
 
 export const DeleteNote = React.memo(({ note }: DeleteNoteProps) => {
-    const { updateNote, removeNote, updateLabel } = useActions();
-    const [updNote] = useUpdNoteMutation();
-    const [deleteNoteFinally] = useDeleteNoteMutation();
-    const [updLabel] = useUpdLabelMutation();
+    const [updateNote] = useUpdateNoteMutation();
+    const [deleteNote] = useDeleteNoteMutation();
+    const [updateLabel] = useUpdateLabelMutation();
     const { data } = useGetLabelsQuery(null);
     const filteredLabels = data?.filter(label => label.notes.includes(note.id));
  
     const handleDeleteNote = async () => {
         try {
-            const updatedNote = await updNote({
+            await updateNote({
                 id: note.id,
                 isDeleted: true,
                 isArchive: false
             }).unwrap();
-            updateNote(updatedNote);
         } catch (err) {
             console.error('Failed to delete note:', err);
         }
@@ -32,16 +29,14 @@ export const DeleteNote = React.memo(({ note }: DeleteNoteProps) => {
 
     const handleDeleteNoteFinally = async () => {
         try {
-            await deleteNoteFinally(note.id).unwrap();
-            removeNote(note.id);
+            await deleteNote(note.id).unwrap();
 
             if (filteredLabels) {
                 for (const label of filteredLabels) {
-                    const updatedLabel = await updLabel({
+                    await updateLabel({
                         id: label.id,
                         notes: label.notes.filter(n => n !== note.id)
                     }).unwrap();
-                    updateLabel(updatedLabel);
                 }
             }
         } catch (err) {

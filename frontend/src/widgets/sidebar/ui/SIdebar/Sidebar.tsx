@@ -13,7 +13,7 @@ export const Sidebar = ({ items }: SidebarProps) => {
     return (
         <aside 
             className={`
-                fixed left-0 top-[45px] min-h-screen z-10 text-lg pt-0 sm:pt-5 pr-2 lg:w-1/5 min-h-[92vh] 
+                fixed left-0 top-[45px]  z-10 text-lg pt-0 sm:pt-5 pr-2 lg:w-1/5 min-h-[92vh] 
                 ${showSidebar ? "w-full sm:w-1/5" : "w-14 lg:w-20 pr-0"}
             `}
         >

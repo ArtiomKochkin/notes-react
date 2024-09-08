@@ -19,5 +19,3 @@ export interface IListContent {
     isChecked: boolean,
     text: string,
 }
-
-export interface INoteData extends Omit<INote, "id"> {}

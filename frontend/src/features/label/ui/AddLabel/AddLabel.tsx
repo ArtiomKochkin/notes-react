@@ -1,27 +1,28 @@
 import { ChangeEvent, useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { useCreateLabelMutation } from "@/entities/labels";
-import { useActions } from "@/shared/lib/hooks";
 import { handleEnterPress } from "@/shared/lib/utils";
 import { Button, Input } from "@/shared/ui";
 import { InputType } from "@/shared/const";
 
+const initialLabel = {
+    id: Date.now(),
+    notes: [],
+    timestamp: Date.now()  
+}
+
 export const AddLabel = () => {
     const [createLabel] = useCreateLabelMutation();
-    const { addLabel } = useActions();
     const [hasValue, setHasValue] = useState(false);
     const [text, setText] = useState("");
 
     const handleAddLabel = async () => {
         if (text) {
             try {
-                const newLabel = await createLabel({ 
-                    id: Date.now(),
-                    name: text,
-                    notes: [],
-                    timestamp: Date.now()
+                await createLabel({ 
+                    ...initialLabel,
+                    name: text
                 }).unwrap();
-                addLabel(newLabel);
             } catch (err) {
                 console.error('Failed to create label:', err);
             }

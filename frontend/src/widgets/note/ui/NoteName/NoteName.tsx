@@ -1,6 +1,6 @@
 import React, { RefObject } from "react";
-import { useUpdNoteMutation } from "@/entities/notes";
-import { useActions, useEdit } from "@/shared/lib/hooks";
+import { useUpdateNoteMutation } from "@/entities/notes";
+import { useEdit } from "@/shared/lib/hooks";
 import { NoteView } from "@/shared/const";
 import { INote } from "@/shared/types";
 
@@ -10,14 +10,13 @@ interface NoteNameProps {
 }
 
 export const NoteName = React.memo(({ type, note }: NoteNameProps) => {
-    const { updateNote } = useActions();
-    const [updNote] = useUpdNoteMutation();
+    const [updateNote] = useUpdateNoteMutation();
     const {
         isEditing, text, inputRef, 
         handleDivClick, handleInputBlur, handleTextChange, handleKeyPress
-     } = useEdit(note, note.name, "name", updateNote, 
+     } = useEdit(note, note.name, "name", 
         async (patch) => {
-            const result = await updNote({
+            const result = await updateNote({
                 ...patch,
                 timestamp: Date.now()
             }).unwrap();

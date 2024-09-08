@@ -14,7 +14,7 @@ export const ArchivePage = () => {
         <MainLayout>
             {filteredNotes!.length > 0
                 ? <Title>Архив</Title>
-                : <Title>В архивe нет заметок</Title>
+                : <Title>В архиве нет заметок</Title>
             }
            <NoteList isSpecialList view={notesView!} isLoading={isLoading} isError={isError} data={filteredNotes!}/>
         </MainLayout>

@@ -4,5 +4,3 @@ export interface ILabel {
     notes: number[],
     timestamp: number
 }
-
-export interface ILabelData extends Omit<ILabel, "id"> {}
