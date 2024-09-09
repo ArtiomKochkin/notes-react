@@ -3,7 +3,7 @@ import { NotesViewContext, SearchContext } from "@/shared/lib/context";
 import { useSearchNotesQuery } from "@/entities/notes";
 import { Title } from "@/shared/ui";
 import { NoteList } from "@/widgets/noteList";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export const SearchPage = () => {
     const { notesView } = useContext(NotesViewContext);
@@ -11,6 +11,10 @@ export const SearchPage = () => {
     const { data, isLoading, isError } = useSearchNotesQuery();
     const filteredData = data?.filter(note => note.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
+    useEffect(() => {
+        document.title = "Поиск | Notes";
+    }, []);
+    
     return (
         <MainLayout>
             <Title>Результаты по запросу: {searchTerm}</Title>

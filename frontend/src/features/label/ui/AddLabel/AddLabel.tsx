@@ -37,7 +37,7 @@ export const AddLabel = () => {
     };
 
     return (
-        <div className="flex-center flex-col mt-4 sm:mt-0">
+        <div className="flex-center flex-col mt-4">
             <Input 
                 inputType={InputType.TEXT} 
                 isShow={false}

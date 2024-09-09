@@ -5,7 +5,7 @@ import { filterNotes } from "@/shared/lib/utils";
 import { NewNote } from "@/widgets/note";
 import { NoteList } from "@/widgets/noteList";
 import { PinnedList } from "@/widgets/pinnedList";
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 
 export const MainPage = React.memo(() => {
     const { notesView } = useContext(NotesViewContext);
@@ -14,6 +14,10 @@ export const MainPage = React.memo(() => {
     const filtered = useMemo(() => filterNotes(data || []), [data]);
     const pinnedNotes = useMemo(() => filtered.filter(item => item.isPinned), [filtered]);
     const otherNotes = useMemo(() => filtered.filter(item => !item.isPinned), [filtered]);
+
+    useEffect(() => {
+        document.title = "Заметки | Notes";
+    }, []);    
 
     return (
         <MainLayout>

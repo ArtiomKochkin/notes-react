@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SidebarContext } from "@/shared/lib/context";
+import { AuthContext, SidebarContext } from "@/shared/lib/context";
 import { ISidebarItem } from "@/shared/types";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 
@@ -9,6 +9,9 @@ interface SidebarProps {
 
 export const Sidebar = ({ items }: SidebarProps) => {
     const { showSidebar } = useContext(SidebarContext);
+    const { isAuth } = useContext(AuthContext);
+
+    if (!isAuth) return null;
  
     return (
         <aside 

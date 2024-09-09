@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MainLayout } from "@/app/layouts";
 import { NoteList } from "@/widgets/noteList";
 import { DeleteAllNotes } from "@/features/deleteAllNotes";
@@ -11,6 +11,10 @@ export const DeletedPage = () => {
     const filteredNotes = data?.filter(item => item.isDeleted) || [];
     const { notesView } = useContext(NotesViewContext);
     
+    useEffect(() => {
+        document.title = "Корзина | Notes";
+    }, []);
+
     return (
         <MainLayout>
             {filteredNotes!.length > 0 ? (

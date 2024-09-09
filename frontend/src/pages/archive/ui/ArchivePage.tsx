@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MainLayout } from "@/app/layouts";
 import { NoteList } from "@/widgets/noteList";
 import { useGetNotesQuery } from "@/entities/notes";
@@ -10,6 +10,10 @@ export const ArchivePage = () => {
     const { notesView } = useContext(NotesViewContext);
     const filteredNotes = data?.filter(item => item.isArchive) || [];
 
+    useEffect(() => {
+        document.title = "Архив | Notes";
+    }, []);
+    
     return (
         <MainLayout>
             {filteredNotes!.length > 0

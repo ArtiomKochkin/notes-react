@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { MainLayout } from "@/app/layouts";
 import { NoteList } from "@/widgets/noteList";
@@ -17,6 +17,10 @@ export const LabelPage = () => {
     const pinnedNotes = filteredNotes.filter(item => item.isPinned);
     const otherNotes = filteredNotes.filter(item => !item.isPinned);
 
+    useEffect(() => {
+        document.title = `${label.name} | Notes`;
+    }, [label.name]);
+    
     return (
         <MainLayout>
             <Title>{label.name}</Title>
