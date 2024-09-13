@@ -2,12 +2,14 @@ const express = require("express");
 const cors = require("cors");
 
 const dbRouter = require("./src/db");
+const authRouter = require("./src/auth");
 
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "*" }))
+app.use(cors({ origin: "*" }));
 app.use('/api', dbRouter);
+app.use('/api/auth', authRouter);
 
 const PORT = 3001;
 app.listen(PORT, () => {

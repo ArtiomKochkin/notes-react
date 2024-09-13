@@ -14,24 +14,24 @@ interface RouterProps {
 }
 
 export const Router = ({ items }: RouterProps) => {
-    return (
-      <Suspense fallback={<Loading>Загрузка...</Loading>}>
-        <Routes>
-          <Route element={<ProtectedRoute />}>
-            {items.map(item => 
-              <Route 
-                element={React.createElement(item.component)} 
-                path={item.link} 
-                key={item.name}
-              />
-            )}
-            <Route element={<LabelPage />} path="/label" />
-            <Route element={<MainPage />} path="*" />
-          </Route>
-  
-          <Route element={<LoginPage />} path="/login" />
-          <Route element={<SignUpPage />} path="/sign-up" />
-        </Routes>
-      </Suspense>
-    );
-  };
+  return (
+    <Suspense fallback={<Loading>Загрузка...</Loading>}>
+      <Routes>
+        <Route element={<ProtectedRoute />}>
+          {items.map(item => 
+            <Route 
+              element={React.createElement(item.component)} 
+              path={item.link} 
+              key={item.name}
+            />
+          )}
+          <Route element={<LabelPage />} path="/label" />
+          <Route element={<MainPage />} path="*" />
+        </Route>
+
+        <Route element={<LoginPage />} path="/login" />
+        <Route element={<SignUpPage />} path="/sign-up" />
+      </Routes>
+    </Suspense>
+  );
+};

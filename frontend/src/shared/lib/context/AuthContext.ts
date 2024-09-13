@@ -2,10 +2,8 @@ import { createContext } from "react"
 
 export interface IAuthContext {
   isAuth: boolean,
-  setIsAuth: (auth: boolean) => void
+  login: (token: string) => void,
+  logout: () => void,
 }
 
-export const AuthContext = createContext<IAuthContext>({
-  isAuth: false,
-  setIsAuth: () => {}
-});
+export const AuthContext = createContext<IAuthContext | null>(null);

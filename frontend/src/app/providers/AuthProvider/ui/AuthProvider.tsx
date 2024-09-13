@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_AUTH_KEY } from "@/shared/const"
+import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "@/shared/const"
 import { AuthContext } from "@/shared/lib/context";
 import { ReactNode, useEffect, useState } from "react"
 
@@ -6,20 +6,28 @@ interface AuthProviderProps {
   children: ReactNode
 }
 
-const defaultValue = JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_KEY) || "false");
+const defaultValue = !!localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isAuth, setIsAuth] = useState<boolean>(defaultValue);
 
+  const login = (token: string) => {
+    localStorage.setItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY, token);
+    setIsAuth(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
+    setIsAuth(false);
+  };
+
   useEffect(() => {
-    const storedAuth = JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_KEY) || "false");
-    if (storedAuth !== isAuth) {
-      setIsAuth(storedAuth);
-    }
+    const token = localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
+    setIsAuth(!!token);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+    <AuthContext.Provider value={{ isAuth, login, logout }}>
       {children}
     </AuthContext.Provider>
   )

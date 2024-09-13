@@ -1,27 +1,35 @@
+import { useRegisterMutation } from "@/entities/auth";
 import { AuthContext } from "@/shared/lib/context";
+import { IAuthRequest } from "@/shared/types";
+import { Button, Error } from "@/shared/ui";
 import { useContext } from "react";
-import { LOCAL_STORAGE_AUTH_KEY } from "@/shared/const";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Button } from "@/shared/ui";
+import { useNavigate } from "react-router-dom";
 
-export const SignUp = () => {
-  const { isAuth, setIsAuth} = useContext(AuthContext);
+interface SignUpProps {
+  credentials: IAuthRequest
+}
+
+export const SignUp = ({ credentials }: SignUpProps) => {
+  const [register, { isLoading, error }] = useRegisterMutation();
+  const authContext = useContext(AuthContext);
   const nav = useNavigate();
-  const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/';
-
-  const handleSubmit = () => {
-    const newIsAuth = !isAuth;
-    
-    setIsAuth(newIsAuth);
-    localStorage.setItem(LOCAL_STORAGE_AUTH_KEY, JSON.stringify(newIsAuth));
-    nav(from, { replace: true });
-  }
+  const handleClick = async () => {
+    try {
+      const response = await register(credentials).unwrap();
+      authContext?.login(response.accessToken);
+      nav("/");
+    } catch (err) {
+      console.error(`SignUp Error: ${err}`);
+    }
+  };
   
   return (
-    <Button onSubmit={handleSubmit}>
-      Зарегистрироваться
-    </Button>
+    <>
+      <Button onClick={handleClick} disabled={isLoading}>
+        Зарегистрироваться
+      </Button>
+      {error && <Error />}
+    </>
   )
 }

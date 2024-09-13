@@ -1,17 +1,22 @@
-import { AuthContext } from "@/shared/lib/context";
 import { MdOutlineLogout } from "react-icons/md";
-import { useContext } from "react";
-import { LOCAL_STORAGE_AUTH_KEY } from "@/shared/const";
 import { useNavigate } from "react-router-dom";
+import { useLogoutMutation } from "@/entities/auth";
+import { useContext } from "react";
+import { AuthContext } from "@/shared/lib/context";
 
 export const Logout = () => {
-  const { setIsAuth } = useContext(AuthContext);
+  const [logout] = useLogoutMutation();
   const nav = useNavigate();
+  const authContext = useContext(AuthContext);
 
-  const handleClick = () => {
-    setIsAuth(false);
-    localStorage.removeItem(LOCAL_STORAGE_AUTH_KEY);
-    nav("/login");
+  const handleClick = async () => {
+    try {
+      await logout();
+      authContext?.logout();
+      nav('/login');
+    } catch (err) {
+      console.error(`Logout Error: ${err}`);
+    }
   };
   
   return (
