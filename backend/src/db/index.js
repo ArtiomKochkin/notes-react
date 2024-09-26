@@ -1,17 +1,18 @@
 const express = require("express");
 
 const { readDB, writeDB } = require("./utils");
+const { authenticateToken } = require("../auth/utils");
 
 const dbRouter = express.Router();
 
 // Получение всех заметок
-dbRouter.get('/notes', (req, res) => {
+dbRouter.get('/notes', authenticateToken, (req, res) => {
   const data = readDB();
   res.json(data.notes);
 });
 
 // Добавление новой заметки
-dbRouter.post('/notes', (req, res) => {
+dbRouter.post('/notes', authenticateToken, (req, res) => {
   const newNote = req.body;
   const data = readDB();
 
@@ -21,7 +22,7 @@ dbRouter.post('/notes', (req, res) => {
 });
 
 // Обновление заметки (PATCH)
-dbRouter.patch('/notes/:id', (req, res) => {
+dbRouter.patch('/notes/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
   const updatedData = req.body;
   const data = readDB();
@@ -36,8 +37,8 @@ dbRouter.patch('/notes/:id', (req, res) => {
   }
 });
 
-// Удаление заметки (DELETE)
-dbRouter.delete('/notes/:id', (req, res) => {
+// Удаление заметки
+dbRouter.delete('/notes/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
   const data = readDB();
 
@@ -45,20 +46,20 @@ dbRouter.delete('/notes/:id', (req, res) => {
   if (newNotes.length !== data.notes.length) {
     data.notes = newNotes;
     writeDB(data);
-    res.status(204).end(); // Успешное удаление, без контента
+    res.status(204).end();
   } else {
     res.status(404).json({ message: "Note not found" });
   }
 });
 
-// Получение всех меток
-dbRouter.get('/labels', (req, res) => {
+// Получение всех ярлыков
+dbRouter.get('/labels', authenticateToken, (req, res) => {
   const data = readDB();
   res.json(data.labels);
 });
 
-// Добавление новой метки
-dbRouter.post('/labels', (req, res) => {
+// Добавление нового ярлыка
+dbRouter.post('/labels', authenticateToken, (req, res) => {
   const newLabel = req.body;
   const data = readDB();
 
@@ -67,8 +68,8 @@ dbRouter.post('/labels', (req, res) => {
   res.status(201).json(newLabel);
 });
 
-// Обновление метки (PATCH)
-dbRouter.patch('/labels/:id', (req, res) => {
+// Обновление ярлыка (PATCH)
+dbRouter.patch('/labels/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
   const updatedData = req.body;
   const data = readDB();
@@ -83,8 +84,8 @@ dbRouter.patch('/labels/:id', (req, res) => {
   }
 });
 
-// Удаление метки (DELETE)
-dbRouter.delete('/labels/:id', (req, res) => {
+// Удаление ярлыка
+dbRouter.delete('/labels/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
   const data = readDB();
 
@@ -92,7 +93,7 @@ dbRouter.delete('/labels/:id', (req, res) => {
   if (newLabels.length !== data.labels.length) {
     data.labels = newLabels;
     writeDB(data);
-    res.status(204).end(); // Успешное удаление, без контента
+    res.status(204).end();
   } else {
     res.status(404).json({ message: "Label not found" });
   }

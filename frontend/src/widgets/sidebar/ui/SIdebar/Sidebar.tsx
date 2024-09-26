@@ -9,9 +9,9 @@ interface SidebarProps {
 
 export const Sidebar = ({ items }: SidebarProps) => {
     const { showSidebar } = useContext(SidebarContext);
-    const { isAuth } = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
 
-    if (!isAuth) return null;
+    if (!authContext?.isAuth) return null;
  
     return (
         <aside 

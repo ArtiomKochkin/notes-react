@@ -1,6 +1,6 @@
-import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "@/shared/const"
+import { ReactNode, useState } from "react";
+import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "@/shared/const";
 import { AuthContext } from "@/shared/lib/context";
-import { ReactNode, useEffect, useState } from "react"
 
 interface AuthProviderProps {
   children: ReactNode
@@ -20,11 +20,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
     setIsAuth(false);
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
-    setIsAuth(!!token);
-  }, []);
 
   return (
     <AuthContext.Provider value={{ isAuth, login, logout }}>

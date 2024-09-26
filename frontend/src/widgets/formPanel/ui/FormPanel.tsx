@@ -1,10 +1,10 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import { Login } from "@/features/login"
 import { SignUp } from "@/features/signup"
 import { InputType } from "@/shared/const"
 import { IAuthRequest } from "@/shared/types"
 import { Title, Input } from "@/shared/ui"
-import { useState } from "react"
-import { Link } from "react-router-dom"
 
 interface FormPanelProps {
   title: string,
@@ -55,7 +55,9 @@ export const FormPanel = ({ title, addLink }: FormPanelProps) => {
       </form>
       <div className="mt-4 ">
         {addLink.text}
-        <Link to={addLink.path} className="hover:border-b border-blue transition-all">{addLink.title}</Link>
+        <Link to={addLink.path} className="hover:border-b border-blue transition-all">
+          {addLink.title}
+        </Link>
       </div>
     </div>
   )

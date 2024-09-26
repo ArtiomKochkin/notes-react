@@ -1,14 +1,20 @@
+import { ReactNode } from "react"
+
 interface ErrorProps {
-    isError?: boolean
+    isError?: boolean,
+    children?: ReactNode
 }
 
-export const Error = ({ isError}: ErrorProps) => {
+export const Error = ({ isError, children }: ErrorProps) => {
  
     return (
         <>
             {isError && 
                 <div className="text-center text-red-600">
-                    Произошла ошибка. Что-то пошло не так!
+                    {children 
+                        ? children
+                        : "Произошла ошибка. Что-то пошло не так!"
+                    }
                 </div>
             }
         </>

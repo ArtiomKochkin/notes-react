@@ -1,25 +1,29 @@
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "@/entities/auth";
 import { AuthContext } from "@/shared/lib/context";
-import { IAuthRequest } from "@/shared/types";
+import { IAuthRequest, IError } from "@/shared/types";
 import { Button, Error } from "@/shared/ui";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface SignUpProps {
   credentials: IAuthRequest
 }
 
 export const SignUp = ({ credentials }: SignUpProps) => {
-  const [register, { isLoading, error }] = useRegisterMutation();
+  const [register, { isLoading }] = useRegisterMutation();
+  const [error, setError] = useState<string | null>(null);
   const authContext = useContext(AuthContext);
   const nav = useNavigate();
 
   const handleClick = async () => {
     try {
       const response = await register(credentials).unwrap();
+
       authContext?.login(response.accessToken);
+      setError(null);
       nav("/");
     } catch (err) {
+      setError((err as IError).data.message);
       console.error(`SignUp Error: ${err}`);
     }
   };
@@ -29,7 +33,7 @@ export const SignUp = ({ credentials }: SignUpProps) => {
       <Button onClick={handleClick} disabled={isLoading}>
         Зарегистрироваться
       </Button>
-      {error && <Error />}
+      <Error isError={!!error}>{error}</Error>
     </>
   )
 }

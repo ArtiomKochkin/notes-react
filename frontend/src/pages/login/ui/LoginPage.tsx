@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { FormPanel } from "@/widgets/formPanel";
-import { useEffect } from "react"
 
 export const LoginPage = () => {
   useEffect(() => {

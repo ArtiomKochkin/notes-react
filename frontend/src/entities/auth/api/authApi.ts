@@ -1,19 +1,22 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL } from "../const/auth";
+import { AUTH_URL, LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "@/shared/const";
 import { IAuthRequest } from "@/shared/types";
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: AUTH_URL,
+  prepareHeaders(headers) {
+    const token = localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+    return headers;
+  },
+  credentials: 'include',
+});
 
 export const authApi = createApi({
   reducerPath: 'auth',
-  baseQuery: fetchBaseQuery({
-    baseUrl: BASE_URL,
-    prepareHeaders(headers) {
-      const token = localStorage.getItem('accessToken');
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+  baseQuery: baseQuery,
   endpoints: (builder) => ({
     login: builder.mutation<{ accessToken: string }, IAuthRequest>({
       query: (credentials) => ({

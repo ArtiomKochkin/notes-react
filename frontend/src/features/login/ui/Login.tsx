@@ -1,8 +1,8 @@
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Error } from "@/shared/ui";
 import { useLoginMutation } from "@/entities/auth";
-import { IAuthRequest } from "@/shared/types";
-import { useContext } from "react";
+import { Button, Error } from "@/shared/ui";
+import { IAuthRequest, IError } from "@/shared/types";
 import { AuthContext } from "@/shared/lib/context";
 
 interface LoginProps {
@@ -10,16 +10,20 @@ interface LoginProps {
 }
 
 export const Login = ({ credentials }: LoginProps) => {
-  const [loginUser, { isLoading, error }] = useLoginMutation();
+  const [loginUser, { isLoading }] = useLoginMutation();
+  const [error, setError] = useState<string | null>(null);
   const authContext = useContext(AuthContext);
   const nav = useNavigate();
 
   const handleClick = async () => {
     try {
       const response = await loginUser(credentials).unwrap();
+      
       authContext?.login(response.accessToken);
+      setError(null);
       nav("/");
     } catch (err) {
+      setError((err as IError).data.message);
       console.error(`Login Error: ${err}`);
     }
   };
@@ -29,7 +33,7 @@ export const Login = ({ credentials }: LoginProps) => {
       <Button onClick={handleClick} disabled={isLoading}>
         Войти
       </Button>
-      {error && <Error/>}
+      <Error isError={!!error}>{error}</Error>
     </>
   )
 }

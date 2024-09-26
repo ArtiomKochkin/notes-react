@@ -1,1 +1,1 @@
-export { FormPanel } from "./ui/FormPanel/FormPanel";
+export { FormPanel } from "./ui/FormPanel";
