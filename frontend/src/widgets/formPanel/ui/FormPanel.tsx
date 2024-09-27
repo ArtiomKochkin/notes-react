@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { LoginWithGoogle } from "@/features/loginWithGoogle"
 import { Login } from "@/features/login"
 import { SignUp } from "@/features/signup"
 import { InputType } from "@/shared/const"
@@ -37,6 +38,7 @@ export const FormPanel = ({ title, addLink }: FormPanelProps) => {
             username: e.target.value
           })}
         />
+
         <Input 
           type="password"
           placeholder="Пароль"
@@ -48,12 +50,16 @@ export const FormPanel = ({ title, addLink }: FormPanelProps) => {
             password: e.target.value
           })}
         />
-        {title.toLowerCase() == "вход" 
-          ? <Login credentials={credentials}/> 
-          : <SignUp credentials={credentials}/>
-        }
+
+        <div className="flex gap-2 justify-between relative">
+          {title.toLowerCase() == "вход" 
+            ? <Login credentials={credentials}/> 
+            : <SignUp credentials={credentials}/>
+          }
+          <LoginWithGoogle />
+        </div>
       </form>
-      <div className="mt-4 ">
+      <div className="mt-8 ">
         {addLink.text}
         <Link to={addLink.path} className="hover:border-b border-blue transition-all">
           {addLink.title}

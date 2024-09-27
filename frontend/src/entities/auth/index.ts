@@ -2,5 +2,6 @@ export {
   authApi,
   useLoginMutation, 
   useLogoutMutation,
-  useRegisterMutation
+  useRegisterMutation,
+  useLoginWithGoogleMutation
 } from "./api/authApi";

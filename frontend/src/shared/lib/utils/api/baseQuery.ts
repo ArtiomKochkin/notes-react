@@ -1,6 +1,8 @@
 import { BaseQueryFn, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+import { googleLogout } from "@react-oauth/google";
 import { AUTH_URL, LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "@/shared/const";
 import { ITokenResponse } from "@/shared/types";
+
 
 export const createBaseQueryWithReAuth = (baseUrl: string) => {
   const baseQuery = fetchBaseQuery({
@@ -37,6 +39,7 @@ export const createBaseQueryWithReAuth = (baseUrl: string) => {
         result = await baseQuery(args, api, extraOptions); 
       } else {
         localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
+        googleLogout();
         window.location.href = '/notes-react/login';
       }
     }

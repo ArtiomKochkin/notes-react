@@ -1,8 +1,10 @@
 import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { googleLogout } from "@react-oauth/google";
 import { useLogoutMutation } from "@/entities/auth";
 import { useContext } from "react";
 import { AuthContext } from "@/shared/lib/context";
+
 
 export const Logout = () => {
   const [logout] = useLogoutMutation();
@@ -13,6 +15,8 @@ export const Logout = () => {
     try {
       await logout();
       authContext?.logout();
+
+      googleLogout();
       nav('/login');
     } catch (err) {
       console.error(`Logout Error: ${err}`);

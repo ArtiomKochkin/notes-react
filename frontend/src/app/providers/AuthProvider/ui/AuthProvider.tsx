@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "@/shared/const";
 import { AuthContext } from "@/shared/lib/context";
 
@@ -23,7 +24,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={{ isAuth, login, logout }}>
-      {children}
+      <GoogleOAuthProvider clientId="38790867897-6gclrhs92fhlj799pmsk5aimk3lvd66h.apps.googleusercontent.com">
+        {children}
+      </GoogleOAuthProvider>
     </AuthContext.Provider>
   )
 }

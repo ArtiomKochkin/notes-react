@@ -94,3 +94,30 @@ exports.refresh = (req, res) => {
     return res.status(200).json({ accessToken });
   });
 };
+
+exports.loginWithGoogle = async (req, res) => {
+  const { name } = req.body;
+  let user = users.find(u => u.username === name);
+
+  if (!user) {
+    user = {
+      username: name,
+      password: ""
+    }
+
+    users.push(user);
+  }
+
+  const { accessToken, refreshToken } = getTokens(user.username);
+
+  res.setHeader(
+    "Set-Cookie",
+    cookie.serialize("refreshToken", refreshToken, {
+      httpOnly: true,
+      maxAge: refreshTokenAge * 60 * 24 * 1000,
+      sameSite: 'strict',
+      secure: false, 
+    })
+  )
+  res.status(200).json({ accessToken });
+};

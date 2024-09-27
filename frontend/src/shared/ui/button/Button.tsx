@@ -14,7 +14,7 @@ export const Button = ({ children, createButton, ...props }: ButtonProps) => {
         <button 
             {...props}
             className={
-                `button sm:px-8 text-inherit leading-4
+                `button sm:px-8 text-inherit leading-4 w-full
                 ${createButton && "sm:w-2/3 flex-center justify-center mx-auto my-4"} 
                 ${theme == Theme.LIGHT ? "hover:text-white" : "hover:text-dark"}
             `}

@@ -29,11 +29,11 @@ export const Login = ({ credentials }: LoginProps) => {
   };
   
   return (
-    <>
+    <div className="flex flex-col gap-2 flex-grow">
       <Button onClick={handleClick} disabled={isLoading}>
         Войти
       </Button>
       <Error isError={!!error}>{error}</Error>
-    </>
+    </div>
   )
 }
