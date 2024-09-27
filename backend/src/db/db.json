@@ -1,26 +1,4 @@
 {
-  "notes": [
-    {
-      "id": 1727329442333,
-      "name": "Заметка",
-      "content": "",
-      "isArchive": false,
-      "isPinned": false,
-      "isDeleted": false,
-      "isList": false,
-      "timestamp": 1727329576592,
-      "backgroundImage": "",
-      "background": "inherit",
-      "colorText": "inherit",
-      "labels": [],
-      "listContent": [
-        {
-          "id": 1727329442333,
-          "isChecked": false,
-          "text": "Текст..."
-        }
-      ]
-    }
-  ],
+  "notes": [],
   "labels": []
 }
